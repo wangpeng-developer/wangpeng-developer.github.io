@@ -22,9 +22,8 @@
     <title>博客搭建</title>
     <url>/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>正所谓工欲善其事，必先利其器。这句话告诉我们要做好一件事，准备工作十分重要，每件事是如此，搭建博客亦如此。我是利用GitHub+Hexo框架搭建博客，搭建博客前期准备工作如下。</p>
-<h3 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h3><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。</p>
-<p>GitHub网址：<a href="https://github.com/">https://github.com/</a></p>
-<p><img src="D:\Blog\source_posts\博客搭建\github_homepage.png"></p>
+<h4 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h4><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。<br>GitHub网址：<a href="https://github.com/">https://github.com/</a></p>
+<p><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github_homepage.png" alt="github_homepage"></p>
 ]]></content>
       <tags>
         <tag>hexo</tag>
