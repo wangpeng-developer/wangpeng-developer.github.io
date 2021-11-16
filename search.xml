@@ -29,6 +29,7 @@
 <p>分别显示版本号即安装成功。</p>
 <h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>我们可以在D盘新建一个文件夹，文件夹取名为Blog，进入该文件夹后，鼠标右击打开Git Bash Here，输入以下命令来安装hexo。<br><code>npm install -g hexo-cli</code><br>耐心等待一下啊！安装成功后，输入以下命令来初始化博客。<br><code>hexo init</code><br>接着再输入以下命令来静态部署<br><code>hexo g</code><br>等部署完成后，开启本地服务器来预览一下效果<br><code>hexo s</code><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo_s.png" alt="hexo_s"><br>浏览器输入 <a href="http://localhost:4000/">http://localhost:4000</a> 即可打开部署好的网页。ctrl + c停止服务器。</p>
 <h1 id="安装sublime编辑器"><a href="#安装sublime编辑器" class="headerlink" title="安装sublime编辑器"></a>安装sublime编辑器</h1><p><a href="https://www.sublimetext.com/">sublime官网</a></p>
+<span id="more"></span>
 <h1 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h1><p>1.打开git bash设置你的用户名和邮箱地址</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;wangpeng_developer&quot;            # 名称</span><br><span class="line">$ git config --global user.email &quot;webberwang@foxmail.com&quot;       # 地址</span><br></pre></td></tr></table></figure>
 <p>我们也可以通过命令 git config –global –list查看我们刚才配置的信息<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_config.png" alt="git_config"></p>
