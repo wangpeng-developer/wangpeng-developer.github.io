@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-21 16:58:06 / 修改时间：17:00:20" itemprop="dateCreated datePublished" datetime="2021-11-21T16:58:06+08:00">2021-11-21</time>
+              <time title="创建时间：2021-11-21 16:58:06 / 修改时间：22:47:21" itemprop="dateCreated datePublished" datetime="2021-11-21T16:58:06+08:00">2021-11-21</time>
             </span>
 
           
@@ -234,7 +234,7 @@
       
           <h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
 <p>写文件：打开文件    写文件    关闭文件</p>
-<h2 id="1-open-方法"><a href="#1-open-方法" class="headerlink" title="1.open()方法"></a>1.open()方法</h2><p>**<code>open()</code>**returns a <strong>file object</strong>and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
+<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
 <blockquote>
 <p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
 </blockquote>
@@ -243,15 +243,15 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><em>size</em> is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
+<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
 </blockquote>
 <p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
 <p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
-<h2 id="2-readline-方法"><a href="#2-readline-方法" class="headerlink" title="2.readline()方法"></a>2.readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
-<h2 id="3-readlines-方法"><a href="#3-readlines-方法" class="headerlink" title="3.readlines()方法"></a>3.readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
+<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
+<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-with语句"><a href="#4-with语句" class="headerlink" title="4.with语句"></a>4.with语句</h2><blockquote>
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
 <p>It is good practice to use the <a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
 </blockquote>
 <ul>
@@ -260,12 +260,12 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="5-tell-方法"><a href="#5-tell-方法" class="headerlink" title="5.tell()方法"></a>5.tell()方法</h2><blockquote>
+<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
 <p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="6-seek-方法"><a href="#6-seek-方法" class="headerlink" title="6.seek()方法"></a>6.seek()方法</h2><blockquote>
+<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
 <p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
@@ -566,11 +566,7 @@
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
---><script color="255,255,255" opacity="1" zIndex="-1" count="150" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
-
-
-
-
+-->
 
 
         
@@ -602,6 +598,7 @@
 <script src="/js/next-boot.js"></script>
 
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
