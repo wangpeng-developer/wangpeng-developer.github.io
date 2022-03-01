@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/11/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>博客搭建</title>
-    <url>/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h1><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。<br><a href="https://github.com/">GitHub官网</a></p>
-<p>如果未注册，可以点击主页右上角的Sign up来进行相应的注册。如果已经注册，直接登录即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github_homepage.png" alt="github_homepage"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Sign_in.png" alt="Sign_in"><br>创建仓库名一定要按照your_username.github.io的格式取名。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/new_repository.png" alt="new_repostitory"></p>
-<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><p>git可以将本地仓库push到github远程仓库上去。<br><a href="https://git-scm.com/">git官网</a><br>进入git官网后，我们可以根据自己电脑的类型选择合适的git版本。我是windows系统的笔记本，所以选择windows的git版本。下载完后，安装过程记得修改安装路径，最好安装在除C盘以外的其他盘，其他就一直next，一直下一步即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_download.png" alt="git_download"><br>安装结束后，win+R启动cmd，输入以下命令<br><code>git --version</code><br>能显示git版本号就说明安装成功了。</p>
-<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><p><a href="https://nodejs.org/en/download/">nodejs官网</a><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/nodejs.png" alt="nodejs"><br>选择合适的版本下载，安装过程一直下一步即可。<br>安装完成后，测试一下是否安装成功，输入以下命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>分别显示版本号即安装成功。</p>
-<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>我们可以在D盘新建一个文件夹，文件夹取名为Blog，进入该文件夹后，鼠标右击打开Git Bash Here，输入以下命令来安装hexo。<br><code>npm install -g hexo-cli</code><br>耐心等待一下啊！安装成功后，输入以下命令来初始化博客。<br><code>hexo init</code><br>接着再输入以下命令来静态部署<br><code>hexo g</code><br>等部署完成后，开启本地服务器来预览一下效果<br><code>hexo s</code><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo_s.png" alt="hexo_s"><br>浏览器输入 <a href="http://localhost:4000/">http://localhost:4000</a> 即可打开部署好的网页。ctrl + c停止服务器。</p>
-<h1 id="安装sublime编辑器"><a href="#安装sublime编辑器" class="headerlink" title="安装sublime编辑器"></a>安装sublime编辑器</h1><p><a href="https://www.sublimetext.com/">sublime官网</a></p>
-<span id="more"></span>
-
-<h1 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h1><p>1.打开git bash设置你的用户名和邮箱地址</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;wangpeng_developer&quot;            # 名称</span><br><span class="line">$ git config --global user.email &quot;webberwang@foxmail.com&quot;       # 地址</span><br></pre></td></tr></table></figure>
-<p>我们也可以通过命令 git config –global –list查看我们刚才配置的信息<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_config.png" alt="git_config"></p>
-<p>2.SSH key 配置</p>
-<p>通过rsa算法生成密钥，然后再将生成的公钥添加到GitHub上<br><code>$ ssh-keygen -t rsa</code><br>生成的密钥文件保存在C:/Users/webbe/.ssh目录下<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/ssh.png" alt="ssh"><br>右击id_rsa.pub文件以sublime方式打开<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/pub_ssh.png" alt="pub_ssh"><br>ctrl + A 全部复制，然后再进入github中，进入设置，点击SSH and GPG keys,然后点击New SSH key<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/SSH_01.png" alt="SSH_01"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/SSH_02.png" alt="SSH_02"><br>验证是否成功，我们可以打开git bash输入以下命令 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi wangpeng-developer! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-
-<p>3.修改_config.yml文件<br>用sublime打开Blog目录下的_config.yml文件，翻到最下面的deployment配置。<br><strong>注意</strong>：branch后面填的值视情况而定，要看你建的仓库的主分支默认是master还是main，我仓库默认主分支为main</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/wangpeng-developer/wangpeng-developer.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-<p>4.安装Git部署插件并发布上GitHub</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python文件操作</title>
     <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
@@ -102,6 +55,159 @@
 ]]></content>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h1 id="一、类对象"><a href="#一、类对象" class="headerlink" title="一、类对象"></a>一、类对象</h1><p>在<code>python</code>中对象几乎是无处不在的，变量、数据、函数都是对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一条测试类&quot;&quot;&quot;</span></span><br><span class="line">    variable = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(Demo))</span><br><span class="line"><span class="built_in">print</span>(Demo.__doc__)</span><br><span class="line"><span class="built_in">print</span>(Demo.variable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">[<span class="string">&#x27;__annotations__&#x27;</span>, <span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__call__&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__closure__&#x27;</span>, <span class="string">&#x27;__code__&#x27;</span>, <span class="string">&#x27;__defaults__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__get__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__globals__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__kwdefaults__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__qualname__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>]</span><br><span class="line">这是一个测试函数</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、定义一个简单的类"><a href="#二、定义一个简单的类" class="headerlink" title="二、定义一个简单的类"></a>二、定义一个简单的类</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> 方法名(<span class="params">self, 参数列表</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<strong>类名</strong>的命名规则要符合<strong>大驼峰命名法</strong></p>
+<p>定义类时，如果当前类没有确切的父类，则可继承object</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一个猫类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫爱吃鱼&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">drink</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫在喝水&quot;</span>)</span><br><span class="line">        </span><br><span class="line">tom = Cat()</span><br><span class="line">tom.eat()</span><br><span class="line">tom.drink()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在<code>Python</code>中使用类创建对象之后，<code>tom</code>变量中记录的是<strong>对象在内存中的地址</strong></li>
+<li>也就是说<code>tom</code>变量引用了新建的猫对象</li>
+<li>使用<code>print</code>输出对象变量，默认情况下，能够输出类名以及内存地址</li>
+<li>这里的<strong>self</strong>其实是个对象，类似于Java中的this</li>
+</ul>
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/1.png" alt="1"></p>
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/2.png" alt="2"></p>
+<h2 id="1-init-方法"><a href="#1-init-方法" class="headerlink" title="1.__init__方法"></a>1.<code>__init__</code>方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>爱吃鱼&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat = Animal(<span class="string">&quot;小猫&quot;</span>)</span><br><span class="line">cat.eat()</span><br><span class="line"><span class="built_in">print</span>(cat)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>当使用<code>类名</code>创建对象时，会<strong>自动</strong>执行以下操作：</p>
+<ol>
+<li><p>为对象在内存中<strong>分配空间</strong>  - - 创建对象</p>
+</li>
+<li><p>为对象的属性<strong>设置初始值</strong>  - - 初始化方法(<code>__init__</code>)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证初始化方法在创建对象时自动被调用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Initial</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是一个初始化方法！！&quot;</span>)</span><br><span class="line">       </span><br><span class="line">demo = Initial()</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="2-str-方法"><a href="#2-str-方法" class="headerlink" title="2.__str__方法"></a>2.<code>__str__方法</code></h2><ul>
+<li><p>在<code>Python</code>中，使用<code>print</code>输出<strong>对象变量</strong>，默认情况下，会输出创建该对象的类名以及在内存中的地址</p>
+</li>
+<li><p>如果希望对该输出值做出改变，想自定义输出的内容，则可以重写<code>__str__</code>方法</p>
+<blockquote>
+<p><em>注意：该方法必须返回一个字符串</em></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;我是自定义内容&quot;</span></span><br><span class="line">    </span><br><span class="line">tom = Demo(<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(tom)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-私有属性和私有方法"><a href="#3-私有属性和私有方法" class="headerlink" title="3.私有属性和私有方法"></a>3.私有属性和私有方法</h2><ul>
+<li>在定义属性或方法时，以双下划线开头，在外界不能够直接访问。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Woman</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.__age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__secret</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>的年龄为<span class="subst">&#123;self.__age&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-继承"><a href="#4-继承" class="headerlink" title="4.继承"></a>4.继承</h2><p>继承的概念：子类拥有<strong>父类</strong>的所有<strong>方法和属性</strong></p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名(<span class="params">父类名</span>):</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-1-继承的传递性"><a href="#4-1-继承的传递性" class="headerlink" title="4.1 继承的传递性"></a>4.1 继承的传递性</h3><ul>
+<li><strong>子类</strong>拥有<strong>父类</strong>以及<strong>其父类的父类</strong>中封装的所有属性和方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;吃饭了！&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;睡觉了！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>(<span class="params">Animal</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">puppy = Subclass(<span class="string">&quot;puppy&quot;</span>)</span><br><span class="line">puppy.eat()</span><br><span class="line">puppy.bark()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-方法的重写"><a href="#4-2-方法的重写" class="headerlink" title="4.2 方法的重写"></a>4.2 方法的重写</h3><p>重写方法有两种情况：</p>
+<ol>
+<li><strong>覆盖</strong>父类的方法<ul>
+<li>当<strong>父类</strong>的方法不能满足子类需求时，可以对方法进行<strong>重写（override）</strong></li>
+<li>在子类中定义一个和<strong>父类同名</strong>的方法并且实现</li>
+<li>重写之后，在运行时只会调用子类中重写的方法，而不会去调用父类封装的方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)  <span class="comment">#在子类Subclass中重定义父类Dog中的bark方法</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对父类方法进行<strong>扩展</strong><ul>
+<li>子类的方法实现中包含父类的方法实现</li>
+<li>添加<code>super().父类方法</code>来调用父类方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().bark()     <span class="comment"># 调用原本在父类封装的方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-多继承"><a href="#4-3-多继承" class="headerlink" title="4.3 多继承"></a>4.3 多继承</h3><ul>
+<li>子类可以拥有<strong>多个父类</strong>，并且可以具有多个父类的属性和方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 子类名(<span class="params">父类名<span class="number">1</span>, 父类名<span class="number">2.</span>..</span>)</span></span><br><span class="line"><span class="class">      <span class="title">pass</span></span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/3.png" alt="3"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">a</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是A类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是B类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params">A, B</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">test = C()</span><br><span class="line">test.a()</span><br><span class="line">test.b()</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-多态"><a href="#5-多态" class="headerlink" title="5.多态"></a>5.多态</h2><blockquote>
+<p>对于同一个方法，由于调用的对象不同，最终实现不同的效果</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义鼠标类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mouse</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;鼠标启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义键盘类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyBoard</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;键盘启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">m = Mouse()</span><br><span class="line">m.start()</span><br><span class="line">k = KeyBoard()</span><br><span class="line">k.start()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-类变量"><a href="#6-类变量" class="headerlink" title="6.类变量"></a>6.类变量</h2><ul>
+<li>类变量定义在<strong>类中</strong>且在<strong>函数体之外</strong><ol>
+<li>定义一个<strong>工具类</strong></li>
+<li>需求：需要知道使用这个工具类创建了多少个工具对象？</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tool</span>:</span></span><br><span class="line">    <span class="comment"># 定义类属性 记录创建工具对象的个数</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        Tool.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">tool1 = Tool(<span class="string">&quot;榔头&quot;</span>)</span><br><span class="line">tool2 = Tool(<span class="string">&quot;铁锹&quot;</span>)</span><br><span class="line">tool3 = Tool(<span class="string">&quot;锤子&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(Tool.count)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/11/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>博客搭建</title>
+    <url>/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h1><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。<br><a href="https://github.com/">GitHub官网</a></p>
+<p>如果未注册，可以点击主页右上角的Sign up来进行相应的注册。如果已经注册，直接登录即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github_homepage.png" alt="github_homepage"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Sign_in.png" alt="Sign_in"><br>创建仓库名一定要按照your_username.github.io的格式取名。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/new_repository.png" alt="new_repostitory"></p>
+<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><p>git可以将本地仓库push到github远程仓库上去。<br><a href="https://git-scm.com/">git官网</a><br>进入git官网后，我们可以根据自己电脑的类型选择合适的git版本。我是windows系统的笔记本，所以选择windows的git版本。下载完后，安装过程记得修改安装路径，最好安装在除C盘以外的其他盘，其他就一直next，一直下一步即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_download.png" alt="git_download"><br>安装结束后，win+R启动cmd，输入以下命令<br><code>git --version</code><br>能显示git版本号就说明安装成功了。</p>
+<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><p><a href="https://nodejs.org/en/download/">nodejs官网</a><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/nodejs.png" alt="nodejs"><br>选择合适的版本下载，安装过程一直下一步即可。<br>安装完成后，测试一下是否安装成功，输入以下命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>分别显示版本号即安装成功。</p>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>我们可以在D盘新建一个文件夹，文件夹取名为Blog，进入该文件夹后，鼠标右击打开Git Bash Here，输入以下命令来安装hexo。<br><code>npm install -g hexo-cli</code><br>耐心等待一下啊！安装成功后，输入以下命令来初始化博客。<br><code>hexo init</code><br>接着再输入以下命令来静态部署<br><code>hexo g</code><br>等部署完成后，开启本地服务器来预览一下效果<br><code>hexo s</code><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo_s.png" alt="hexo_s"><br>浏览器输入 <a href="http://localhost:4000/">http://localhost:4000</a> 即可打开部署好的网页。ctrl + c停止服务器。</p>
+<h1 id="安装sublime编辑器"><a href="#安装sublime编辑器" class="headerlink" title="安装sublime编辑器"></a>安装sublime编辑器</h1><p><a href="https://www.sublimetext.com/">sublime官网</a></p>
+<span id="more"></span>
+
+<h1 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h1><p>1.打开git bash设置你的用户名和邮箱地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;wangpeng_developer&quot;            # 名称</span><br><span class="line">$ git config --global user.email &quot;webberwang@foxmail.com&quot;       # 地址</span><br></pre></td></tr></table></figure>
+<p>我们也可以通过命令 git config –global –list查看我们刚才配置的信息<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_config.png" alt="git_config"></p>
+<p>2.SSH key 配置</p>
+<p>通过rsa算法生成密钥，然后再将生成的公钥添加到GitHub上<br><code>$ ssh-keygen -t rsa</code><br>生成的密钥文件保存在C:/Users/webbe/.ssh目录下<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/ssh.png" alt="ssh"><br>右击id_rsa.pub文件以sublime方式打开<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/pub_ssh.png" alt="pub_ssh"><br>ctrl + A 全部复制，然后再进入github中，进入设置，点击SSH and GPG keys,然后点击New SSH key<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/SSH_01.png" alt="SSH_01"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/SSH_02.png" alt="SSH_02"><br>验证是否成功，我们可以打开git bash输入以下命令 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi wangpeng-developer! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<p>3.修改_config.yml文件<br>用sublime打开Blog目录下的_config.yml文件，翻到最下面的deployment配置。<br><strong>注意</strong>：branch后面填的值视情况而定，要看你建的仓库的主分支默认是master还是main，我仓库默认主分支为main</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/wangpeng-developer/wangpeng-developer.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+<p>4.安装Git部署插件并发布上GitHub</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
