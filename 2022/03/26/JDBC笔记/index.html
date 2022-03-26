@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/run1.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/run2.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangpeng-developer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JDBC 简介JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。  JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC笔记">
+<meta property="og:url" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Peng&#39;blog">
+<meta property="og:description" content="JDBC 简介JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。  JDBC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/registerDriver.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeUpdate.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeQuery.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/SQl%E6%B3%A8%E5%85%A5.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png">
+<meta property="article:published_time" content="2022-03-26T10:40:12.000Z">
+<meta property="article:modified_time" content="2022-03-26T10:43:46.968Z">
+<meta property="article:author" content="Peng Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png">
+
+<link rel="canonical" href="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JDBC笔记 | Peng'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/wangpeng-developer" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Peng'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">来和我一起交流学习吧！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="Peng Wang">
+      <meta itemprop="description" content="Attitude is everything">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peng'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JDBC笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-26 18:40:12 / 修改时间：18:43:46" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:12+08:00">2022-03-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="JDBC-简介"><a href="#JDBC-简介" class="headerlink" title="JDBC 简介"></a>JDBC 简介</h1><p>JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png" alt="diagram_one"></p>
+<h1 id="JDBC-API详解"><a href="#JDBC-API详解" class="headerlink" title="JDBC API详解"></a>JDBC API详解</h1><blockquote>
+<p>[Package java.sql](<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html">java.sql (Java Platform SE 8 ) (oracle.com)</a>) Provides the API for accessing and processing data stored in a data source (usually a relational database) using the JavaTM programming language.</p>
+</blockquote>
+<h2 id="DriverManager类"><a href="#DriverManager类" class="headerlink" title="DriverManager类"></a>DriverManager类</h2><p>类路径：java.sql.DriverManager</p>
+<ol>
+<li><p>注册驱动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类加载之后会自动执行静态代码块中的内容</span></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException var1) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Can&#x27;t register driver!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>java.sql.DriverManager类下的静态方法registerDriver</strong></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/registerDriver.png" alt="registerDriver.png"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>获取连接对象</p>
+<p><strong>java.sql.DriverManager类下的静态方法getConnection</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String user,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String password)</span></span></span><br><span class="line"><span class="function">                                <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// url jdbc:mysql://ip地址(域名)/数据库名称?参数键值对1&amp;参数键值对2</span></span></span><br><span class="line"><span class="function"><span class="comment">// jdbc:mysql://localhost:3306/jdbc</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Connection接口"><a href="#Connection接口" class="headerlink" title="Connection接口"></a>Connection接口</h2><p>接口路径： java.sql.Connection</p>
+<ol>
+<li><p>获取执行SQL语句的对象</p>
+</li>
+<li><p>管理事务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取执行sql的对象</span></span><br><span class="line"><span class="comment">// Statement createStatement() throws SQLException</span></span><br><span class="line">Statement stmt = conn.createStatement();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 管理事务</span></span><br><span class="line"><span class="comment">// void setAutoCommit(boolean autoCommit) throws SQLException</span></span><br><span class="line"><span class="comment">// 参数autoCommit - true启用自动提交模式; false禁用它</span></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 开启事务</span></span><br><span class="line">            conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">int</span> count1 = stmt.executeUpdate(sql1);</span><br><span class="line">            System.out.println(count1);</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">3</span> / <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> count2 = stmt.executeUpdate(sql2);</span><br><span class="line">            System.out.println(count2);</span><br><span class="line">            <span class="comment">// 提交事务</span></span><br><span class="line">            conn.commit();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 回滚事务</span></span><br><span class="line">            conn.rollback();</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            stmt.close();</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h2><p>接口路径： java.sql.Statement</p>
+<p><strong>执行sql语句</strong></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeUpdate.png" alt="executeUpdate.png"></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeQuery.png" alt="executeQuery.png"></p>
+<h2 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h2><p>接口路径：java.sql.ResultSet</p>
+<p>执行DQL语句，返回ResultSet对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Moves the cursor forward one row from its current position. A ResultSet cursor is initially positioned before the first row; </span></span></span><br><span class="line"><span class="function"><span class="comment">// Returns:true if the new current row is valid; false if there are no more rows</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getInt</span><span class="params">(<span class="keyword">int</span> columnIndex)</span>  <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Retrieves the value of the designated column in the current row of this ResultSet object </span></span></span><br><span class="line"><span class="function"><span class="comment">// Parameters:  columnIndex - the first column is 1, the second is 2, ...</span></span></span><br><span class="line"><span class="function">String <span class="title">getString</span><span class="params">(String columnLabel)</span> <span class="keyword">throws</span> SQLException</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数为列号</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="number">1</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="number">3</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">学号：1720060122 姓名：Taylor 账户：100</span></span><br><span class="line"><span class="comment">学号：1720060123 姓名：Jack 账户：100</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数为列名</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="string">&quot;sno&quot;</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="string">&quot;sname&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="string">&quot;smoney&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>从数据库中获取数据，然后将其数据封装到对象中，最后在存储在ArrayList集合当中。</strong></p>
+<h2 id="PreparedStatement接口"><a href="#PreparedStatement接口" class="headerlink" title="PreparedStatement接口"></a>PreparedStatement接口</h2><p>接口路径：java.sql.PreparedStatement</p>
+<p>作用：预编译sql语句并执行，预防sql注入问题，将敏感字符进行转义。</p>
+<blockquote>
+<p> <strong>SQl注入：</strong>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+</blockquote>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/SQl%E6%B3%A8%E5%85%A5.png" alt="SQL注入.png"></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png" alt="sql注入修改.png"></p>
+<p>用户输入<strong>随意字符</strong>的用户名，输入密码为**’ or ‘1’ = ‘1**，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
+<ol>
+<li><p>获取PreparedStatement对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SQl语句中的参数值，使用?占位符来替代</span></span><br><span class="line">String sql = <span class="string">&quot;select * from user where username=? and password=?&quot;</span>;</span><br><span class="line"><span class="comment">// 通过Connection对象获取，并传入对应的sql语句</span></span><br><span class="line">PreparedStatement pstmt = conn.preparedStatement(sql);</span><br></pre></td></tr></table></figure></li>
+<li><p>设置参数值(给？赋值)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">int</span> parameterIndex, <span class="keyword">int</span> x)</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Parameters:</span></span><br><span class="line"><span class="function">parameterIndex - the first parameter is 1, the second is 2, ...</span></span><br><span class="line"><span class="function">x - the parameter value</span></span><br></pre></td></tr></table></figure></li>
+<li><p>执行sql</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ResultSet <span class="title">executeQuery</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Executes the SQL query in <span class="keyword">this</span> PreparedStatement object and returns the ResultSet object generated by the query.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException </span>&#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line">        String url = <span class="string">&quot;jdbc:mysql://localhost:3306/jdbc&quot;</span>;</span><br><span class="line">        String username = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        String password = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        Connection conn = DriverManager.getConnection(url, username, password);</span><br><span class="line">        String name = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        String pwd = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        String sql = <span class="string">&quot;select * from user where name = ? and pwd = ?&quot;</span>;</span><br><span class="line">        PreparedStatement preparedStatement = conn.prepareStatement(sql);</span><br><span class="line">        preparedStatement.setString(<span class="number">1</span>,name);</span><br><span class="line">        preparedStatement.setString(<span class="number">2</span>,pwd);</span><br><span class="line">        ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">if</span>(resultSet.next()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录成功！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录失败！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        resultSet.close();</span><br><span class="line">        preparedStatement.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="Python面向对象">
+      <i class="fa fa-chevron-left"></i> Python面向对象
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">JDBC 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-API%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">JDBC API详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DriverManager%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">DriverManager类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">Connection接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statement%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">Statement接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResultSet%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.4.</span> <span class="nav-text">ResultSet接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PreparedStatement%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.5.</span> <span class="nav-text">PreparedStatement接口</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Peng Wang"
+      src="/images/dog.jpg">
+  <p class="site-author-name" itemprop="name">Peng Wang</p>
+  <div class="site-description" itemprop="description">Attitude is everything</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangpeng-developer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangpeng-developer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wp1756575645@123.com" title="E-Mail → mailto:wp1756575645@123.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/webber-19-88" title="ZhiHu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;webber-19-88" rel="noopener" target="_blank"><i class="fab fa-quora fa-fw"></i>ZhiHu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.runoob.com/" title="https:&#x2F;&#x2F;www.runoob.com&#x2F;" rel="noopener" target="_blank">菜鸟教程</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https:&#x2F;&#x2F;www.baidu.com&#x2F;" rel="noopener" target="_blank">百度</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peng Wang</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+--><script color="0,0,0" opacity="0.5" zIndex="-1" count="150" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js">
+</script>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
