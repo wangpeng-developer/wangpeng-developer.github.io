@@ -31,10 +31,10 @@
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/registerDriver.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeUpdate.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeQuery.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/SQl%E6%B3%A8%E5%85%A5.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png">
 <meta property="article:published_time" content="2022-03-26T10:40:12.000Z">
-<meta property="article:modified_time" content="2022-03-26T12:55:07.879Z">
+<meta property="article:modified_time" content="2022-03-26T14:22:10.688Z">
 <meta property="article:author" content="Peng Wang">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-26 18:40:12 / 修改时间：20:55:07" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:12+08:00">2022-03-26</time>
+              <time title="创建时间：2022-03-26 18:40:12 / 修改时间：22:22:10" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:12+08:00">2022-03-26</time>
             </span>
 
           
@@ -292,7 +292,7 @@
 <blockquote>
 <p> <strong>SQl注入：</strong>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
 </blockquote>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/SQl%E6%B3%A8%E5%85%A5.png" alt="SQL注入.png"></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png" alt="sql.png"></p>
 <p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png" alt="sql注入修改.png"></p>
 <p>用户输入<strong>随意字符</strong>的用户名，输入密码为**’ or ‘1’ = ‘1**，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
 <ol>
