@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-27 20:45:25 / 修改时间：20:47:33" itemprop="dateCreated datePublished" datetime="2022-03-27T20:45:25+08:00">2022-03-27</time>
+              <time title="创建时间：2022-03-27 20:45:25 / 修改时间：20:56:20" itemprop="dateCreated datePublished" datetime="2022-03-27T20:45:25+08:00">2022-03-27</time>
             </span>
 
           
@@ -241,39 +241,41 @@
 <ol>
 <li><p>标准化的项目结构</p>
 <p>不同IDE之间，项目结构不一样，不通用。而Maven提供了一套标准化的项目结构，所有IDE使用Maven构建的项目结构完全一样，所有IDE创建的Maven项目可以通用。其中src包含源代码和测试代码目录，pom.xml是项目核心配置文件。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/Maven.png" alt="Maven.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven.png" alt="Maven.png"></p>
 </li>
 <li><p>仓库分类</p>
 <p>本地仓库：自己计算机上的一个目录<br>中央仓库：由Maven团队维护的全球唯一的仓库，地址：<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/">Click me</a><br>远程仓库（私服）：一般由公司团队搭建的私有仓库</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/repository.png" alt="repository.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/repository.png" alt="repository.png"></p>
 </li>
 </ol>
 <h1 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h1><ol>
 <li>Maven安装地址：<a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">Click me</a></li>
 </ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/Maven_download.png" alt="Maven_download.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven_download.png" alt="Maven_download.png"></p>
 <ol start="2">
 <li>下载后，解压到D:\Software目录下。</li>
 </ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/maven存放地址.png" alt="maven存放地址.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/maven%E5%AD%98%E6%94%BE%E5%9C%B0%E5%9D%80.png" alt="maven存放地址.png"></p>
 <ol start="3">
 <li>配置环境变量。</li>
 </ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/environment_one.png" alt="environment_one.png"></p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/environment_two.png" alt="environment_two"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_one.png" alt="environment_one.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_two.png" alt="environment_two"></p>
 <ol start="4">
-<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/local_respository.png" alt="local_respository.png"></p>
+<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/local_respository.png" alt="local_respository.png"></p>
 </li>
 <li><p>配置阿里云私服：修改<code>conf/settings.xml</code>中的<code>&lt;mirrors&gt;</code>标签。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/mirror_respository.png" alt="mirror_respository.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/mirror_respository.png" alt="mirror_respository.png"></p>
 </li>
 </ol>
-<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Users/webbe/Desktop/Maven笔记/Maven笔记/idea.png" alt="idea"></p>
+<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/idea.png" alt="idea"></p>
 <h1 id="Maven坐标详解"><a href="#Maven坐标详解" class="headerlink" title="Maven坐标详解"></a>Maven坐标详解</h1><ol>
 <li><p>什么是坐标？</p>
 <ul>
-<li>Maven中的坐标是资源的唯一标识</li>
-<li>使用坐标来定义项目或引入项目中需要的依赖</li>
+<li><p>Maven中的坐标是资源的唯一标识</p>
+</li>
+<li><p>使用坐标来定义项目或引入项目中需要的依赖</p>
+</li>
 </ul>
 </li>
 <li><p>Maven坐标主要组成<br><strong>groupld：</strong>定义当前Maven项目隶属组织名称（通常是域名反写）<br><strong>artifactld：</strong>定义当前Maven项目名称（通常是模块名称）<br><strong>version：</strong>定义当前项目版本号</p>
