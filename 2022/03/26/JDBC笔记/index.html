@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png">
 <meta property="article:published_time" content="2022-03-26T10:40:12.000Z">
-<meta property="article:modified_time" content="2022-03-26T14:22:10.688Z">
+<meta property="article:modified_time" content="2022-03-27T00:49:42.726Z">
 <meta property="article:author" content="Peng Wang">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -226,10 +226,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-26 18:40:12 / 修改时间：22:22:10" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:12+08:00">2022-03-26</time>
+              <time title="创建时间：2022-03-26 18:40:12" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:12+08:00">2022-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 08:49:42" itemprop="dateModified" datetime="2022-03-27T08:49:42+08:00">2022-03-27</time>
+              </span>
 
           
 
@@ -245,7 +251,7 @@
         <h1 id="JDBC-简介"><a href="#JDBC-简介" class="headerlink" title="JDBC 简介"></a>JDBC 简介</h1><p>JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
 <p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png" alt="diagram_one"></p>
 <h1 id="JDBC-API详解"><a href="#JDBC-API详解" class="headerlink" title="JDBC API详解"></a>JDBC API详解</h1><blockquote>
-<p>[Package java.sql](<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html">java.sql (Java Platform SE 8 ) (oracle.com)</a>) Provides the API for accessing and processing data stored in a data source (usually a relational database) using the JavaTM programming language.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html">Package java.sql</a> Provides the API for accessing and processing data stored in a data source (usually a relational database) using the JavaTM programming language.</p>
 </blockquote>
 <h2 id="DriverManager类"><a href="#DriverManager类" class="headerlink" title="DriverManager类"></a>DriverManager类</h2><p>类路径：java.sql.DriverManager</p>
 <ol>
@@ -294,7 +300,7 @@
 </blockquote>
 <p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png" alt="sql.png"></p>
 <p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png" alt="sql注入修改.png"></p>
-<p>用户输入<strong>随意字符</strong>的用户名，输入密码为**’ or ‘1’ = ‘1**，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
+<p>用户输入<strong>随意字符</strong>的用户名，输入密码为’ or ‘1’ = ‘1，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
 <ol>
 <li><p>获取PreparedStatement对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SQl语句中的参数值，使用?占位符来替代</span></span><br><span class="line">String sql = <span class="string">&quot;select * from user where username=? and password=?&quot;</span>;</span><br><span class="line"><span class="comment">// 通过Connection对象获取，并传入对应的sql语句</span></span><br><span class="line">PreparedStatement pstmt = conn.preparedStatement(sql);</span><br></pre></td></tr></table></figure></li>
