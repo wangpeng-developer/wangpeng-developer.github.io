@@ -566,7 +566,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">先执行crontab -e命令</span><br><span class="line">接着再输入</span><br><span class="line">*/1 * * * * ls -l /etc/ &gt; /tmp/to.txt</span><br></pre></td></tr></table></figure>
 
 <h1 id="磁盘分区和挂载"><a href="#磁盘分区和挂载" class="headerlink" title="磁盘分区和挂载"></a>磁盘分区和挂载</h1><p>将分区挂载到目录中，实现磁盘与目录之间的联系。当系统中进入目录时，相当于访问这个分区。</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/mount.png" alt="mount.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/Mount.png" alt="Mount.png"></p>
 <ul>
 <li><p>查看所有设备挂载情况</p>
 <p>基本语法：lsblk  或者 lsblk -f</p>
