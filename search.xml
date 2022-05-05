@@ -1,77 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JDBC笔记</title>
-    <url>/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="JDBC-简介"><a href="#JDBC-简介" class="headerlink" title="JDBC 简介"></a>JDBC 简介</h1><p>JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png" alt="diagram_one"></p>
-<h1 id="JDBC-API详解"><a href="#JDBC-API详解" class="headerlink" title="JDBC API详解"></a>JDBC API详解</h1><blockquote>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html">Package java.sql</a> Provides the API for accessing and processing data stored in a data source (usually a relational database) using the JavaTM programming language.</p>
-</blockquote>
-<h2 id="DriverManager类"><a href="#DriverManager类" class="headerlink" title="DriverManager类"></a>DriverManager类</h2><p>类路径：java.sql.DriverManager</p>
-<ol>
-<li><p>注册驱动</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类加载之后会自动执行静态代码块中的内容</span></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException var1) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Can&#x27;t register driver!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>java.sql.DriverManager类下的静态方法registerDriver</strong></p>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/registerDriver.png" alt="registerDriver.png"></p>
-</li>
-</ol>
-<ol start="2">
-<li><p>获取连接对象</p>
-<p><strong>java.sql.DriverManager类下的静态方法getConnection</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String user,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String password)</span></span></span><br><span class="line"><span class="function">                                <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// url jdbc:mysql://ip地址(域名)/数据库名称?参数键值对1&amp;参数键值对2</span></span></span><br><span class="line"><span class="function"><span class="comment">// jdbc:mysql://localhost:3306/jdbc</span></span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Connection接口"><a href="#Connection接口" class="headerlink" title="Connection接口"></a>Connection接口</h2><p>接口路径： java.sql.Connection</p>
-<ol>
-<li><p>获取执行SQL语句的对象</p>
-</li>
-<li><p>管理事务</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取执行sql的对象</span></span><br><span class="line"><span class="comment">// Statement createStatement() throws SQLException</span></span><br><span class="line">Statement stmt = conn.createStatement();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 管理事务</span></span><br><span class="line"><span class="comment">// void setAutoCommit(boolean autoCommit) throws SQLException</span></span><br><span class="line"><span class="comment">// 参数autoCommit - true启用自动提交模式; false禁用它</span></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 开启事务</span></span><br><span class="line">            conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">int</span> count1 = stmt.executeUpdate(sql1);</span><br><span class="line">            System.out.println(count1);</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">3</span> / <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> count2 = stmt.executeUpdate(sql2);</span><br><span class="line">            System.out.println(count2);</span><br><span class="line">            <span class="comment">// 提交事务</span></span><br><span class="line">            conn.commit();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 回滚事务</span></span><br><span class="line">            conn.rollback();</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            stmt.close();</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h2><p>接口路径： java.sql.Statement</p>
-<p><strong>执行sql语句</strong></p>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeUpdate.png" alt="executeUpdate.png"></p>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeQuery.png" alt="executeQuery.png"></p>
-<h2 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h2><p>接口路径：java.sql.ResultSet</p>
-<p>执行DQL语句，返回ResultSet对象。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Moves the cursor forward one row from its current position. A ResultSet cursor is initially positioned before the first row; </span></span></span><br><span class="line"><span class="function"><span class="comment">// Returns:true if the new current row is valid; false if there are no more rows</span></span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getInt</span><span class="params">(<span class="keyword">int</span> columnIndex)</span>  <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Retrieves the value of the designated column in the current row of this ResultSet object </span></span></span><br><span class="line"><span class="function"><span class="comment">// Parameters:  columnIndex - the first column is 1, the second is 2, ...</span></span></span><br><span class="line"><span class="function">String <span class="title">getString</span><span class="params">(String columnLabel)</span> <span class="keyword">throws</span> SQLException</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数为列号</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="number">1</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="number">3</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">学号：1720060122 姓名：Taylor 账户：100</span></span><br><span class="line"><span class="comment">学号：1720060123 姓名：Jack 账户：100</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数为列名</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="string">&quot;sno&quot;</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="string">&quot;sname&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="string">&quot;smoney&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>从数据库中获取数据，然后将其数据封装到对象中，最后在存储在ArrayList集合当中。</strong></p>
-<h2 id="PreparedStatement接口"><a href="#PreparedStatement接口" class="headerlink" title="PreparedStatement接口"></a>PreparedStatement接口</h2><p>接口路径：java.sql.PreparedStatement</p>
-<p>作用：预编译sql语句并执行，预防sql注入问题，将敏感字符进行转义。</p>
-<blockquote>
-<p> <strong>SQl注入：</strong>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
-</blockquote>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png" alt="sql.png"></p>
-<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png" alt="sql注入修改.png"></p>
-<p>用户输入<strong>随意字符</strong>的用户名，输入密码为’ or ‘1’ = ‘1，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
-<ol>
-<li><p>获取PreparedStatement对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SQl语句中的参数值，使用?占位符来替代</span></span><br><span class="line">String sql = <span class="string">&quot;select * from user where username=? and password=?&quot;</span>;</span><br><span class="line"><span class="comment">// 通过Connection对象获取，并传入对应的sql语句</span></span><br><span class="line">PreparedStatement pstmt = conn.preparedStatement(sql);</span><br></pre></td></tr></table></figure></li>
-<li><p>设置参数值(给？赋值)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">int</span> parameterIndex, <span class="keyword">int</span> x)</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Parameters:</span></span><br><span class="line"><span class="function">parameterIndex - the first parameter is 1, the second is 2, ...</span></span><br><span class="line"><span class="function">x - the parameter value</span></span><br></pre></td></tr></table></figure></li>
-<li><p>执行sql</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">ResultSet <span class="title">executeQuery</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Executes the SQL query in <span class="keyword">this</span> PreparedStatement object and returns the ResultSet object generated by the query.</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException </span>&#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line">        String url = <span class="string">&quot;jdbc:mysql://localhost:3306/jdbc&quot;</span>;</span><br><span class="line">        String username = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        String password = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        Connection conn = DriverManager.getConnection(url, username, password);</span><br><span class="line">        String name = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        String pwd = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        String sql = <span class="string">&quot;select * from user where name = ? and pwd = ?&quot;</span>;</span><br><span class="line">        PreparedStatement preparedStatement = conn.prepareStatement(sql);</span><br><span class="line">        preparedStatement.setString(<span class="number">1</span>,name);</span><br><span class="line">        preparedStatement.setString(<span class="number">2</span>,pwd);</span><br><span class="line">        ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">if</span>(resultSet.next()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录成功！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录失败！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        resultSet.close();</span><br><span class="line">        preparedStatement.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux学习笔记一</title>
     <url>/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>添加用户<code>webber</code>，使用命令<code>useradd webber</code></p>
@@ -668,6 +597,77 @@
       </tags>
   </entry>
   <entry>
+    <title>JDBC笔记</title>
+    <url>/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="JDBC-简介"><a href="#JDBC-简介" class="headerlink" title="JDBC 简介"></a>JDBC 简介</h1><p>JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png" alt="diagram_one"></p>
+<h1 id="JDBC-API详解"><a href="#JDBC-API详解" class="headerlink" title="JDBC API详解"></a>JDBC API详解</h1><blockquote>
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html">Package java.sql</a> Provides the API for accessing and processing data stored in a data source (usually a relational database) using the JavaTM programming language.</p>
+</blockquote>
+<h2 id="DriverManager类"><a href="#DriverManager类" class="headerlink" title="DriverManager类"></a>DriverManager类</h2><p>类路径：java.sql.DriverManager</p>
+<ol>
+<li><p>注册驱动</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类加载之后会自动执行静态代码块中的内容</span></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException var1) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Can&#x27;t register driver!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>java.sql.DriverManager类下的静态方法registerDriver</strong></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/registerDriver.png" alt="registerDriver.png"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>获取连接对象</p>
+<p><strong>java.sql.DriverManager类下的静态方法getConnection</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String user,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       String password)</span></span></span><br><span class="line"><span class="function">                                <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// url jdbc:mysql://ip地址(域名)/数据库名称?参数键值对1&amp;参数键值对2</span></span></span><br><span class="line"><span class="function"><span class="comment">// jdbc:mysql://localhost:3306/jdbc</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Connection接口"><a href="#Connection接口" class="headerlink" title="Connection接口"></a>Connection接口</h2><p>接口路径： java.sql.Connection</p>
+<ol>
+<li><p>获取执行SQL语句的对象</p>
+</li>
+<li><p>管理事务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取执行sql的对象</span></span><br><span class="line"><span class="comment">// Statement createStatement() throws SQLException</span></span><br><span class="line">Statement stmt = conn.createStatement();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 管理事务</span></span><br><span class="line"><span class="comment">// void setAutoCommit(boolean autoCommit) throws SQLException</span></span><br><span class="line"><span class="comment">// 参数autoCommit - true启用自动提交模式; false禁用它</span></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 开启事务</span></span><br><span class="line">            conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">int</span> count1 = stmt.executeUpdate(sql1);</span><br><span class="line">            System.out.println(count1);</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">3</span> / <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> count2 = stmt.executeUpdate(sql2);</span><br><span class="line">            System.out.println(count2);</span><br><span class="line">            <span class="comment">// 提交事务</span></span><br><span class="line">            conn.commit();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 回滚事务</span></span><br><span class="line">            conn.rollback();</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            stmt.close();</span><br><span class="line">            conn.close();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h2><p>接口路径： java.sql.Statement</p>
+<p><strong>执行sql语句</strong></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeUpdate.png" alt="executeUpdate.png"></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/executeQuery.png" alt="executeQuery.png"></p>
+<h2 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h2><p>接口路径：java.sql.ResultSet</p>
+<p>执行DQL语句，返回ResultSet对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Moves the cursor forward one row from its current position. A ResultSet cursor is initially positioned before the first row; </span></span></span><br><span class="line"><span class="function"><span class="comment">// Returns:true if the new current row is valid; false if there are no more rows</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getInt</span><span class="params">(<span class="keyword">int</span> columnIndex)</span>  <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function"><span class="comment">// Retrieves the value of the designated column in the current row of this ResultSet object </span></span></span><br><span class="line"><span class="function"><span class="comment">// Parameters:  columnIndex - the first column is 1, the second is 2, ...</span></span></span><br><span class="line"><span class="function">String <span class="title">getString</span><span class="params">(String columnLabel)</span> <span class="keyword">throws</span> SQLException</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数为列号</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="number">1</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="number">3</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">学号：1720060122 姓名：Taylor 账户：100</span></span><br><span class="line"><span class="comment">学号：1720060123 姓名：Jack 账户：100</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数为列名</span></span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">    String sno = resultSet.getString(<span class="string">&quot;sno&quot;</span>);</span><br><span class="line">    String sname = resultSet.getString(<span class="string">&quot;sname&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> smoney = resultSet.getInt(<span class="string">&quot;smoney&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;学号：&quot;</span> + sno + <span class="string">&quot; 姓名：&quot;</span> +  sname + <span class="string">&quot; 账户：&quot;</span> + smoney);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>从数据库中获取数据，然后将其数据封装到对象中，最后在存储在ArrayList集合当中。</strong></p>
+<h2 id="PreparedStatement接口"><a href="#PreparedStatement接口" class="headerlink" title="PreparedStatement接口"></a>PreparedStatement接口</h2><p>接口路径：java.sql.PreparedStatement</p>
+<p>作用：预编译sql语句并执行，预防sql注入问题，将敏感字符进行转义。</p>
+<blockquote>
+<p> <strong>SQl注入：</strong>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+</blockquote>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql.png" alt="sql.png"></p>
+<p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/sql%E6%B3%A8%E5%85%A5%E4%BF%AE%E6%94%B9.png" alt="sql注入修改.png"></p>
+<p>用户输入<strong>随意字符</strong>的用户名，输入密码为’ or ‘1’ = ‘1，用户就可以登录成功。这显然是不合理的。为了解决这个问题，就要用到PreparedStatement。</p>
+<ol>
+<li><p>获取PreparedStatement对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SQl语句中的参数值，使用?占位符来替代</span></span><br><span class="line">String sql = <span class="string">&quot;select * from user where username=? and password=?&quot;</span>;</span><br><span class="line"><span class="comment">// 通过Connection对象获取，并传入对应的sql语句</span></span><br><span class="line">PreparedStatement pstmt = conn.preparedStatement(sql);</span><br></pre></td></tr></table></figure></li>
+<li><p>设置参数值(给？赋值)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">int</span> parameterIndex, <span class="keyword">int</span> x)</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Parameters:</span></span><br><span class="line"><span class="function">parameterIndex - the first parameter is 1, the second is 2, ...</span></span><br><span class="line"><span class="function">x - the parameter value</span></span><br></pre></td></tr></table></figure></li>
+<li><p>执行sql</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">ResultSet <span class="title">executeQuery</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></span><br><span class="line"><span class="function">Executes the SQL query in <span class="keyword">this</span> PreparedStatement object and returns the ResultSet object generated by the query.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreparedStatementDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException </span>&#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line">        String url = <span class="string">&quot;jdbc:mysql://localhost:3306/jdbc&quot;</span>;</span><br><span class="line">        String username = <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        String password = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        Connection conn = DriverManager.getConnection(url, username, password);</span><br><span class="line">        String name = <span class="string">&quot;wangpeng&quot;</span>;</span><br><span class="line">        String pwd = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        String sql = <span class="string">&quot;select * from user where name = ? and pwd = ?&quot;</span>;</span><br><span class="line">        PreparedStatement preparedStatement = conn.prepareStatement(sql);</span><br><span class="line">        preparedStatement.setString(<span class="number">1</span>,name);</span><br><span class="line">        preparedStatement.setString(<span class="number">2</span>,pwd);</span><br><span class="line">        ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line">        <span class="keyword">if</span>(resultSet.next()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录成功！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;登录失败！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        resultSet.close();</span><br><span class="line">        preparedStatement.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven笔记</title>
     <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
@@ -722,6 +722,63 @@
 ]]></content>
       <tags>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python文件操作</title>
+    <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
+<p>写文件：打开文件    写文件    关闭文件</p>
+<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
+<blockquote>
+<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
+</blockquote>
+<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
+<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
+<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
+<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
+<p>It is good practice to use the <a href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
+</blockquote>
+<ul>
+<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
+<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
+<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
+<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
+<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
+<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -829,63 +886,6 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tool</span>:</span></span><br><span class="line">    <span class="comment"># 定义类属性 记录创建工具对象的个数</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        Tool.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">tool1 = Tool(<span class="string">&quot;榔头&quot;</span>)</span><br><span class="line">tool2 = Tool(<span class="string">&quot;铁锹&quot;</span>)</span><br><span class="line">tool3 = Tool(<span class="string">&quot;锤子&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(Tool.count)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python文件操作</title>
-    <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
-<p>写文件：打开文件    写文件    关闭文件</p>
-<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
-<blockquote>
-<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
-</blockquote>
-<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
-<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
-<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
-<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
-<p>It is good practice to use the <a href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
-</blockquote>
-<ul>
-<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
-<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
-<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
-<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
-<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
-<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 ]]></content>
       <tags>
