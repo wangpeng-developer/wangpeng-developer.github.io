@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-05 19:42:59 / 修改时间：21:00:15" itemprop="dateCreated datePublished" datetime="2022-05-05T19:42:59+08:00">2022-05-05</time>
+              <time title="创建时间：2022-05-05 19:42:59 / 修改时间：21:14:23" itemprop="dateCreated datePublished" datetime="2022-05-05T19:42:59+08:00">2022-05-05</time>
             </span>
 
           
@@ -251,19 +251,19 @@
 <ul>
 <li>新增组，<code>groupadd 组名</code></li>
 <li>删除组，<code>groupdel 组名</code></li>
-<li>添加用户的同时添加组，基本语法：**<code>useradd -g 用户组 用户名</code>**</li>
+<li>添加用户的同时添加组，基本语法：<code>useradd -g 用户组 用户名</code></li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# groupadd huaguoshan</span><br><span class="line">[root@CentOS7 ~]# useradd -g huaguoshan sunwukong</span><br><span class="line">[root@CentOS7 ~]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1001(huaguoshan) 组=1001(huaguoshan)</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>修改用户的用户组，**<code>usermode -g 用户组 用户名</code> **</li>
+<li>修改用户的用户组，<code>usermode -g 用户组 用户名</code> </li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 home]# groupadd xitianqujing</span><br><span class="line">[root@CentOS7 home]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1001(huaguoshan) 组=1001(huaguoshan)</span><br><span class="line">[root@CentOS7 home]# usermod -g xitianqujing sunwukong</span><br><span class="line">[root@CentOS7 home]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1002(xitianqujing) 组=1002(xitianqujing)</span><br></pre></td></tr></table></figure>
 
 <h1 id="用户和用户组的相关文件"><a href="#用户和用户组的相关文件" class="headerlink" title="用户和用户组的相关文件"></a>用户和用户组的相关文件</h1><ul>
-<li>**<code>/etc/passwd</code> **用户(user)的配置文件，记录用户的各种信息</li>
-<li><strong><code>/etc/shadow</code></strong> 口令的配置文件</li>
-<li><strong><code>/etc/group</code></strong> 组(group)的配置文件，记录用户组的相关信息</li>
+<li><code>/etc/passwd</code> 用户(user)的配置文件，记录用户的各种信息</li>
+<li><code>/etc/shadow</code> 口令的配置文件</li>
+<li><code>/etc/group</code>组(group)的配置文件，记录用户组的相关信息</li>
 </ul>
 <h1 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h1><p>运行级别说明：</p>
 <ul>
@@ -275,7 +275,7 @@
 <li><strong>5：图形界面</strong></li>
 <li>6：系统重启</li>
 </ul>
-<p>命令：**<code>init 0/1/2/3/4/5/6</code>**</p>
+<p>命令：<code>init 0/1/2/3/4/5/6</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> multi-user.target: analogous to runlevel 3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> graphical.target: analogous to runlevel 5</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> To view current default target, run:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl get-default</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> To <span class="built_in">set</span> a default target, run:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl set-default TARGET.target</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>查看当前默认运行级别以及将运行级别5切换到运行级别3</strong></p>
@@ -331,7 +331,7 @@
 <ul>
 <li><p><strong><code>cat</code>指令</strong></p>
 <p>功能描述：查看文件内容，该命令只能浏览文件，而不能修改文件。</p>
-<p>基本语法：**<code>cat [选项] 要查看的文件</code>**</p>
+<p>基本语法：<code>cat [选项] 要查看的文件</code></p>
 <p>常用选项：-n   可以显示行号             </p>
 <p>为了浏览方便，我们一般会带上管道命令  | more，示例如下。</p>
 <p><code>[root@CentOS7 ~]# cat -n /etc/profile | more</code></p>
@@ -451,7 +451,7 @@
 <blockquote>
 <p>类似于windows中的快捷方式</p>
 </blockquote>
-<p>基本语法：**<code>ln -s [源文件] [软链接名]</code>**</p>
+<p>基本语法：<code>ln -s [源文件] [软链接名]</code></p>
 <p>案例一：在<code>/home</code>目录下创建一个软链接<code>myroot</code>，链接到<code>/root</code>目录</p>
 </li>
 </ul>
@@ -541,7 +541,7 @@
 </blockquote>
 </li>
 </ul>
-<p>基本语法：**<code>grep [选项] 查找内容 源文件</code>**</p>
+<p>基本语法：<code>grep [选项] 查找内容 源文件</code></p>
 <table>
 <thead>
 <tr>
@@ -563,8 +563,8 @@
 <h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><ul>
 <li><p><strong><code>gzip/gunzip指令</code></strong></p>
 <blockquote>
-<p>gzip 用于压缩文件， 基本语法：**<code>gzip 文件</code><strong>，该命令只能将文件压缩成</strong><code> *.gz文件</code>**</p>
-<p>gunzip是用于解压缩文件， 基本语法：**<code>gunzip 文件名.gz</code>**</p>
+<p>gzip 用于压缩文件， 基本语法：<code>gzip 文件</code>，该命令只能将文件压缩成<code> *.gz文件</code></p>
+<p>gunzip是用于解压缩文件， 基本语法：<code>gunzip 文件名.gz</code></p>
 <p><strong>默认删除源文件</strong></p>
 </blockquote>
 </li>
@@ -576,8 +576,8 @@
 <ul>
 <li><p><strong><code>zip/unzip</code></strong></p>
 <p>基本语法：</p>
-<p><strong><code>zip [选项] *.zip(压缩后的文件名) 要压缩的文件</code></strong>    常用选项：**<code>-r</code>**，递归压缩</p>
-<p><strong><code>unzip [选项] 要解压缩的文件</code></strong>     常用选项：**<code>-d &lt;目录&gt;</code>**  指定解压后文件的存放目录</p>
+<p><strong><code>zip [选项] *.zip(压缩后的文件名) 要压缩的文件</code></strong>    常用选项：<code>-r</code>，递归压缩</p>
+<p><strong><code>unzip [选项] 要解压缩的文件</code></strong>     常用选项：<code>-d &lt;目录&gt;</code>  指定解压后文件的存放目录</p>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将home目录下所有文件压缩成myhome.zip</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># zip -r myhome.zip /home/</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">hello.txt  myhome.zip  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
@@ -736,11 +736,11 @@
 <p>![add new disk.png](linux学习笔记一/add new disk.png)</p>
 <p><strong>②</strong>查看设备挂载情况</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/lsblk.png" alt="lsblk.png"></p>
-<p>我们可以发现，发现sdb磁盘没有分区，分区命令：**<code>fdisk /dev/sdb</code>**</p>
+<p>我们可以发现，发现sdb磁盘没有分区，分区命令：<code>fdisk /dev/sdb</code></p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/partition.png" alt="partition.png"></p>
 <p>这时候就给sdb增加了一个分区sdb1，我们可以通过命令 <strong>lsblk</strong> 查看</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/sdb1.png" alt="sdb1.png"></p>
-<p>但这个时候，我们还需要给这个分区格式化，格式化命令：**<code>mkfs -t ext4 /dev/sdb1</code>**           -t 表示类型type</p>
+<p>但这个时候，我们还需要给这个分区格式化，格式化命令：<code>mkfs -t ext4 /dev/sdb1</code>      -t 表示类型type</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/partition_format.png" alt="partition_format.png"></p>
 <p>我们可以看到，sdb1分区格式化之后，可以看到它的UUID</p>
 <p>接下来将/dev/sdb1挂载到/newdisk目录</p>
@@ -763,7 +763,7 @@
 <h1 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h1><p>设置静态ip，方便我们远程访问。</p>
 <p>有两种方法：一种是在图形化界面中设置即可，另一种以敲命令的方式改网卡的配置。</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/modify.png" alt="modify.png"></p>
-<p>通过命令**<code>cat /etc/sysconfig/network-scripts/ifcfg-ens33</code>**查看网卡配置信息</p>
+<p>通过命令<code>cat /etc/sysconfig/network-scripts/ifcfg-ens33</code>查看网卡配置信息</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png" alt="查看网卡配置.png"></p>
 <p><strong>当前ip为：inet 192.168.116.131</strong></p>
 <p><strong>我们将其修改为静态ip：192.168.200.138</strong></p>
@@ -778,7 +778,7 @@
 <li><p>ping CentOS7</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/ping_hostname.png" alt="ping_hostname.png"></p>
 </li>
-<li><p>虚拟机进入到**/etc/hosts**</p>
+<li><p>虚拟机进入到/etc/hosts</p>
 <p>增加一行数据，<strong>192.168.200.1  host_machine</strong></p>
 <p>ping host_machine</p>
 </li>
