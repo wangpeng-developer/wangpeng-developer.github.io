@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -189,6 +189,652 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="Peng Wang">
+      <meta itemprop="description" content="Attitude is everything">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peng'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Linux学习笔记一</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-05 11:35:13 / 修改时间：18:34:11" itemprop="dateCreated datePublished" datetime="2022-05-05T11:35:13+08:00">2022-05-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>添加用户<code>webber</code>，使用命令<code>useradd webber</code></p>
+<p>该命令创建的用户的组名默认为其用户名本身，也就是webber。</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuseradd.png" alt="useradd.png"></p>
+<h1 id="给用户添加密码"><a href="#给用户添加密码" class="headerlink" title="给用户添加密码"></a>给用户添加密码</h1><p>给用户<code>webber</code>添加密码，使用命令<code>passwd webber</code></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuserpassword.png" alt="userpassword.png"></p>
+<h1 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h1><ul>
+<li>删除用户<code>webber</code>,但是要保留家目录。<code>userdel webber</code></li>
+<li>删除用户jack以及用户主目录。<code>userdel -r jack</code></li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdelwebber.png" alt="delwebber.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdeljack.png" alt="deljack.png"></p>
+<h1 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h1><p>切换用户(switch user)命令：<code>su - 切换用户名</code></p>
+<p>注意：从<strong>权限高</strong>的用户切换到<strong>权限低</strong>的用户，不需要输入密码。而<strong>普通用户之间</strong>切换以及普通用户切换到root用户，则需要输入对方的密码。当需要返回到之前的用户，可以使用<strong>logout/exit</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# su - wangpeng</span><br><span class="line">上一次登录：五 1月 14 20:25:04 CST 2022从 10.11.1.119pts/1 上</span><br><span class="line">[wangpeng@CentOS7 ~]$ su - root</span><br><span class="line">密码：</span><br><span class="line">上一次登录：六 1月 15 00:17:52 CST 2022从 10.11.1.119pts/0 上</span><br></pre></td></tr></table></figure>
+
+<h1 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h1><p>系统可以对多个用户进行统一管理。</p>
+<ul>
+<li>新增组，<code>groupadd 组名</code></li>
+<li>删除组，<code>groupdel 组名</code></li>
+<li>添加用户的同时添加组，基本语法：**<code>useradd -g 用户组 用户名</code>**</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# groupadd huaguoshan</span><br><span class="line">[root@CentOS7 ~]# useradd -g huaguoshan sunwukong</span><br><span class="line">[root@CentOS7 ~]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1001(huaguoshan) 组=1001(huaguoshan)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改用户的用户组，**<code>usermode -g 用户组 用户名</code> **</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 home]# groupadd xitianqujing</span><br><span class="line">[root@CentOS7 home]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1001(huaguoshan) 组=1001(huaguoshan)</span><br><span class="line">[root@CentOS7 home]# usermod -g xitianqujing sunwukong</span><br><span class="line">[root@CentOS7 home]# id sunwukong</span><br><span class="line">uid=1001(sunwukong) gid=1002(xitianqujing) 组=1002(xitianqujing)</span><br></pre></td></tr></table></figure>
+
+<h1 id="用户和用户组的相关文件"><a href="#用户和用户组的相关文件" class="headerlink" title="用户和用户组的相关文件"></a>用户和用户组的相关文件</h1><ul>
+<li>**<code>/etc/passwd</code> **用户(user)的配置文件，记录用户的各种信息</li>
+<li><strong><code>/etc/shadow</code></strong> 口令的配置文件</li>
+<li><strong><code>/etc/group</code></strong> 组(group)的配置文件，记录用户组的相关信息</li>
+</ul>
+<h1 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h1><p>运行级别说明：</p>
+<ul>
+<li>0：关机</li>
+<li>1：单用户</li>
+<li>2：多用户状态，没有网络服务</li>
+<li><strong>3：多用户状态，有网络服务</strong></li>
+<li>4：系统未使用</li>
+<li><strong>5：图形界面</strong></li>
+<li>6：系统重启</li>
+</ul>
+<p>命令：**<code>init 0/1/2/3/4/5/6</code>**</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> multi-user.target: analogous to runlevel 3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> graphical.target: analogous to runlevel 5</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> To view current default target, run:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl get-default</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> To <span class="built_in">set</span> a default target, run:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl set-default TARGET.target</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查看当前默认运行级别以及将运行级别5切换到运行级别3</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 etc]# systemctl get-default</span><br><span class="line">graphical.target</span><br><span class="line">[root@CentOS7 etc]# systemctl set-default multi-user.target</span><br><span class="line">Removed symlink /etc/systemd/system/default.target.</span><br><span class="line">Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</span><br></pre></td></tr></table></figure>
+
+<h1 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h1><ol>
+<li><strong>man</strong>获取帮助信息，<code>mam [命令或配置文件]</code></li>
+<li><strong>help</strong>获取shell内置命令，<code>help 命令</code></li>
+</ol>
+<h1 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h1><p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/directory.jpg" alt="directory"></p>
+<ul>
+<li><p><strong><code>pwd</code>指令</strong></p>
+<p>功能描述：显示当前工作目录的绝对路径</p>
+</li>
+<li><p><strong><code>ls</code>指令</strong></p>
+<p>基本语法：<code>ls [选项][目录或文件]</code></p>
+<p>常用选项：</p>
+<p>-a：显示当前目录所有的文件和目录，包括隐藏文件。</p>
+<p>-l：显示当前目录下文件的详细信息</p>
+</li>
+<li><p><strong><code>cd</code>指令</strong></p>
+<p>基本语法：<code>cd [绝对路径或相对路径]</code></p>
+<p><code>cd ~ 或者cd</code>：进入家目录</p>
+<p>普通用户为 /home/用户名，root用户为/root</p>
+<p><code>cd ..</code>：进入当前目录的上一级目录</p>
+</li>
+<li><p><strong><code>mkdir</code>指令</strong></p>
+<p>功能描述：该指令用于创建目录</p>
+<p>基本语法：<code>mkdir [选项] 目录</code></p>
+<p>常用选项：-p是创建多级目录</p>
+</li>
+<li><p><strong><code>rmdir</code>指令</strong></p>
+<p>功能描述：该指令用于删除空目录</p>
+<p>如果需要删除非空目录，则可以使用**<code>rm -rf 需要删除的目录或文件</code>**</p>
+<p>-r   Recursive  递归的</p>
+<p>-f   Force     强制的</p>
+</li>
+<li><p><strong><code>cp</code>指令</strong></p>
+<p>功能描述：将文件拷贝到指定目录下</p>
+<p>基本语法：**<code>cp [选项] source destination</code>**</p>
+<p>常用选项：-r   递归复制整个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 home]# cd hello</span><br><span class="line">[root@CentOS7 hello]# touch hello.txt</span><br><span class="line">[root@CentOS7 hello]# touch hello1.txt</span><br><span class="line">[root@CentOS7 hello]# ls </span><br><span class="line">hello1.txt  hello.txt</span><br><span class="line">[root@CentOS7 hello]# cd ..</span><br><span class="line">[root@CentOS7 home]# cp -r ./hello /root</span><br><span class="line">[root@CentOS7 home]# ls /root/hello</span><br><span class="line">hello1.txt  hello.txt</span><br></pre></td></tr></table></figure></li>
+<li><p><strong><code>mv</code>指令</strong></p>
+<p>功能描述：移动文件或目录以及可以进行重命名的操作</p>
+<p><strong>案例一：将home目录下的<code>cat.txt</code>重命名为<code>pig.txt</code></strong></p>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Crename.png" alt="rename.png"></p>
+<p>​       <strong>案例二：将home目录下的<code>pig.txt</code>移动到root目录下</strong></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove.png" alt="move"></p>
+<p>​       <strong>案例三：移动整个目录，将home目录下的animal移动到root目录下</strong></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove%E7%9B%AE%E5%BD%95.png" alt="move目录.png"></p>
+<ul>
+<li><p><strong><code>cat</code>指令</strong></p>
+<p>功能描述：查看文件内容，该命令只能浏览文件，而不能修改文件。</p>
+<p>基本语法：**<code>cat [选项] 要查看的文件</code>**</p>
+<p>常用选项：-n   可以显示行号             </p>
+<p>为了浏览方便，我们一般会带上管道命令  | more，示例如下。</p>
+<p><code>[root@CentOS7 ~]# cat -n /etc/profile | more</code></p>
+</li>
+<li><p><strong><code>more</code>指令</strong></p>
+<p>基本语法：<strong>more 要查看的文件</strong></p>
+<blockquote>
+<p>Linux more 命令类似 cat ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示。</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">空白键（space）</td>
+<td align="center">代表向下翻一页</td>
+</tr>
+<tr>
+<td align="center">Enter</td>
+<td align="center">代表向下翻一行</td>
+</tr>
+<tr>
+<td align="center">q</td>
+<td align="center">代表立即离开</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="center">输出当前行的行号</td>
+</tr>
+<tr>
+<td align="center">:f</td>
+<td align="center">输出文件名和当前行的行号</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong><code>less指令</code></strong></p>
+<p>基本语法：<strong>less 要查看的文件</strong></p>
+<blockquote>
+<p>less指令用来分屏查看文件内容，它的功能与more指令类似，less指令在显示文件内容时，并不是一次将整个文件加载之后再显示，而是根据显示需要加载内容，对于显示大型文件具有较高的效率。</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">空白键（space）</td>
+<td align="center">向下翻动一页</td>
+</tr>
+<tr>
+<td align="center">PageUp</td>
+<td align="center">向上翻动一页</td>
+</tr>
+<tr>
+<td align="center">PageDown</td>
+<td align="center">向下翻动一页</td>
+</tr>
+<tr>
+<td align="center">/字符串</td>
+<td align="center">向下搜寻字符串的功能；n：向下查找；N：向上查找</td>
+</tr>
+<tr>
+<td align="center">?字符串</td>
+<td align="center">向上搜寻字符串的功能；n：向下查找；N：向上查找</td>
+</tr>
+<tr>
+<td align="center">q</td>
+<td align="center">离开</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong><code>echo指令</code></strong></p>
+<p>基本语法：echo  输出内容</p>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cecho.png" alt="echo.png"></p>
+<ul>
+<li><p><strong><code>head指令</code></strong></p>
+<blockquote>
+<p>head用于显示文件的开头部分内容，默认情况下head指令显示文件的前10行内容，也可以查看指定行数，基本语法为：head -n 5 文件（该指令为查看文件前5行内容，5可以为任意行数）</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# head /etc/profile</span><br><span class="line"># /etc/profile</span><br><span class="line"></span><br><span class="line"># System wide environment and startup programs, for login setup</span><br><span class="line"># Functions and aliases go in /etc/bashrc</span><br><span class="line"></span><br><span class="line"># It&#x27;s NOT a good idea to change this file unless you know what you</span><br><span class="line"># are doing. It&#x27;s much better to create a custom.sh shell script in</span><br><span class="line"># /etc/profile.d/ to make custom changes to your environment, as this</span><br><span class="line"># will prevent the need for merging in future updates.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# head -n 5 /etc/profile</span><br><span class="line"># /etc/profile</span><br><span class="line"></span><br><span class="line"># System wide environment and startup programs, for login setup</span><br><span class="line"># Functions and aliases go in /etc/bashrc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong><code>tail指令</code></strong></p>
+<blockquote>
+<p>tail用于输出文件中尾部的内容，默认情况下tail指令显示文件的后10行内容，也可以查看指定行数，基本语法为：tail -n 5 文件（该指令为查看文件后5行内容，5可以为任意行数）</p>
+</blockquote>
+</li>
+<li><p><strong><code>&gt;指令 和 &gt;&gt;指令</code></strong></p>
+<p>基本语法：</p>
+<ol>
+<li><code>ls -l &gt; a.txt</code>    （功能描述：将该目录下的内容<strong>覆盖写入</strong>到<code>a.txt</code>中）</li>
+<li><code>cat hello.txt &gt;&gt; b.txt</code>      (功能描述：将hello.txt的内容<strong>追加写入</strong>到<code>b.txt</code>中)</li>
+</ol>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E8%A6%86%E7%9B%96%E5%86%99%E5%85%A5.png" alt="覆盖写入.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cadd.png" alt="add.png"></p>
+<ul>
+<li><p><strong><code>ln指令</code></strong></p>
+<blockquote>
+<p>类似于windows中的快捷方式</p>
+</blockquote>
+<p>基本语法：**<code>ln -s [源文件] [软链接名]</code>**</p>
+<p>案例一：在<code>/home</code>目录下创建一个软链接<code>myroot</code>，链接到<code>/root</code>目录</p>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csoftware-link.png" alt="software-link.png"></p>
+<h1 id="关机-amp-重启命令"><a href="#关机-amp-重启命令" class="headerlink" title="关机&amp;重启命令"></a>关机&amp;重启命令</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shutdown -h now</td>
+<td>立刻进行</td>
+</tr>
+<tr>
+<td>shutdown -h 1</td>
+<td>1分钟之后关机</td>
+</tr>
+<tr>
+<td>shutdown -r now</td>
+<td>现在重启</td>
+</tr>
+<tr>
+<td>halt</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>把内存的数据同步到磁盘</td>
+</tr>
+</tbody></table>
+<h1 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h1><ul>
+<li><strong><code>find指令</code></strong></li>
+</ul>
+<blockquote>
+<p>Linux find 命令用来在指定目录下查找文件。</p>
+</blockquote>
+<p>基本语法：<code>find [搜索范围] [选项]</code></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-name  filename</td>
+<td>按照指定的文件名来查找文件</td>
+</tr>
+<tr>
+<td>-user  username</td>
+<td>按照所属用户名来查找文件</td>
+</tr>
+<tr>
+<td>-size</td>
+<td>按照文件大小来查找文件</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找home目录下的hello.txt文件</span></span><br><span class="line">[root@CentOS7 home]# find /home -name hello.txt</span><br><span class="line">/home/hello.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找home目录下用户wangpeng创建的文件</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># find /home -user wangpeng</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找根目录下大小大于200M的文件</span></span><br><span class="line"><span class="comment"># 注意：+n 代表大于   -n 代表小于  n 代表等于</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># find / -size +200M</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p><strong><code>which</code>指令</strong></p>
+<blockquote>
+<p>该指令可以查看某个指令在哪个目录下</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看ls指令在哪个目录</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># which ls</span></span><br><span class="line"><span class="built_in">alias</span> ls=<span class="string">&#x27;ls --color=auto&#x27;</span></span><br><span class="line">	/usr/bin/ls</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p><strong><code>grep指令</code></strong></p>
+<blockquote>
+<p>grep指令为过滤查找，通常与管道命令一起使用，管道符号”|”，表示将前一个命令的处理结果传递给后面的命令处理</p>
+</blockquote>
+</li>
+</ul>
+<p>基本语法：**<code>grep [选项] 查找内容 源文件</code>**</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-n</td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略字母大小写</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找home目录下hello.txt文件中含有“hello”字段的行及行号</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># cat hello.txt | grep -n &quot;linux&quot;</span></span><br><span class="line">4:linux</span><br><span class="line">[root@CentOS7 home]<span class="comment"># grep -n &quot;linux&quot; hello.txt </span></span><br><span class="line">4:linux</span><br></pre></td></tr></table></figure>
+
+<h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><ul>
+<li><p><strong><code>gzip/gunzip指令</code></strong></p>
+<blockquote>
+<p>gzip 用于压缩文件， 基本语法：**<code>gzip 文件</code><strong>，该命令只能将文件压缩成</strong><code> *.gz文件</code>**</p>
+<p>gunzip是用于解压缩文件， 基本语法：**<code>gunzip 文件名.gz</code>**</p>
+<p><strong>默认删除源文件</strong></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 home]<span class="comment"># gzip /home/hello.txt</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">hello.txt.gz  sunwukong  wangpeng</span><br><span class="line">[root@CentOS7 home]<span class="comment"># gunzip /home/hello.txt.gz</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">hello.txt  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p><strong><code>zip/unzip</code></strong></p>
+<p>基本语法：</p>
+<p><strong><code>zip [选项] *.zip(压缩后的文件名) 要压缩的文件</code></strong>    常用选项：**<code>-r</code>**，递归压缩</p>
+<p><strong><code>unzip [选项] 要解压缩的文件</code></strong>     常用选项：**<code>-d &lt;目录&gt;</code>**  指定解压后文件的存放目录</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将home目录下所有文件压缩成myhome.zip</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># zip -r myhome.zip /home/</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">hello.txt  myhome.zip  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将myhome.zip解压缩到/home/wangpeng/目录下</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># unzip -d /home/wangpeng myhome.zip </span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># cd wangpeng</span></span><br><span class="line">[root@CentOS7 wangpeng]<span class="comment"># ls</span></span><br><span class="line">hello1.txt  home  公共  模板  视频  图片  文档  下载  音乐  桌面</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p><strong><code>tar</code></strong></p>
+<blockquote>
+<p>Unix和类Unix系统上的压缩打包工具，可以将多个文件合并为一个文件，打包后的文件后缀亦为tar。</p>
+</blockquote>
+<p>当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）</p>
+<p><strong>基本语法：</strong></p>
+<p><strong><code>tar [选项] xxx.tar.gz 需要打包的内容</code></strong></p>
+<p><strong><code>tar [选项] xxx.tar.gz -C&lt;目的目录&gt;</code></strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c</td>
+<td>生成.tar打包文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示详细内容</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>指定压缩后的文件名</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>用 gzip 对存档压缩或解压</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>解包.tar文件</td>
+</tr>
+</tbody></table>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打包并压缩home目录下的cat.txt、dog.txt以及hello.txt</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># tar -zcvf animal.tar.gz cat.txt dog.txt hello.txt </span></span><br><span class="line">cat.txt</span><br><span class="line">dog.txt</span><br><span class="line">hello.txt</span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">animal.tar.gz  cat.txt  dog.txt  hello.txt  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压缩animal.tar.gz</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># tar -zxvf animal.tar.gz </span></span><br><span class="line">cat.txt</span><br><span class="line">dog.txt</span><br><span class="line">hello.txt</span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">animal.tar.gz  cat.txt  dog.txt  hello.txt  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
+
+<h1 id="文件基本属性"><a href="#文件基本属性" class="headerlink" title="文件基本属性"></a>文件基本属性</h1><p>在 Linux 中我们可以使用 ll 或者 ls –l 命令来显示一个文件的属性以及文件所属的用户和组。</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpermission.png" alt="permission.png"></p>
+<p><strong>第一个字符（第0位）代表文件的类型</strong></p>
+<ul>
+<li>当为 <strong>d</strong> 时，则为目录</li>
+<li>当为 <strong>-</strong>  时，则为普通文件</li>
+<li>当为 <strong>l</strong>  时，则为链接文件</li>
+<li>当为 <strong>c</strong> 时，则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
+<li>当为 <strong>b</strong> 时，则表示为装置文件里面的可供储存的接口设备(可随机存取装置)。</li>
+</ul>
+<p>接下来的字符中，以三个为一组，且均为 rwx 的三个参数的组合。其中， r 代表**可读(read)<strong>、 w 代表</strong>可写(write)<strong>、 x 代表</strong>可执行(execute)**。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号 - 而已。</p>
+<p><strong>第 1-3位</strong>确定该文件的<strong>所有者</strong>拥有该文件的权限            —-user</p>
+<p><strong>第4-6位</strong>确定所属组（所有者的同组用户）拥有该文件的权限          —-group</p>
+<p><strong>第7-9位</strong>确定其他用户拥有该文件的权限                  —–others</p>
+<ul>
+<li><p><strong>rwx权限详解</strong></p>
+<ol>
+<li>rwx作用在文件上<ul>
+<li>【r】代表可读：可以读取，查看</li>
+<li>【w】代表可写：可以修改，但是不代表可以删除该文件，删除该文件的前提条件时对该文件所在的目录有写权限，才可以删除该文件。</li>
+<li>【x】代表可执行</li>
+</ul>
+</li>
+<li>rwx作用到目录上<ul>
+<li>【r】代表可读：可以读取，ls查看目录内容</li>
+<li>【w】代表可写：可以修改，可以在目录下创建、删除文件以及重命名目录</li>
+<li>【x】代表可执行：可以进入该目录</li>
+</ul>
+</li>
+<li>可用数字表示为：r = 4，w = 2，x = 1，因此rwx = 7</li>
+</ol>
+</li>
+<li><p><strong><code>chown指令</code></strong></p>
+<blockquote>
+<p><strong>chown（change owner）：修改文件所有者</strong>，哪个用户创建了某个文件，那么这个文件的所有者就是这个用户。</p>
+<p><strong>基本语法：chown 用户名 文件名</strong></p>
+</blockquote>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchown.png" alt="chown.png"></p>
+</li>
+<li><p><strong><code>chgrp指令</code></strong></p>
+<blockquote>
+<p><strong>chgrp（change group）:修改文件所在的组</strong>，当某个用户创建了一个文件后，这个文件的所在组就是该用户所在的组。</p>
+<p><strong>基本语法：chgrp 组名 文件名</strong></p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchgrp.png" alt="chgrp.png"></p>
+<ul>
+<li><p><strong><code>chmod指令</code></strong></p>
+<p>基本说明：该指令可以修改文件或者目录的权限</p>
+<p><strong>①第一种方法</strong>：</p>
+<ol>
+<li><p>给abc文件的所有者<strong>读写执行</strong>的权限，给所在组<strong>读执行</strong>的权限，给其他组<strong>读执行</strong>的权限。</p>
+<p><strong><code>chmod u=rwx,g=rx,o=rx abc</code></strong></p>
+</li>
+<li><p>给abc文件的所有者<strong>除去执行</strong>的权限，给所属组<strong>增加写</strong>的权限。</p>
+<p><strong><code>chmod u-x,g+w abc</code></strong></p>
+</li>
+<li><p>给abc文件的所有用户<strong>增加读</strong>的权限</p>
+<p><strong><code>chmod a+r abc</code></strong></p>
+</li>
+</ol>
+<p><strong>②第二种方法：</strong></p>
+<p>通过数字变更权限</p>
+<p>r = 4，w = 2， x = 1</p>
+<p>案例演示：</p>
+<p>将/home/abc.txt文件的权限修改成**<code>rwxr-xr-x</code>**使用数字的方式实现：</p>
+<p><strong>chmod 755 /home/abc.txt</strong></p>
+</li>
+</ul>
+<h1 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h1><p>任务调度：是指系统在哪个时间段执行特定的命令或程序</p>
+<p>基本语法：**<code>crontab【选项】</code>**</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-e</td>
+<td>编辑crontab定时</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>查询crontab任务</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>删除当前用户所有的crontab任务</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">先执行crontab -e命令</span><br><span class="line">接着再输入</span><br><span class="line">*/1 * * * * ls -l /etc/ &gt; /tmp/to.txt</span><br></pre></td></tr></table></figure>
+
+<h1 id="磁盘分区和挂载"><a href="#磁盘分区和挂载" class="headerlink" title="磁盘分区和挂载"></a>磁盘分区和挂载</h1><p>将分区挂载到目录中，实现磁盘与目录之间的联系。当系统中进入目录时，相当于访问这个分区。</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmount.png" alt="mount.png"></p>
+<ul>
+<li><p>查看所有设备挂载情况</p>
+<p>基本语法：lsblk  或者 lsblk -f</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f           显示文件系统信息。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]<span class="comment"># lsblk -f</span></span><br><span class="line">NAME            FSTYPE      LABEL           UUID                                   MOUNTPOINT</span><br><span class="line">sda                                                                                </span><br><span class="line">├─sda1          xfs                         5d6d3a8f-ce6c-46f0-8845-3ab262d4ea07   /boot</span><br><span class="line">└─sda2          LVM2_member                 VAI02s-KL5T-YdIS-ebvi-QRV3-yMSa-SRYYeC </span><br><span class="line">  ├─centos-root xfs                         4bdae3bd-7bfa-4546-94f3-7d0c53ddde15   /</span><br><span class="line">  └─centos-swap swap                        6d03fb36-1255-4271-8522-9ecce67cae53   [SWAP]</span><br><span class="line">sr0             iso9660     CentOS 7 x86_64 2020-11-04-11-36-43-00                 /run/media/root/CentOS 7 x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>①给虚拟机增加一块新硬盘：</strong></p>
+<p>![add new disk.png](linux学习笔记\add new disk.png)</p>
+<p><strong>②</strong>查看设备挂载情况</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Clsblk.png" alt="lsblk.png"></p>
+<p>我们可以发现，发现sdb磁盘没有分区，分区命令：**<code>fdisk /dev/sdb</code>**</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition.png" alt="partition.png"></p>
+<p>这时候就给sdb增加了一个分区sdb1，我们可以通过命令 <strong>lsblk</strong> 查看</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csdb1.png" alt="sdb1.png"></p>
+<p>但这个时候，我们还需要给这个分区格式化，格式化命令：**<code>mkfs -t ext4 /dev/sdb1</code>**           -t 表示类型type</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition_format.png" alt="partition_format.png"></p>
+<p>我们可以看到，sdb1分区格式化之后，可以看到它的UUID</p>
+<p>接下来将/dev/sdb1挂载到/newdisk目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 /]<span class="comment"># mount /dev/sdb1 /newdisk/</span></span><br><span class="line">[root@CentOS7 /]<span class="comment"># lsblk -f</span></span><br><span class="line">NAME            FSTYPE      LABEL           UUID                                   MOUNTPOINT</span><br><span class="line">sda                                                                                </span><br><span class="line">├─sda1          xfs                         5d6d3a8f-ce6c-46f0-8845-3ab262d4ea07   /boot</span><br><span class="line">└─sda2          LVM2_member                 VAI02s-KL5T-YdIS-ebvi-QRV3-yMSa-SRYYeC </span><br><span class="line">  ├─centos-root xfs                         4bdae3bd-7bfa-4546-94f3-7d0c53ddde15   /</span><br><span class="line">  └─centos-swap swap                        6d03fb36-1255-4271-8522-9ecce67cae53   [SWAP]</span><br><span class="line">sdb                                                                                </span><br><span class="line">└─sdb1          ext4                        c041abec-8ba4-4c89-9b41-cb3327b57ef7   /newdisk</span><br><span class="line">sr0             iso9660     CentOS 7 x86_64 2020-11-04-11-36-43-00                 /run/media/root/CentOS 7 x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="磁盘情况查询"><a href="#磁盘情况查询" class="headerlink" title="磁盘情况查询"></a>磁盘情况查询</h1><ul>
+<li><p>查询系统整体磁盘使用情况</p>
+<p>基本语法：<strong>df  - h</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 /]<span class="comment"># df -h</span></span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">devtmpfs                 894M     0  894M    0% /dev</span><br><span class="line">tmpfs                    910M     0  910M    0% /dev/shm</span><br><span class="line">tmpfs                    910M   11M  900M    2% /run</span><br><span class="line">tmpfs                    910M     0  910M    0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/centos-root   38G  4.8G   34G   13% /</span><br><span class="line">/dev/sda1                197M  163M   35M   83% /boot</span><br><span class="line">tmpfs                    182M   28K  182M    1% /run/user/0</span><br><span class="line">/dev/sr0                 4.4G  4.4G     0  100% /run/media/root/CentOS 7 x86_64</span><br><span class="line">/dev/sdb1                991M  2.6M  922M    1% /newdisk</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询指定目录的磁盘占用情况</p>
+<p>基本语法：<strong>du - h   目录</strong>，默认为当前目录。</p>
+<p>options：- a 含文件    –max-depth = 1 子目录深度   - h 人性化一些，计量单位表示出来</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdu.png" alt="du.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h1><p>设置静态ip，方便我们远程访问。</p>
+<p>有两种方法：一种是在图形化界面中设置即可，另一种以敲命令的方式改网卡的配置。</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmodify.png" alt="modify.png"></p>
+<p>通过命令**<code>cat /etc/sysconfig/network-scripts/ifcfg-ens33</code>**查看网卡配置信息</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png" alt="查看网卡配置.png"></p>
+<p><strong>当前ip为：inet 192.168.116.131</strong></p>
+<p><strong>我们将其修改为静态ip：192.168.200.138</strong></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cstatic.png" alt="static.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8.png" alt="VMnet8.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8_%E7%BD%91%E5%85%B3.png" alt="VMnet8_网关.png"></p>
+<h1 id="主机名和hosts映射"><a href="#主机名和hosts映射" class="headerlink" title="主机名和hosts映射"></a>主机名和hosts映射</h1><p>修改主机名，我们可以修改**/etc/hostname**配置文件</p>
+<p>记忆毫无规律的ip地址对于人来说有点困难，所以我们可以将主机名和ip地址映射起来，这样我们只需要记忆主机名就可以了。</p>
+<ol>
+<li><p>宿主机进入到<strong>C:\Windows\System32\drivers\etc\hosts</strong>文件中，增加一行数据。<strong>192.168.200.138   CentOS7</strong></p>
+</li>
+<li><p>ping CentOS7</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cping_hostname.png" alt="ping_hostname.png"></p>
+</li>
+<li><p>虚拟机进入到**/etc/hosts**</p>
+<p>增加一行数据，<strong>192.168.200.1  host_machine</strong></p>
+<p>ping host_machine</p>
+</li>
+</ol>
+<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>Linux ps （英文全拼：process status）命令用于显示当前进程的状态，类似于 windows 的任务管理器。</p>
+<p>实例：系统中是否有sshd服务</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cprocess_status.png" alt="process_status.png"></p>
+<h1 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h1><ul>
+<li><p>查询</p>
+<p>rpm -qa :查询所安装的所有rpm软件包</p>
+<p>rpm -qa  |  more</p>
+<p>rpm  -qa  | grep firefox</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/firefox.png" alt="firefox.png"></p>
+<p>rpm  -qi  软件包名    ：查询软件包信息</p>
+<p>rpm  -q  firefox：查询软件包是否安装</p>
+</li>
+</ul>
+<ul>
+<li><p>卸载</p>
+<p>rpm  -e  RPM包的名称   //  - e 表示erase</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cerase.png" alt="erase.png"></p>
+</li>
+<li><p>安装</p>
+<p>rpm - ivh  RPM包全路径名称</p>
+<p>参数说明：</p>
+<p>i  =  install  安装</p>
+<p>v =  verbose 提示</p>
+<p>h =  hash 进度条</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cinstall.png" alt="install.png"></p>
+</li>
+</ul>
+<h1 id="YUM包管理"><a href="#YUM包管理" class="headerlink" title="YUM包管理"></a>YUM包管理</h1><p>Yum是一个Shell前端软件包管理器，基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</p>
+<ul>
+<li><p>查询yum服务器是否有需要安装的软件</p>
+<p>yum  list | grep xx</p>
+</li>
+<li><p>安装指定的yum包</p>
+<p>yum install xx</p>
+</li>
+</ul>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cyum.png" alt="yum.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -794,14 +1440,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
