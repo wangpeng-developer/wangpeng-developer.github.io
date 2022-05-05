@@ -27,44 +27,44 @@
 <meta property="og:site_name" content="Peng&#39;blog">
 <meta property="og:description" content="添加用户添加用户webber，使用命令useradd webber 该命令创建的用户的组名默认为其用户名本身，也就是webber。  给用户添加密码给用户webber添加密码，使用命令passwd webber  删除用户 删除用户webber,但是要保留家目录。userdel webber 删除用户jack以及用户主目录。userdel -r jack    切换用户切换用户(switch us">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuseradd.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuserpassword.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdelwebber.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdeljack.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cuseradd.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cuserpassword.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdelwebber.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdeljack.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/directory.jpg">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Crename.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove%E7%9B%AE%E5%BD%95.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cecho.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E8%A6%86%E7%9B%96%E5%86%99%E5%85%A5.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cadd.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csoftware-link.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpermission.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchown.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchgrp.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmount.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Clsblk.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csdb1.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition_format.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdu.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmodify.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cstatic.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8_%E7%BD%91%E5%85%B3.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cping_hostname.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cprocess_status.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Crename.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmove.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmove%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cecho.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5C%E8%A6%86%E7%9B%96%E5%86%99%E5%85%A5.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cadd.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Csoftware-link.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpermission.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cchown.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cchgrp.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmount.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Clsblk.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpartition.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Csdb1.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpartition_format.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdu.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmodify.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5C%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cstatic.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5CVMnet8.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5CVMnet8_%E7%BD%91%E5%85%B3.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cping_hostname.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cprocess_status.png">
 <meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/firefox.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cerase.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cinstall.png">
-<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cyum.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cerase.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cinstall.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cyum.png">
 <meta property="article:published_time" content="2022-05-05T03:35:13.000Z">
-<meta property="article:modified_time" content="2022-05-05T10:52:23.889Z">
+<meta property="article:modified_time" content="2022-05-05T11:05:06.704Z">
 <meta property="article:author" content="Peng Wang">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuseradd.png">
+<meta name="twitter:image" content="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cuseradd.png">
 
 <link rel="canonical" href="https://wangpeng-developer.github.io/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
@@ -254,7 +254,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-05 11:35:13 / 修改时间：18:52:23" itemprop="dateCreated datePublished" datetime="2022-05-05T11:35:13+08:00">2022-05-05</time>
+              <time title="创建时间：2022-05-05 11:35:13 / 修改时间：19:05:06" itemprop="dateCreated datePublished" datetime="2022-05-05T11:35:13+08:00">2022-05-05</time>
             </span>
 
           
@@ -270,15 +270,15 @@
       
         <h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>添加用户<code>webber</code>，使用命令<code>useradd webber</code></p>
 <p>该命令创建的用户的组名默认为其用户名本身，也就是webber。</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuseradd.png" alt="useradd.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cuseradd.png" alt="useradd.png"></p>
 <h1 id="给用户添加密码"><a href="#给用户添加密码" class="headerlink" title="给用户添加密码"></a>给用户添加密码</h1><p>给用户<code>webber</code>添加密码，使用命令<code>passwd webber</code></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cuserpassword.png" alt="userpassword.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cuserpassword.png" alt="userpassword.png"></p>
 <h1 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h1><ul>
 <li>删除用户<code>webber</code>,但是要保留家目录。<code>userdel webber</code></li>
 <li>删除用户jack以及用户主目录。<code>userdel -r jack</code></li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdelwebber.png" alt="delwebber.png"></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdeljack.png" alt="deljack.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdelwebber.png" alt="delwebber.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdeljack.png" alt="deljack.png"></p>
 <h1 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h1><p>切换用户(switch user)命令：<code>su - 切换用户名</code></p>
 <p>注意：从<strong>权限高</strong>的用户切换到<strong>权限低</strong>的用户，不需要输入密码。而<strong>普通用户之间</strong>切换以及普通用户切换到root用户，则需要输入对方的密码。当需要返回到之前的用户，可以使用<strong>logout/exit</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]# su - wangpeng</span><br><span class="line">上一次登录：五 1月 14 20:25:04 CST 2022从 10.11.1.119pts/1 上</span><br><span class="line">[wangpeng@CentOS7 ~]$ su - root</span><br><span class="line">密码：</span><br><span class="line">上一次登录：六 1月 15 00:17:52 CST 2022从 10.11.1.119pts/0 上</span><br></pre></td></tr></table></figure>
@@ -359,11 +359,11 @@
 <p><strong>案例一：将home目录下的<code>cat.txt</code>重命名为<code>pig.txt</code></strong></p>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Crename.png" alt="rename.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Crename.png" alt="rename.png"></p>
 <p>​       <strong>案例二：将home目录下的<code>pig.txt</code>移动到root目录下</strong></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove.png" alt="move"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmove.png" alt="move"></p>
 <p>​       <strong>案例三：移动整个目录，将home目录下的animal移动到root目录下</strong></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmove%E7%9B%AE%E5%BD%95.png" alt="move目录.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmove%E7%9B%AE%E5%BD%95.png" alt="move目录.png"></p>
 <ul>
 <li><p><strong><code>cat</code>指令</strong></p>
 <p>功能描述：查看文件内容，该命令只能浏览文件，而不能修改文件。</p>
@@ -452,7 +452,7 @@
 <p>基本语法：echo  输出内容</p>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cecho.png" alt="echo.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cecho.png" alt="echo.png"></p>
 <ul>
 <li><p><strong><code>head指令</code></strong></p>
 <blockquote>
@@ -480,8 +480,8 @@
 </ol>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E8%A6%86%E7%9B%96%E5%86%99%E5%85%A5.png" alt="覆盖写入.png"></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cadd.png" alt="add.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5C%E8%A6%86%E7%9B%96%E5%86%99%E5%85%A5.png" alt="覆盖写入.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cadd.png" alt="add.png"></p>
 <ul>
 <li><p><strong><code>ln指令</code></strong></p>
 <blockquote>
@@ -491,7 +491,7 @@
 <p>案例一：在<code>/home</code>目录下创建一个软链接<code>myroot</code>，链接到<code>/root</code>目录</p>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csoftware-link.png" alt="software-link.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Csoftware-link.png" alt="software-link.png"></p>
 <h1 id="关机-amp-重启命令"><a href="#关机-amp-重启命令" class="headerlink" title="关机&amp;重启命令"></a>关机&amp;重启命令</h1><table>
 <thead>
 <tr>
@@ -666,7 +666,7 @@
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压缩animal.tar.gz</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># tar -zxvf animal.tar.gz </span></span><br><span class="line">cat.txt</span><br><span class="line">dog.txt</span><br><span class="line">hello.txt</span><br><span class="line">[root@CentOS7 home]<span class="comment"># ls</span></span><br><span class="line">animal.tar.gz  cat.txt  dog.txt  hello.txt  sunwukong  wangpeng</span><br></pre></td></tr></table></figure>
 
 <h1 id="文件基本属性"><a href="#文件基本属性" class="headerlink" title="文件基本属性"></a>文件基本属性</h1><p>在 Linux 中我们可以使用 ll 或者 ls –l 命令来显示一个文件的属性以及文件所属的用户和组。</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpermission.png" alt="permission.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpermission.png" alt="permission.png"></p>
 <p><strong>第一个字符（第0位）代表文件的类型</strong></p>
 <ul>
 <li>当为 <strong>d</strong> 时，则为目录</li>
@@ -702,7 +702,7 @@
 <p><strong>chown（change owner）：修改文件所有者</strong>，哪个用户创建了某个文件，那么这个文件的所有者就是这个用户。</p>
 <p><strong>基本语法：chown 用户名 文件名</strong></p>
 </blockquote>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchown.png" alt="chown.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cchown.png" alt="chown.png"></p>
 </li>
 <li><p><strong><code>chgrp指令</code></strong></p>
 <blockquote>
@@ -711,7 +711,7 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cchgrp.png" alt="chgrp.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cchgrp.png" alt="chgrp.png"></p>
 <ul>
 <li><p><strong><code>chmod指令</code></strong></p>
 <p>基本说明：该指令可以修改文件或者目录的权限</p>
@@ -760,7 +760,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">先执行crontab -e命令</span><br><span class="line">接着再输入</span><br><span class="line">*/1 * * * * ls -l /etc/ &gt; /tmp/to.txt</span><br></pre></td></tr></table></figure>
 
 <h1 id="磁盘分区和挂载"><a href="#磁盘分区和挂载" class="headerlink" title="磁盘分区和挂载"></a>磁盘分区和挂载</h1><p>将分区挂载到目录中，实现磁盘与目录之间的联系。当系统中进入目录时，相当于访问这个分区。</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmount.png" alt="mount.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmount.png" alt="mount.png"></p>
 <ul>
 <li><p>查看所有设备挂载情况</p>
 <p>基本语法：lsblk  或者 lsblk -f</p>
@@ -769,15 +769,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 ~]<span class="comment"># lsblk -f</span></span><br><span class="line">NAME            FSTYPE      LABEL           UUID                                   MOUNTPOINT</span><br><span class="line">sda                                                                                </span><br><span class="line">├─sda1          xfs                         5d6d3a8f-ce6c-46f0-8845-3ab262d4ea07   /boot</span><br><span class="line">└─sda2          LVM2_member                 VAI02s-KL5T-YdIS-ebvi-QRV3-yMSa-SRYYeC </span><br><span class="line">  ├─centos-root xfs                         4bdae3bd-7bfa-4546-94f3-7d0c53ddde15   /</span><br><span class="line">  └─centos-swap swap                        6d03fb36-1255-4271-8522-9ecce67cae53   [SWAP]</span><br><span class="line">sr0             iso9660     CentOS 7 x86_64 2020-11-04-11-36-43-00                 /run/media/root/CentOS 7 x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>①给虚拟机增加一块新硬盘：</strong></p>
-<p>![add new disk.png](linux学习笔记\add new disk.png)</p>
+<p>![add new disk.png](linux\add new disk.png)</p>
 <p><strong>②</strong>查看设备挂载情况</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Clsblk.png" alt="lsblk.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Clsblk.png" alt="lsblk.png"></p>
 <p>我们可以发现，发现sdb磁盘没有分区，分区命令：**<code>fdisk /dev/sdb</code>**</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition.png" alt="partition.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpartition.png" alt="partition.png"></p>
 <p>这时候就给sdb增加了一个分区sdb1，我们可以通过命令 <strong>lsblk</strong> 查看</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Csdb1.png" alt="sdb1.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Csdb1.png" alt="sdb1.png"></p>
 <p>但这个时候，我们还需要给这个分区格式化，格式化命令：**<code>mkfs -t ext4 /dev/sdb1</code>**           -t 表示类型type</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cpartition_format.png" alt="partition_format.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cpartition_format.png" alt="partition_format.png"></p>
 <p>我们可以看到，sdb1分区格式化之后，可以看到它的UUID</p>
 <p>接下来将/dev/sdb1挂载到/newdisk目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS7 /]<span class="comment"># mount /dev/sdb1 /newdisk/</span></span><br><span class="line">[root@CentOS7 /]<span class="comment"># lsblk -f</span></span><br><span class="line">NAME            FSTYPE      LABEL           UUID                                   MOUNTPOINT</span><br><span class="line">sda                                                                                </span><br><span class="line">├─sda1          xfs                         5d6d3a8f-ce6c-46f0-8845-3ab262d4ea07   /boot</span><br><span class="line">└─sda2          LVM2_member                 VAI02s-KL5T-YdIS-ebvi-QRV3-yMSa-SRYYeC </span><br><span class="line">  ├─centos-root xfs                         4bdae3bd-7bfa-4546-94f3-7d0c53ddde15   /</span><br><span class="line">  └─centos-swap swap                        6d03fb36-1255-4271-8522-9ecce67cae53   [SWAP]</span><br><span class="line">sdb                                                                                </span><br><span class="line">└─sdb1          ext4                        c041abec-8ba4-4c89-9b41-cb3327b57ef7   /newdisk</span><br><span class="line">sr0             iso9660     CentOS 7 x86_64 2020-11-04-11-36-43-00                 /run/media/root/CentOS 7 x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -791,28 +791,28 @@
 <li><p>查询指定目录的磁盘占用情况</p>
 <p>基本语法：<strong>du - h   目录</strong>，默认为当前目录。</p>
 <p>options：- a 含文件    –max-depth = 1 子目录深度   - h 人性化一些，计量单位表示出来</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cdu.png" alt="du.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cdu.png" alt="du.png"></p>
 </li>
 </ul>
 </li>
 </ul>
 <h1 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h1><p>设置静态ip，方便我们远程访问。</p>
 <p>有两种方法：一种是在图形化界面中设置即可，另一种以敲命令的方式改网卡的配置。</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cmodify.png" alt="modify.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cmodify.png" alt="modify.png"></p>
 <p>通过命令**<code>cat /etc/sysconfig/network-scripts/ifcfg-ens33</code>**查看网卡配置信息</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png" alt="查看网卡配置.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5C%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE.png" alt="查看网卡配置.png"></p>
 <p><strong>当前ip为：inet 192.168.116.131</strong></p>
 <p><strong>我们将其修改为静态ip：192.168.200.138</strong></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cstatic.png" alt="static.png"></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8.png" alt="VMnet8.png"></p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5CVMnet8_%E7%BD%91%E5%85%B3.png" alt="VMnet8_网关.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cstatic.png" alt="static.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5CVMnet8.png" alt="VMnet8.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5CVMnet8_%E7%BD%91%E5%85%B3.png" alt="VMnet8_网关.png"></p>
 <h1 id="主机名和hosts映射"><a href="#主机名和hosts映射" class="headerlink" title="主机名和hosts映射"></a>主机名和hosts映射</h1><p>修改主机名，我们可以修改**/etc/hostname**配置文件</p>
 <p>记忆毫无规律的ip地址对于人来说有点困难，所以我们可以将主机名和ip地址映射起来，这样我们只需要记忆主机名就可以了。</p>
 <ol>
 <li><p>宿主机进入到<strong>C:\Windows\System32\drivers\etc\hosts</strong>文件中，增加一行数据。<strong>192.168.200.138   CentOS7</strong></p>
 </li>
 <li><p>ping CentOS7</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cping_hostname.png" alt="ping_hostname.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cping_hostname.png" alt="ping_hostname.png"></p>
 </li>
 <li><p>虚拟机进入到**/etc/hosts**</p>
 <p>增加一行数据，<strong>192.168.200.1  host_machine</strong></p>
@@ -821,7 +821,7 @@
 </ol>
 <h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>Linux ps （英文全拼：process status）命令用于显示当前进程的状态，类似于 windows 的任务管理器。</p>
 <p>实例：系统中是否有sshd服务</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cprocess_status.png" alt="process_status.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cprocess_status.png" alt="process_status.png"></p>
 <h1 id="RPM包的管理"><a href="#RPM包的管理" class="headerlink" title="RPM包的管理"></a>RPM包的管理</h1><ul>
 <li><p>查询</p>
 <p>rpm -qa :查询所安装的所有rpm软件包</p>
@@ -835,7 +835,7 @@
 <ul>
 <li><p>卸载</p>
 <p>rpm  -e  RPM包的名称   //  - e 表示erase</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cerase.png" alt="erase.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cerase.png" alt="erase.png"></p>
 </li>
 <li><p>安装</p>
 <p>rpm - ivh  RPM包全路径名称</p>
@@ -843,7 +843,7 @@
 <p>i  =  install  安装</p>
 <p>v =  verbose 提示</p>
 <p>h =  hash 进度条</p>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cinstall.png" alt="install.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cinstall.png" alt="install.png"></p>
 </li>
 </ul>
 <h1 id="YUM包管理"><a href="#YUM包管理" class="headerlink" title="YUM包管理"></a>YUM包管理</h1><p>Yum是一个Shell前端软件包管理器，基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</p>
@@ -855,7 +855,7 @@
 <p>yum install xx</p>
 </li>
 </ul>
-<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5Cyum.png" alt="yum.png"></p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/linux%5Cyum.png" alt="yum.png"></p>
 
     </div>
 
