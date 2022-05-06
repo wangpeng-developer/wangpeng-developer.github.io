@@ -72,6 +72,63 @@
       </tags>
   </entry>
   <entry>
+    <title>Maven笔记</title>
+    <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
+<ul>
+<li>提供了一套标准化的项目结构</li>
+<li>提供了一套标准化的构建流程（编译，测试，打包，发布.）</li>
+<li>提供了一套依赖管理机制</li>
+</ul>
+<ol>
+<li><p>标准化的项目结构</p>
+<p>不同IDE之间，项目结构不一样，不通用。而Maven提供了一套标准化的项目结构，所有IDE使用Maven构建的项目结构完全一样，所有IDE创建的Maven项目可以通用。其中src包含源代码和测试代码目录，pom.xml是项目核心配置文件。</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven.png" alt="Maven.png"></p>
+</li>
+<li><p>仓库分类</p>
+<p>本地仓库：自己计算机上的一个目录<br>中央仓库：由Maven团队维护的全球唯一的仓库，地址：<a href="https://repo1.maven.org/maven2/">Click me</a><br>远程仓库（私服）：一般由公司团队搭建的私有仓库</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/repository.png" alt="repository.png"></p>
+</li>
+</ol>
+<h1 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h1><ol>
+<li>Maven安装地址：<a href="https://maven.apache.org/download.cgi">Click me</a></li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven_download.png" alt="Maven_download.png"></p>
+<ol start="2">
+<li>下载后，解压到D:\Software目录下。</li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/maven%E5%AD%98%E6%94%BE%E5%9C%B0%E5%9D%80.png" alt="maven存放地址.png"></p>
+<ol start="3">
+<li>配置环境变量。</li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_one.png" alt="environment_one.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_two.png" alt="environment_two"></p>
+<ol start="4">
+<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/local_respository.png" alt="local_respository.png"></p>
+</li>
+<li><p>配置阿里云私服：修改<code>conf/settings.xml</code>中的<code>&lt;mirrors&gt;</code>标签。</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/mirror_respository.png" alt="mirror_respository.png"></p>
+</li>
+</ol>
+<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/idea.png" alt="idea"></p>
+<h1 id="Maven坐标详解"><a href="#Maven坐标详解" class="headerlink" title="Maven坐标详解"></a>Maven坐标详解</h1><ol>
+<li><p>什么是坐标？</p>
+<ul>
+<li><p>Maven中的坐标是资源的唯一标识</p>
+</li>
+<li><p>使用坐标来定义项目或引入项目中需要的依赖</p>
+</li>
+</ul>
+</li>
+<li><p>Maven坐标主要组成<br><strong>groupld：</strong>定义当前Maven项目隶属组织名称（通常是域名反写）<br><strong>artifactld：</strong>定义当前Maven项目名称（通常是模块名称）<br><strong>version：</strong>定义当前项目版本号</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 导入 mysql驱动jar包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux学习笔记一</title>
     <url>/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
     <content><![CDATA[<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>添加用户<code>webber</code>，使用命令<code>useradd webber</code></p>
@@ -334,7 +391,7 @@
 <li><strong><code>find指令</code></strong></li>
 </ul>
 <blockquote>
-<p>linux学习笔记一 find 命令用来在指定目录下查找文件。</p>
+<p>Linux find 命令用来在指定目录下查找文件。</p>
 </blockquote>
 <p>基本语法：<code>find [搜索范围] [选项]</code></p>
 <table>
@@ -400,7 +457,7 @@
 <td>忽略字母大小写</td>
 </tr>
 </tbody></table>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查找home目录下hello.txt文件中含有“hello”字段的行及行号</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># cat hello.txt | grep -n &quot;linux学习笔记一&quot;</span></span><br><span class="line">4:linux学习笔记一</span><br><span class="line">[root@CentOS7 home]<span class="comment"># grep -n &quot;linux学习笔记一&quot; hello.txt </span></span><br><span class="line">4:linux学习笔记一</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查找home目录下hello.txt文件中含有“hello”字段的行及行号</span></span><br><span class="line">[root@CentOS7 home]<span class="comment"># cat hello.txt | grep -n &quot;hello&quot;</span></span><br><span class="line">4:hello</span><br><span class="line">[root@CentOS7 home]<span class="comment"># grep -n &quot;hello&quot; hello.txt </span></span><br><span class="line">4:hello</span><br></pre></td></tr></table></figure>
 
 <h1 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h1><ul>
 <li><p><strong><code>gzip/gunzip指令</code></strong></p>
@@ -542,7 +599,7 @@
 </li>
 </ul>
 <h1 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h1><p>任务调度：是指系统在哪个时间段执行特定的命令或程序</p>
-<p>基本语法：**<code>crontab【选项】</code>**</p>
+<p>基本语法：<code>crontab【选项】</code></p>
 <table>
 <thead>
 <tr>
@@ -575,7 +632,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@CentOS7 ~]<span class="comment"># lsblk -f</span></span><br><span class="line">NAME            FSTYPE      LABEL           UUID                                   MOUNTPOINT</span><br><span class="line">sda                                                                                </span><br><span class="line">├─sda1          xfs                         5d6d3a8f-ce6c-46f0-8845-3ab262d4ea07   /boot</span><br><span class="line">└─sda2          LVM2_member                 VAI02s-KL5T-YdIS-ebvi-QRV3-yMSa-SRYYeC </span><br><span class="line">  ├─centos-root xfs                         4bdae3bd-7bfa-4546-94f3-7d0c53ddde15   /</span><br><span class="line">  └─centos-swap swap                        6d03fb36-1255-4271-8522-9ecce67cae53   [SWAP]</span><br><span class="line">sr0             iso9660     CentOS 7 x86_64 2020-11-04-11-36-43-00                 /run/media/root/CentOS 7 x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>①给虚拟机增加一块新硬盘：</strong></p>
-<p>![add new disk.png](linux学习笔记一/add new disk.png)</p>
+<p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/addNewDisk.png" alt="addNewDisk.png"></p>
 <p><strong>②</strong>查看设备挂载情况</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/lsblk.png" alt="lsblk.png"></p>
 <p>我们可以发现，发现sdb磁盘没有分区，分区命令：<code>fdisk /dev/sdb</code></p>
@@ -665,63 +722,6 @@
 ]]></content>
       <tags>
         <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven笔记</title>
-    <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
-<ul>
-<li>提供了一套标准化的项目结构</li>
-<li>提供了一套标准化的构建流程（编译，测试，打包，发布.）</li>
-<li>提供了一套依赖管理机制</li>
-</ul>
-<ol>
-<li><p>标准化的项目结构</p>
-<p>不同IDE之间，项目结构不一样，不通用。而Maven提供了一套标准化的项目结构，所有IDE使用Maven构建的项目结构完全一样，所有IDE创建的Maven项目可以通用。其中src包含源代码和测试代码目录，pom.xml是项目核心配置文件。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven.png" alt="Maven.png"></p>
-</li>
-<li><p>仓库分类</p>
-<p>本地仓库：自己计算机上的一个目录<br>中央仓库：由Maven团队维护的全球唯一的仓库，地址：<a href="https://repo1.maven.org/maven2/">Click me</a><br>远程仓库（私服）：一般由公司团队搭建的私有仓库</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/repository.png" alt="repository.png"></p>
-</li>
-</ol>
-<h1 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h1><ol>
-<li>Maven安装地址：<a href="https://maven.apache.org/download.cgi">Click me</a></li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven_download.png" alt="Maven_download.png"></p>
-<ol start="2">
-<li>下载后，解压到D:\Software目录下。</li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/maven%E5%AD%98%E6%94%BE%E5%9C%B0%E5%9D%80.png" alt="maven存放地址.png"></p>
-<ol start="3">
-<li>配置环境变量。</li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_one.png" alt="environment_one.png"></p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_two.png" alt="environment_two"></p>
-<ol start="4">
-<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/local_respository.png" alt="local_respository.png"></p>
-</li>
-<li><p>配置阿里云私服：修改<code>conf/settings.xml</code>中的<code>&lt;mirrors&gt;</code>标签。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/mirror_respository.png" alt="mirror_respository.png"></p>
-</li>
-</ol>
-<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/idea.png" alt="idea"></p>
-<h1 id="Maven坐标详解"><a href="#Maven坐标详解" class="headerlink" title="Maven坐标详解"></a>Maven坐标详解</h1><ol>
-<li><p>什么是坐标？</p>
-<ul>
-<li><p>Maven中的坐标是资源的唯一标识</p>
-</li>
-<li><p>使用坐标来定义项目或引入项目中需要的依赖</p>
-</li>
-</ul>
-</li>
-<li><p>Maven坐标主要组成<br><strong>groupld：</strong>定义当前Maven项目隶属组织名称（通常是域名反写）<br><strong>artifactld：</strong>定义当前Maven项目名称（通常是模块名称）<br><strong>version：</strong>定义当前项目版本号</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 导入 mysql驱动jar包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
