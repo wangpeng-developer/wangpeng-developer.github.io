@@ -163,7 +163,7 @@
 <li>可以将web项目部署到服务器中，对外提供网上浏览服务</li>
 </ul>
 <p>下载页面</p>
-<p><img src="/2022/05/22/JavaWeb%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/tomcat.png" alt="tomcat.png"></p>
+<p><img src="/2022/05/22/JavaWeb%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/Tomcat.png" alt="Tomcat.png"></p>
 <p>解决Tomcat启动控制台中文乱码问题，修改conf/logging.properties文件。将其编码方式utf-8改成GBK即可</p>
 <p><img src="/2022/05/22/JavaWeb%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/console.png" alt="console.png"></p>
 <p>修改启动端口号：conf/server.xml</p>
