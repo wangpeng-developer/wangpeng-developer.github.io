@@ -1103,8 +1103,8 @@
 <p><img src="/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/Add_data_one.png" alt="Add_data_one.png"></p>
 <p><img src="/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/Add_data_two.png" alt="Add_data_two.png"></p>
 <p><strong>MyBatis事务：</strong></p>
-<p>openSession（）：默认开启事务，进行增删改操作后需要使用 sqlSession.commit()；</p>
-<p>手动提交事务openSession（true）：可以设置为自动提交事务（关闭事务）</p>
+<p>openSession（）：默认false，即关闭自动提交事务，所以进行增删改操作时需要使用 sqlSession.commit()；</p>
+<p>openSession（true）：可以设置为自动提交事务</p>
 <p><strong>获取主键id值</strong></p>
 <p><img src="/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/get_id.png" alt="get_id.png"></p>
 <h1 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h1><p><img src="/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/update_one.png" alt="update_one.png"></p>
