@@ -20,20 +20,32 @@
     var CONFIG = {"hostname":"wangpeng-developer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Python文件操作读文件：打开文件    读文件    关闭文件 写文件：打开文件    写文件    关闭文件 open()方法open()returns a file object and is most commonly used with two arguments: open(filename, mode).  The first argument is a string contai">
+  <meta name="description" content="Cookie 基本使用Cookie：客户端会话技术，将数据保存到客户端，以后每次请求都携带Cookie数据进行访问。  发送 Cookie  1234&#x2F;&#x2F; 1.创建Cookie对象，设置数据Cookie cookie &#x3D; new Cookie(&quot;username&quot;, &quot;wangpeng&quot;);&#x2F;&#x2F; 2.使用response对象将Cookie发送到客户端resp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python文件操作">
-<meta property="og:url" content="https://wangpeng-developer.github.io/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:title" content="Cookie和Session笔记">
+<meta property="og:url" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Peng&#39;blog">
-<meta property="og:description" content="Python文件操作读文件：打开文件    读文件    关闭文件 写文件：打开文件    写文件    关闭文件 open()方法open()returns a file object and is most commonly used with two arguments: open(filename, mode).  The first argument is a string contai">
+<meta property="og:description" content="Cookie 基本使用Cookie：客户端会话技术，将数据保存到客户端，以后每次请求都携带Cookie数据进行访问。  发送 Cookie  1234&#x2F;&#x2F; 1.创建Cookie对象，设置数据Cookie cookie &#x3D; new Cookie(&quot;username&quot;, &quot;wangpeng&quot;);&#x2F;&#x2F; 2.使用response对象将Cookie发送到客户端resp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-21T08:58:06.000Z">
-<meta property="article:modified_time" content="2022-03-01T11:32:29.863Z">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/1.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/2.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/3.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/4.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/5.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/6.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/7.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/8.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/9.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/10.png">
+<meta property="article:published_time" content="2022-06-04T16:26:25.000Z">
+<meta property="article:modified_time" content="2022-06-04T16:38:23.425Z">
 <meta property="article:author" content="Peng Wang">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="cookie">
+<meta property="article:tag" content="session">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/1.png">
 
-<link rel="canonical" href="https://wangpeng-developer.github.io/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+<link rel="canonical" href="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -46,7 +58,7 @@
   };
 </script>
 
-  <title>Python文件操作 | Peng'blog</title>
+  <title>Cookie和Session笔记 | Peng'blog</title>
   
 
 
@@ -197,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/dog.jpg">
@@ -210,7 +222,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python文件操作
+          Cookie和Session笔记
         </h1>
 
         <div class="post-meta">
@@ -219,16 +231,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-11-21 16:58:06" itemprop="dateCreated datePublished" datetime="2021-11-21T16:58:06+08:00">2021-11-21</time>
+              <time title="创建时间：2022-06-05 00:26:25 / 修改时间：00:38:23" itemprop="dateCreated datePublished" datetime="2022-06-05T00:26:25+08:00">2022-06-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-01 19:32:29" itemprop="dateModified" datetime="2022-03-01T19:32:29+08:00">2022-03-01</time>
-              </span>
 
           
 
@@ -241,55 +247,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
-<p>写文件：打开文件    写文件    关闭文件</p>
-<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
-<blockquote>
-<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
-</blockquote>
-<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
-<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
-<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
-<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
-<p>It is good practice to use the <a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
-</blockquote>
-<ul>
-<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
-<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
-<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
-<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
+        <h1 id="Cookie-基本使用"><a href="#Cookie-基本使用" class="headerlink" title="Cookie 基本使用"></a>Cookie 基本使用</h1><p>Cookie：客户端会话技术，将数据保存到客户端，以后每次请求都携带Cookie数据进行访问。</p>
+<ol>
+<li>发送 Cookie</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.创建Cookie对象，设置数据</span></span><br><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;wangpeng&quot;</span>);</span><br><span class="line"><span class="comment">// 2.使用response对象将Cookie发送到客户端</span></span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
-<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
-<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
+<li>查看浏览器的 Cookie</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<ol>
+<li>获取Cookie</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1.获取Cookie数组</span></span><br><span class="line"> Cookie[] cookies = request.getCookies();</span><br><span class="line"> <span class="comment">// 2.遍历数组</span></span><br><span class="line"> <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">    <span class="comment">// 3.获取数据</span></span><br><span class="line">    String key = cookie.getName();</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;username&quot;</span>.equals(key)) &#123;</span><br><span class="line">        String value = cookie.getValue();</span><br><span class="line">        System.out.println(key + <span class="string">&quot;:&quot;</span> + value);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<h1 id="Cookie-原理"><a href="#Cookie-原理" class="headerlink" title="Cookie 原理"></a>Cookie 原理</h1><p>Cookie的实现是基于HTTP协议的</p>
+<ul>
+<li>响应头：set-cookie</li>
+<li>请求头：cookie</li>
+</ul>
+<p>①Servlet 将Cookie数据发送给浏览器，其实是通过响应头的方式。</p>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+<p>②Servlet接收浏览器发送过来的Cookie数据，其实是通过请求头的方式。</p>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+<h1 id="Cookie存活时间"><a href="#Cookie存活时间" class="headerlink" title="Cookie存活时间"></a>Cookie存活时间</h1><ul>
+<li><p>默认情况下，Cookie存储在浏览器内存中，当浏览器关闭，内存释放，则Cookie被销毁。</p>
+</li>
+<li><p>setMaxAge（int seconds）：设置Cookie存活时间</p>
+<ol>
+<li>正数：将Cookie写入浏览器所在电脑的硬盘，持久化存储。到时间后自动删除</li>
+<li>负数：默认值，Cookie在当前浏览器内存中，当浏览器关闭，则Cookie被销毁</li>
+<li>零：删除对应Cookie</li>
+</ol>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+</li>
+</ul>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+<h1 id="Session-基本使用"><a href="#Session-基本使用" class="headerlink" title="Session 基本使用"></a>Session 基本使用</h1><ul>
+<li>Session：服务端会话跟踪技术，将数据保存到服务端。</li>
+<li>JavaEE 提供HttpSession接口，来实现一次会话的多次请求间数据共享功能使用。</li>
+</ul>
+<p>1、获取Session对象</p>
+<ul>
+<li>HttpSession session = request.getSession（）；</li>
+</ul>
+<p>2、Session对象功能：</p>
+<ul>
+<li>void setAttribute（String name，Object o）：存储数据到 session 域中</li>
+<li>Object getAttribute（String name）：根据key，获取值</li>
+<li>void removeAttribute（String name）：根据 key，删除该键值对</li>
+</ul>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<h1 id="Session原理"><a href="#Session原理" class="headerlink" title="Session原理"></a>Session原理</h1><ul>
+<li>一次会话，多次请求。session是如何共享数据的，其原理还是基于Session是基于Cookie实现的。第一次请求时，创建session对象时，以响应头的方式将数据JSESSIONID发送给客户端浏览器，浏览器将JSEESION以cookie的方式保存到浏览器中，下一次请求时，浏览器将JSESSIONID数据以请求头的方式发送给Servlet，这样就能获取到同一session，以达到共享数据。</li>
+</ul>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<p><img src="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
+<p><strong>Session钝化、活化</strong></p>
+<ul>
+<li>服务器重启后，Session中的数据是否还在？</li>
+<li>钝化：在服务器正常关闭后，Tomcat会自动将Session数据写入硬盘的文件中</li>
+<li>活化，再次启动服务器后，从文件中加载数据到Session中</li>
+</ul>
+<p><strong>Session销毁</strong></p>
+<ul>
+<li><p>默认情况下，无操作，30分钟自动销毁</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>100<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>调用Session对象的invalidate（）方法</p>
+</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Cookie 和 Session 都是来完成一次会话内多次请求间数据共享的</p>
+<p>区别</p>
+<ul>
+<li>存储位置：Cookie是将数据存储在客户端，Session将数据存储在服务端</li>
+<li>安全性：Cookie不安全，Session安全</li>
+<li>数据大小：Cookie最大3KB，Session无大小限制</li>
+<li>存储时间：Cookie可以长期存储，Session默认30分钟服务器性能</li>
+<li>Cookie不占服务器资源，Session占用服务器资源</li>
+</ul>
 
     </div>
 
@@ -299,7 +337,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/cookie/" rel="tag"># cookie</a>
+              <a href="/tags/session/" rel="tag"># session</a>
           </div>
 
         
@@ -308,13 +347,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="prev" title="博客搭建">
-      <i class="fa fa-chevron-left"></i> 博客搭建
+    <a href="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/" rel="prev" title="JSP笔记">
+      <i class="fa fa-chevron-left"></i> JSP笔记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="Python面向对象">
-      Python面向对象 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -373,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">Python文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">open()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readline-%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">readline()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#readlines-%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">readlines()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.4.</span> <span class="nav-text">with语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tell-%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">tell()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#seek-%E6%96%B9%E6%B3%95"><span class="nav-number">1.6.</span> <span class="nav-text">seek()方法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Cookie 基本使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie-%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Cookie 原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie%E5%AD%98%E6%B4%BB%E6%97%B6%E9%97%B4"><span class="nav-number">3.</span> <span class="nav-text">Cookie存活时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">Session 基本使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">Session原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
