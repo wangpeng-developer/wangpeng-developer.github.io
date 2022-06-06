@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"wangpeng-developer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Attitude is everything">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Peng&#39;blog">
-<meta property="og:url" content="https://wangpeng-developer.github.io/archives/2021/11/index.html">
+  <meta name="description" content="Filter概念 Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。 过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。 过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等   Filter 快速入门 定义类，实现Filter接口，并重写其所有方法 配置Filter拦截资源的路径：在类上定义@WebFilte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Filter笔记">
+<meta property="og:url" content="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Peng&#39;blog">
-<meta property="og:description" content="Attitude is everything">
+<meta property="og:description" content="Filter概念 Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。 过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。 过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等   Filter 快速入门 定义类，实现Filter接口，并重写其所有方法 配置Filter拦截资源的路径：在类上定义@WebFilte">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png">
+<meta property="og:image" content="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/1.png">
+<meta property="article:published_time" content="2022-06-06T06:14:40.000Z">
+<meta property="article:modified_time" content="2022-06-06T06:17:09.838Z">
 <meta property="article:author" content="Peng Wang">
+<meta property="article:tag" content="Filter">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png">
 
-<link rel="canonical" href="https://wangpeng-developer.github.io/archives/2021/11/">
+<link rel="canonical" href="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -38,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | Peng'blog</title>
+  <title>Filter笔记 | Peng'blog</title>
   
 
 
@@ -187,70 +193,100 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 12 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="Peng Wang">
+      <meta itemprop="description" content="Attitude is everything">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peng'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Filter笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-06 14:14:40 / 修改时间：14:17:09" itemprop="dateCreated datePublished" datetime="2022-06-06T14:14:40+08:00">2022-06-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-11-21T16:58:06+08:00"
-              content="2021-11-21">
-          11-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" itemprop="url">
-            <span itemprop="name">Python文件操作</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-11-14T22:52:43+08:00"
-              content="2021-11-14">
-          11-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url">
-            <span itemprop="name">博客搭建</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="Filter概念"><a href="#Filter概念" class="headerlink" title="Filter概念"></a>Filter概念</h1><ul>
+<li>Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。</li>
+<li>过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。</li>
+<li>过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等</li>
+</ul>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png" alt="filter.png"></p>
+<h1 id="Filter-快速入门"><a href="#Filter-快速入门" class="headerlink" title="Filter 快速入门"></a>Filter 快速入门</h1><ol>
+<li>定义类，实现Filter接口，并重写其所有方法</li>
+<li>配置Filter拦截资源的路径：在类上定义@WebFilter注解</li>
+</ol>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<h1 id="Filter拦截路径配置"><a href="#Filter拦截路径配置" class="headerlink" title="Filter拦截路径配置"></a>Filter拦截路径配置</h1><p>Filter 可以根据需求，配置不同的拦截资源路径</p>
+<ul>
+<li>拦截具体的资源：<code>/index.jsp</code>：只有访问index.jsp时才会被拦截。</li>
+<li>目录拦截：<code>/user/*</code>：访问/user下的所有资源，都会被拦截*</li>
+<li>后缀名拦截：<code>*.jsp</code>：访问后缀名为jsp的资源，都会被拦截</li>
+<li>拦截所有：<code>/*</code>：访问所有资源，都会被拦截</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Filter/" rel="tag"># Filter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/" rel="prev" title="Cookie和Session笔记">
+      <i class="fa fa-chevron-left"></i> Cookie和Session笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/" rel="next" title="AjAX笔记">
+      AjAX笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -303,6 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">Filter概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">Filter 快速入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter%E6%8B%A6%E6%88%AA%E8%B7%AF%E5%BE%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Filter拦截路径配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

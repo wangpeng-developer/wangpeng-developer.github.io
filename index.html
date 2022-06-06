@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -189,6 +189,213 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="Peng Wang">
+      <meta itemprop="description" content="Attitude is everything">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peng'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">AjAX笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-06 14:17:47 / 修改时间：14:20:59" itemprop="dateCreated datePublished" datetime="2022-06-06T14:17:47+08:00">2022-06-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="AJAX概念"><a href="#AJAX概念" class="headerlink" title="AJAX概念"></a>AJAX概念</h1><p>概念：AJAX（Asynchronous JavaScript And XML）：异步的JavaScript 和 XML </p>
+<p>AJAX作用：</p>
+<ol>
+<li>与服务器进行数据交换：通过AJAX可以给服务器发送请求，并获取服务器响应的数据。使用了AJAX和服务器进行通信，就可以使用HTML+AJAX来替换JSP页面了。</li>
+<li>异步交互：可以在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页的技术，如：搜索联想、用户名是否可用校验</li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<h1 id="Ajax-快速入门"><a href="#Ajax-快速入门" class="headerlink" title="Ajax 快速入门"></a>Ajax 快速入门</h1><ol>
+<li>新建文件 ajax_demo.html</li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+<ol>
+<li>编写AjaxServlet</li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="http://localhost/ajax_demo.html">http://localhost/ajax_demo.html</a></li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>使用AJAX验证用户名是否存在，需求：在用户注册时，当用户名输入框失去焦点时，校验用户名是否在数据库已存在。当存在时，则提示用户名已存在。</p>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;#&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        用户：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br><span class="line">        密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;注册&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;err_msg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span>用户名已存在<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">&quot;username&quot;</span>).onblur = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 获取输入的用户名</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> username = <span class="built_in">this</span>.value;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 发送ajax请求</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 1.创建 XMLHttpRequest对象</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> xhttp;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// code for IE6, IE5</span></span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 2.向服务器发送请求</span></span></span><br><span class="line"><span class="javascript">            xhttp.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://localhost/selectUserServlet?username=&quot;</span> + username);</span></span><br><span class="line"><span class="javascript">            xhttp.send();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 3.服务器响应</span></span></span><br><span class="line"><span class="javascript">            xhttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">this</span>.readyState == <span class="number">4</span> &amp;&amp; <span class="built_in">this</span>.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名存在，提示信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span>(<span class="built_in">this</span>.responseText == <span class="string">&quot;true&quot;</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名不存在，隐藏信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&#x27;none&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/selectUserServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectUserServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 1.获取请求参数</span></span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="comment">// 2.调用service方法查询(假数据)</span></span><br><span class="line">        Boolean flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// 3.响应数据</span></span><br><span class="line">        response.getWriter().write(<span class="string">&quot;&quot;</span> + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<h1 id="Axios异步框架"><a href="#Axios异步框架" class="headerlink" title="Axios异步框架"></a>Axios异步框架</h1><ul>
+<li>Axios对原生的AJAX进行封装，简化</li>
+<li>官网：<a target="_blank" rel="noopener" href="https://www.axios-http.cn/">https://www.axios-http.cn</a></li>
+</ul>
+<h2 id="Axios快速入门"><a href="#Axios快速入门" class="headerlink" title="Axios快速入门"></a>Axios快速入门</h2><ol>
+<li>引入 axios 的 js 文件</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用axios发送请求，并获取响应结果</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>:<span class="string">&quot;get&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>:<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>: <span class="string">&quot;http://localhost/axiosServlet&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:<span class="string">&quot;username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>编写AxiosServlet.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/axiosServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AxiosServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        response.getWriter().write(<span class="string">&quot;hello axios!&quot;</span>);</span><br><span class="line">        System.out.println(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Axios-请求方式别名"><a href="#Axios-请求方式别名" class="headerlink" title="Axios 请求方式别名"></a>Axios 请求方式别名</h2><p>代码更简洁</p>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">axios.get(<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"><span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">axios.post(<span class="string">&quot;http://localhost/axiosServlet&quot;</span>, <span class="string">&quot;username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="JSON概念"><a href="#JSON概念" class="headerlink" title="JSON概念"></a>JSON概念</h2><ul>
+<li>JavaScript Object Notation，JavaScript 对象表示法</li>
+<li>由于其语法简单，层次结构鲜明，现多用于作为数据载体，在网络中进行数据传输</li>
+</ul>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<h2 id="JSON基础语法"><a href="#JSON基础语法" class="headerlink" title="JSON基础语法"></a>JSON基础语法</h2><p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<h2 id="JSON-数据和Java对象转换"><a href="#JSON-数据和Java对象转换" class="headerlink" title="JSON 数据和Java对象转换"></a>JSON 数据和Java对象转换</h2><ul>
+<li>Fastjson是阿里巴巴提供的一个Java语言编写的高性能功能完善的JSON库，是目前Java语言中最快的JSON库，可以实现Java对象和JSON字符串的相互转换。</li>
+</ul>
+<ol>
+<li>导入坐标</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>java对象转JSON</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">user.setName(<span class="string">&quot;wangpeng&quot;</span>);</span><br><span class="line">user.setGender(<span class="string">&quot;male&quot;</span>);</span><br><span class="line">String s = JSON.toJSONString(user);</span><br><span class="line">System.out.println(s);</span><br><span class="line"><span class="comment">// &#123;&quot;gender&quot;:&quot;male&quot;,&quot;name&quot;:&quot;wangpeng&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>JSON转java对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user1 = JSON.parseObject(s, User.class);</span><br><span class="line">System.out.println(user1);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2022/06/06/Filter%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dog.jpg">
+      <meta itemprop="name" content="Peng Wang">
+      <meta itemprop="description" content="Attitude is everything">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Peng'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Filter笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-06 14:14:40 / 修改时间：14:17:09" itemprop="dateCreated datePublished" datetime="2022-06-06T14:14:40+08:00">2022-06-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Filter概念"><a href="#Filter概念" class="headerlink" title="Filter概念"></a>Filter概念</h1><ul>
+<li>Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。</li>
+<li>过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。</li>
+<li>过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等</li>
+</ul>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png" alt="filter.png"></p>
+<h1 id="Filter-快速入门"><a href="#Filter-快速入门" class="headerlink" title="Filter 快速入门"></a>Filter 快速入门</h1><ol>
+<li>定义类，实现Filter接口，并重写其所有方法</li>
+<li>配置Filter拦截资源的路径：在类上定义@WebFilter注解</li>
+</ol>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<h1 id="Filter拦截路径配置"><a href="#Filter拦截路径配置" class="headerlink" title="Filter拦截路径配置"></a>Filter拦截路径配置</h1><p>Filter 可以根据需求，配置不同的拦截资源路径</p>
+<ul>
+<li>拦截具体的资源：<code>/index.jsp</code>：只有访问index.jsp时才会被拦截。</li>
+<li>目录拦截：<code>/user/*</code>：访问/user下的所有资源，都会被拦截*</li>
+<li>后缀名拦截：<code>*.jsp</code>：访问后缀名为jsp的资源，都会被拦截</li>
+<li>拦截所有：<code>/*</code>：访问所有资源，都会被拦截</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2017,200 +2224,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/dog.jpg">
-      <meta itemprop="name" content="Peng Wang">
-      <meta itemprop="description" content="Attitude is everything">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peng'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Python文件操作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-21 16:58:06" itemprop="dateCreated datePublished" datetime="2021-11-21T16:58:06+08:00">2021-11-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-01 19:32:29" itemprop="dateModified" datetime="2022-03-01T19:32:29+08:00">2022-03-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
-<p>写文件：打开文件    写文件    关闭文件</p>
-<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
-<blockquote>
-<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
-</blockquote>
-<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
-<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
-<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
-<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
-<p>It is good practice to use the <a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
-</blockquote>
-<ul>
-<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
-<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
-<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
-<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
-<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
-<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wangpeng-developer.github.io/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/dog.jpg">
-      <meta itemprop="name" content="Peng Wang">
-      <meta itemprop="description" content="Attitude is everything">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Peng'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">博客搭建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-14 22:52:43" itemprop="dateCreated datePublished" datetime="2021-11-14T22:52:43+08:00">2021-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-22 14:41:15" itemprop="dateModified" datetime="2021-12-22T14:41:15+08:00">2021-12-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h1><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。<br><a target="_blank" rel="noopener" href="https://github.com/">GitHub官网</a></p>
-<p>如果未注册，可以点击主页右上角的Sign up来进行相应的注册。如果已经注册，直接登录即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github_homepage.png" alt="github_homepage"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Sign_in.png" alt="Sign_in"><br>创建仓库名一定要按照your_username.github.io的格式取名。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/new_repository.png" alt="new_repostitory"></p>
-<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><p>git可以将本地仓库push到github远程仓库上去。<br><a target="_blank" rel="noopener" href="https://git-scm.com/">git官网</a><br>进入git官网后，我们可以根据自己电脑的类型选择合适的git版本。我是windows系统的笔记本，所以选择windows的git版本。下载完后，安装过程记得修改安装路径，最好安装在除C盘以外的其他盘，其他就一直next，一直下一步即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_download.png" alt="git_download"><br>安装结束后，win+R启动cmd，输入以下命令<br><code>git --version</code><br>能显示git版本号就说明安装成功了。</p>
-<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs官网</a><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/nodejs.png" alt="nodejs"><br>选择合适的版本下载，安装过程一直下一步即可。<br>安装完成后，测试一下是否安装成功，输入以下命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>分别显示版本号即安装成功。</p>
-<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>我们可以在D盘新建一个文件夹，文件夹取名为Blog，进入该文件夹后，鼠标右击打开Git Bash Here，输入以下命令来安装hexo。<br><code>npm install -g hexo-cli</code><br>耐心等待一下啊！安装成功后，输入以下命令来初始化博客。<br><code>hexo init</code><br>接着再输入以下命令来静态部署<br><code>hexo g</code><br>等部署完成后，开启本地服务器来预览一下效果<br><code>hexo s</code><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo_s.png" alt="hexo_s"><br>浏览器输入 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 即可打开部署好的网页。ctrl + c停止服务器。</p>
-<h1 id="安装sublime编辑器"><a href="#安装sublime编辑器" class="headerlink" title="安装sublime编辑器"></a>安装sublime编辑器</h1><p><a target="_blank" rel="noopener" href="https://www.sublimetext.com/">sublime官网</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -2277,14 +2295,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
