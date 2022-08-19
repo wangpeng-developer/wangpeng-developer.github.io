@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Filter笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/06/06/Filter%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="Filter概念"><a href="#Filter概念" class="headerlink" title="Filter概念"></a>Filter概念</h1><ul>
 <li>Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。</li>
 <li>过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。</li>
@@ -28,7 +28,7 @@
   </entry>
   <entry>
     <title>Cookie和Session笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/06/05/Cookie%E5%92%8CSession%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="Cookie-基本使用"><a href="#Cookie-基本使用" class="headerlink" title="Cookie 基本使用"></a>Cookie 基本使用</h1><p>Cookie：客户端会话技术，将数据保存到客户端，以后每次请求都携带Cookie数据进行访问。</p>
 <ol>
 <li>发送 Cookie</li>
@@ -118,7 +118,7 @@
   </entry>
   <entry>
     <title>AjAX笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="AJAX概念"><a href="#AJAX概念" class="headerlink" title="AJAX概念"></a>AJAX概念</h1><p>概念：AJAX（Asynchronous JavaScript And XML）：异步的JavaScript 和 XML </p>
 <p>AJAX作用：</p>
 <ol>
@@ -196,7 +196,7 @@
   </entry>
   <entry>
     <title>JDBC笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="JDBC-简介"><a href="#JDBC-简介" class="headerlink" title="JDBC 简介"></a>JDBC 简介</h1><p>JDBC是Java DataBase Connectivity的缩写，全称为java数据库连接。JDBC就是使用Java语言操作关系型数据库的一套API。官方（sun公司）定义的一套操作所有关系型数据库的规则，即接口（interface），各个数据库厂商去实现这套接口，提供数据库驱动jar包，我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
 <p><img src="/2022/03/26/JDBC%E7%AC%94%E8%AE%B0/diagram_one.png" alt="diagram_one"></p>
 <h1 id="JDBC-API详解"><a href="#JDBC-API详解" class="headerlink" title="JDBC API详解"></a>JDBC API详解</h1><blockquote>
@@ -267,7 +267,7 @@
   </entry>
   <entry>
     <title>JSP笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/05/22/JSP%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="JSP快速入门"><a href="#JSP快速入门" class="headerlink" title="JSP快速入门"></a>JSP快速入门</h1><ul>
 <li>概念：Java Server Pages，Java服务端页面</li>
 <li>一种动态的网页技术，其中既可以定义HTML、JS、CSS等静态内容，还可以定义Java代码的动态内容</li>
@@ -381,7 +381,7 @@
   </entry>
   <entry>
     <title>JavaWeb核心笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/05/22/JavaWeb%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="JavaWeb-技术栈"><a href="#JavaWeb-技术栈" class="headerlink" title="JavaWeb 技术栈"></a>JavaWeb 技术栈</h1><p>B/S 架构：Browser/Server，浏览器/服务器架构模式，它的特点是，客户端只需要浏览器，应用程序的逻辑和数据都存储在服务器端。浏览器只需要请求服务器，获取Web资源，服务器把Web资源发送给浏览器即可。</p>
 <p>好处：易于维护升级：服务器端升级后，客户端无需任何部署就可以使用到新的版本</p>
 <p><strong>静态资源</strong>：HTML、CSS、JavaScript、图片等。负责页面展示</p>
@@ -650,7 +650,7 @@
   </entry>
   <entry>
     <title>linux学习笔记一</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
     <content><![CDATA[<h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>添加用户<code>webber</code>，使用命令<code>useradd webber</code></p>
 <p>该命令创建的用户的组名默认为其用户名本身，也就是webber。</p>
 <p><img src="/2022/05/05/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/useradd.png" alt="useradd.png"></p>
@@ -1246,7 +1246,7 @@
   </entry>
   <entry>
     <title>Maven笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
 <ul>
 <li>提供了一套标准化的项目结构</li>
@@ -1303,7 +1303,7 @@
   </entry>
   <entry>
     <title>Python文件操作</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
 <p>写文件：打开文件    写文件    关闭文件</p>
 <h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
@@ -1360,7 +1360,7 @@
   </entry>
   <entry>
     <title>Python面向对象</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h1 id="类对象"><a href="#类对象" class="headerlink" title="类对象"></a>类对象</h1><p>在<code>python</code>中对象几乎是无处不在的，变量、数据、函数都是对象。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一条测试类&quot;&quot;&quot;</span></span><br><span class="line">    variable = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(Demo))</span><br><span class="line"><span class="built_in">print</span>(Demo.__doc__)</span><br><span class="line"><span class="built_in">print</span>(Demo.variable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">[<span class="string">&#x27;__annotations__&#x27;</span>, <span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__call__&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__closure__&#x27;</span>, <span class="string">&#x27;__code__&#x27;</span>, <span class="string">&#x27;__defaults__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__get__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__globals__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__kwdefaults__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__qualname__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>]</span><br><span class="line">这是一个测试函数</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
 
@@ -1471,7 +1471,7 @@
   </entry>
   <entry>
     <title>Mybatis笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="什么是Mybatis？"><a href="#什么是Mybatis？" class="headerlink" title="什么是Mybatis？"></a>什么是Mybatis？</h1><ul>
 <li>MyBatis 是一款优秀的持久层框架，用于简化JDBC开发</li>
 <li>MyBatis 本是 Apache 的一个开源项目iBatis，2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis。2013年11月迁移到Github</li>
@@ -1624,7 +1624,7 @@
   </entry>
   <entry>
     <title>Spring笔记</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2022/08/19/Spring%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="一、IoC（Inversion-of-Control）控制反转"><a href="#一、IoC（Inversion-of-Control）控制反转" class="headerlink" title="一、IoC（Inversion of Control）控制反转"></a>一、IoC（Inversion of Control）控制反转</h1><ul>
 <li>使用对象时，由主动new产生对象转换为由外部提供对象，此过程中对象创建控制权由程序转移到外部，此思想称为控制反转，Spring技术对Ioc思想进行了实现</li>
 <li>Spring提供了一个容器，称为Ioc容器，用来充当Ioc思想中的外部</li>
@@ -1846,7 +1846,7 @@
   </entry>
   <entry>
     <title>博客搭建</title>
-    <url>/archieves/undefined.html</url>
+    <url>/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h1><p>搭建博客需要GitHub账号，这样我们就可以将博客发布到GitHub上去，让GitHub帮我们托管。<br><a href="https://github.com/">GitHub官网</a></p>
 <p>如果未注册，可以点击主页右上角的Sign up来进行相应的注册。如果已经注册，直接登录即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github_homepage.png" alt="github_homepage"><br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Sign_in.png" alt="Sign_in"><br>创建仓库名一定要按照your_username.github.io的格式取名。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/new_repository.png" alt="new_repostitory"></p>
 <h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><p>git可以将本地仓库push到github远程仓库上去。<br><a href="https://git-scm.com/">git官网</a><br>进入git官网后，我们可以根据自己电脑的类型选择合适的git版本。我是windows系统的笔记本，所以选择windows的git版本。下载完后，安装过程记得修改安装路径，最好安装在除C盘以外的其他盘，其他就一直next，一直下一步即可。<br><img src="/2021/11/14/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/git_download.png" alt="git_download"><br>安装结束后，win+R启动cmd，输入以下命令<br><code>git --version</code><br>能显示git版本号就说明安装成功了。</p>
