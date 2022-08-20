@@ -1873,4 +1873,148 @@
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringMVC笔记</title>
+    <url>/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一、SpringMVC概述"><a href="#一、SpringMVC概述" class="headerlink" title="一、SpringMVC概述"></a>一、SpringMVC概述</h1><ul>
+<li>SpringMVC 技术与 Servlet 技术功能等同，均属于web层开发技术</li>
+<li>SpringMVC是一种基于Java实现MVC模型的轻量级web框架</li>
+</ul>
+<h1 id="二、SpringMVC入门案例"><a href="#二、SpringMVC入门案例" class="headerlink" title="二、SpringMVC入门案例"></a>二、SpringMVC入门案例</h1><ol>
+<li>使用SpringMVC技术需要先导入SpringMVC坐标与Servlet坐标</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<ol start="2">
+<li>创建SpringMVC控制器类（等同于Servlet功能）</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+<ol start="3">
+<li>初始化SpringMVC环境（同Spring环境），设定SpringMVC加载对应的bean</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+<ol start="4">
+<li>初始化Servlet容器，加载SpringMVC环境，并设置SpringMVC技术处理的请求</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+<ol start="5">
+<li>启动Tomcat，观察结果。</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+<h1 id="三、bean加载控制"><a href="#三、bean加载控制" class="headerlink" title="三、bean加载控制"></a>三、bean加载控制</h1><ul>
+<li><p>SpringMVC相关bean(表现层bean)</p>
+</li>
+<li><p>Spring控制的bean</p>
+</li>
+<li><ul>
+<li>业务bean(Service)</li>
+<li>功能bean(DataSource等)</li>
+</ul>
+</li>
+<li><p>SpringMVC相关bean加载控制</p>
+<ul>
+<li>SpringMVC加载的bean对应的包均在com.wangpeng.controller</li>
+</ul>
+</li>
+<li><p>包内Spring相关bean加载控制</p>
+<ul>
+<li>方式一：Spring加载的bean设定扫描范围为com.itheima，排除掉controller包内的bean</li>
+<li>方式二：Spring加载的bean设定扫描范围为精准范围，例如service包、dao包等</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<p>简化开发</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<h1 id="四、请求映射路径"><a href="#四、请求映射路径" class="headerlink" title="四、请求映射路径"></a>四、请求映射路径</h1><p>@RequestMapping 注解到类上表示请求路径前缀</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<h1 id="五、请求参数获取"><a href="#五、请求参数获取" class="headerlink" title="五、请求参数获取"></a>五、请求参数获取</h1><ul>
+<li>Get请求传参</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/11.png" alt="11.png"></p>
+<ul>
+<li>Post请求传参</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/12.png" alt="12.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/13.png" alt="13.png"></p>
+<h1 id="六、五种类型参数传递"><a href="#六、五种类型参数传递" class="headerlink" title="六、五种类型参数传递"></a>六、五种类型参数传递</h1><ul>
+<li><p>普通类型</p>
+<p>当请求参数名称和形参名称不一致时，可以通过@RequestParam指定参数</p>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/14.png" alt="14.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/15.png" alt="15.png"></p>
+<ul>
+<li><p>POJO类型</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/17.png" alt="17.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/16.png" alt="16.png"></p>
+</li>
+<li><p>Array类型</p>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/18.png" alt="18.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/19.png" alt="19.png"></p>
+<ul>
+<li>集合类型</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/20.png" alt="20.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/21.png" alt="21.png"></p>
+<ul>
+<li>Json数据类型</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/26.png" alt="26.png"></p>
+<img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/27.png" alt="27.png" style="zoom:80%;">
+
+
+
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/25.png" alt="25.png"></p>
+<ol>
+<li>json数组格式</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/22.png" alt="22.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/23.png" alt="23.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/24.png" alt="24.png"></p>
+<ol start="2">
+<li>json对象格式</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/28.png" alt="28.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/29.png" alt="29.png"></p>
+<ol start="3">
+<li>json数组中嵌入json对象</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/30.png" alt="30.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/31.png" alt="31.png"></p>
+<h1 id="七、响应"><a href="#七、响应" class="headerlink" title="七、响应"></a>七、响应</h1><ul>
+<li>跳转页面</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/32.png" alt="32.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/33.png" alt="33.png"></p>
+<ul>
+<li>响应文本</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/35.png" alt="35.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/34.png" alt="34.png"></p>
+<ul>
+<li>响应 json 数据（对象转json）</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/36.png" alt="36.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/37.png" alt="37.png"></p>
+<ul>
+<li>响应 json 数据（对象集合转 json 数组）</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/38.png" alt="38.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/39.png" alt="39.png"></p>
+<h1 id="七、REST-风格"><a href="#七、REST-风格" class="headerlink" title="七、REST 风格"></a>七、REST 风格</h1><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/40.png" alt="40.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/41.png" alt="41.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/42.png" alt="42.png"></p>
+<h2 id="7-1-RESTful-简化开发"><a href="#7-1-RESTful-简化开发" class="headerlink" title="7.1 RESTful 简化开发"></a>7.1 RESTful 简化开发</h2><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/43.png" alt="43.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/44.png" alt="44.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/45.png" alt="45.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/46.png" alt="46.png"></p>
+]]></content>
+      <tags>
+        <tag>SpringMVC</tag>
+      </tags>
+  </entry>
 </search>

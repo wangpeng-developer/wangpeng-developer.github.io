@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wangpeng-developer.github.io/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-08-20</lastmod>
+  </url>
+  <url>
     <loc>https://wangpeng-developer.github.io/2022/05/22/JavaWeb%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
