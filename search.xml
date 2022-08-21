@@ -2018,7 +2018,7 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>事务</title>
     <url>/2022/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E4%BA%8B%E5%8A%A1/</url>
     <content><![CDATA[<h1 id="一、事务概述"><a href="#一、事务概述" class="headerlink" title="一、事务概述"></a>一、事务概述</h1><p>什么是事务？</p>
 <blockquote>
@@ -2050,5 +2050,8 @@
 <h1 id="六、事务隔离级别"><a href="#六、事务隔离级别" class="headerlink" title="六、事务隔离级别"></a>六、事务隔离级别</h1><p><img src="https://img-blog.csdnimg.cn/a08f84ee583141089184c48ee0073471.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/616d586f61b044d1ad389ed542e35c7e.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/fd74871bf7ee4d1283f01d4fb3cf23a9.png" alt="在这里插入图片描述"></p>
 <p><img src="https://img-blog.csdnimg.cn/15f8cb73c29e43aeb4943b8d8bb92517.png" alt="在这里插入图片描述"></p>
 ]]></content>
+      <tags>
+        <tag>事务</tag>
+      </tags>
   </entry>
 </search>
