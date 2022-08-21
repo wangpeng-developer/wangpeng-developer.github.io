@@ -1,30 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Filter笔记</title>
-    <url>/2022/06/06/Filter%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Filter概念"><a href="#Filter概念" class="headerlink" title="Filter概念"></a>Filter概念</h1><ul>
-<li>Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。</li>
-<li>过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。</li>
-<li>过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等</li>
-</ul>
-<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png" alt="filter.png"></p>
-<h1 id="Filter-快速入门"><a href="#Filter-快速入门" class="headerlink" title="Filter 快速入门"></a>Filter 快速入门</h1><ol>
-<li>定义类，实现Filter接口，并重写其所有方法</li>
-<li>配置Filter拦截资源的路径：在类上定义@WebFilter注解</li>
+    <title>AjAX笔记</title>
+    <url>/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="AJAX概念"><a href="#AJAX概念" class="headerlink" title="AJAX概念"></a>AJAX概念</h1><p>概念：AJAX（Asynchronous JavaScript And XML）：异步的JavaScript 和 XML </p>
+<p>AJAX作用：</p>
+<ol>
+<li>与服务器进行数据交换：通过AJAX可以给服务器发送请求，并获取服务器响应的数据。使用了AJAX和服务器进行通信，就可以使用HTML+AJAX来替换JSP页面了。</li>
+<li>异步交互：可以在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页的技术，如：搜索联想、用户名是否可用校验</li>
 </ol>
-<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
-<h1 id="Filter拦截路径配置"><a href="#Filter拦截路径配置" class="headerlink" title="Filter拦截路径配置"></a>Filter拦截路径配置</h1><p>Filter 可以根据需求，配置不同的拦截资源路径</p>
-<ul>
-<li>拦截具体的资源：<code>/index.jsp</code>：只有访问index.jsp时才会被拦截。</li>
-<li>目录拦截：<code>/user/*</code>：访问/user下的所有资源，都会被拦截*</li>
-<li>后缀名拦截：<code>*.jsp</code>：访问后缀名为jsp的资源，都会被拦截</li>
-<li>拦截所有：<code>/*</code>：访问所有资源，都会被拦截</li>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<h1 id="Ajax-快速入门"><a href="#Ajax-快速入门" class="headerlink" title="Ajax 快速入门"></a>Ajax 快速入门</h1><ol>
+<li>新建文件 ajax_demo.html</li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+<ol>
+<li>编写AjaxServlet</li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+<ol>
+<li>访问 <a href="http://localhost/ajax_demo.html">http://localhost/ajax_demo.html</a></li>
+</ol>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>使用AJAX验证用户名是否存在，需求：在用户注册时，当用户名输入框失去焦点时，校验用户名是否在数据库已存在。当存在时，则提示用户名已存在。</p>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;#&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        用户：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br><span class="line">        密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;注册&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;err_msg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span>用户名已存在<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">&quot;username&quot;</span>).onblur = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 获取输入的用户名</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> username = <span class="built_in">this</span>.value;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 发送ajax请求</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 1.创建 XMLHttpRequest对象</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> xhttp;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// code for IE6, IE5</span></span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 2.向服务器发送请求</span></span></span><br><span class="line"><span class="javascript">            xhttp.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://localhost/selectUserServlet?username=&quot;</span> + username);</span></span><br><span class="line"><span class="javascript">            xhttp.send();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 3.服务器响应</span></span></span><br><span class="line"><span class="javascript">            xhttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">this</span>.readyState == <span class="number">4</span> &amp;&amp; <span class="built_in">this</span>.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名存在，提示信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span>(<span class="built_in">this</span>.responseText == <span class="string">&quot;true&quot;</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名不存在，隐藏信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&#x27;none&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/selectUserServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectUserServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 1.获取请求参数</span></span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="comment">// 2.调用service方法查询(假数据)</span></span><br><span class="line">        Boolean flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// 3.响应数据</span></span><br><span class="line">        response.getWriter().write(<span class="string">&quot;&quot;</span> + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<h1 id="Axios异步框架"><a href="#Axios异步框架" class="headerlink" title="Axios异步框架"></a>Axios异步框架</h1><ul>
+<li>Axios对原生的AJAX进行封装，简化</li>
+<li>官网：<a href="https://www.axios-http.cn/">https://www.axios-http.cn</a></li>
 </ul>
+<h2 id="Axios快速入门"><a href="#Axios快速入门" class="headerlink" title="Axios快速入门"></a>Axios快速入门</h2><ol>
+<li>引入 axios 的 js 文件</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用axios发送请求，并获取响应结果</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>:<span class="string">&quot;get&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>:<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>: <span class="string">&quot;http://localhost/axiosServlet&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:<span class="string">&quot;username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>编写AxiosServlet.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/axiosServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AxiosServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        response.getWriter().write(<span class="string">&quot;hello axios!&quot;</span>);</span><br><span class="line">        System.out.println(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Axios-请求方式别名"><a href="#Axios-请求方式别名" class="headerlink" title="Axios 请求方式别名"></a>Axios 请求方式别名</h2><p>代码更简洁</p>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">axios.get(<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"><span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">axios.post(<span class="string">&quot;http://localhost/axiosServlet&quot;</span>, <span class="string">&quot;username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="JSON概念"><a href="#JSON概念" class="headerlink" title="JSON概念"></a>JSON概念</h2><ul>
+<li>JavaScript Object Notation，JavaScript 对象表示法</li>
+<li>由于其语法简单，层次结构鲜明，现多用于作为数据载体，在网络中进行数据传输</li>
+</ul>
+<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<h2 id="JSON基础语法"><a href="#JSON基础语法" class="headerlink" title="JSON基础语法"></a>JSON基础语法</h2><p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<h2 id="JSON-数据和Java对象转换"><a href="#JSON-数据和Java对象转换" class="headerlink" title="JSON 数据和Java对象转换"></a>JSON 数据和Java对象转换</h2><ul>
+<li>Fastjson是阿里巴巴提供的一个Java语言编写的高性能功能完善的JSON库，是目前Java语言中最快的JSON库，可以实现Java对象和JSON字符串的相互转换。</li>
+</ul>
+<ol>
+<li>导入坐标</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>java对象转JSON</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">user.setName(<span class="string">&quot;wangpeng&quot;</span>);</span><br><span class="line">user.setGender(<span class="string">&quot;male&quot;</span>);</span><br><span class="line">String s = JSON.toJSONString(user);</span><br><span class="line">System.out.println(s);</span><br><span class="line"><span class="comment">// &#123;&quot;gender&quot;:&quot;male&quot;,&quot;name&quot;:&quot;wangpeng&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>JSON转java对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">User user1 = JSON.parseObject(s, User.class);</span><br><span class="line">System.out.println(user1);</span><br></pre></td></tr></table></figure>
+
 ]]></content>
-      <tags>
-        <tag>Filter</tag>
-      </tags>
   </entry>
   <entry>
     <title>Cookie和Session笔记</title>
@@ -117,82 +169,30 @@
       </tags>
   </entry>
   <entry>
-    <title>AjAX笔记</title>
-    <url>/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="AJAX概念"><a href="#AJAX概念" class="headerlink" title="AJAX概念"></a>AJAX概念</h1><p>概念：AJAX（Asynchronous JavaScript And XML）：异步的JavaScript 和 XML </p>
-<p>AJAX作用：</p>
-<ol>
-<li>与服务器进行数据交换：通过AJAX可以给服务器发送请求，并获取服务器响应的数据。使用了AJAX和服务器进行通信，就可以使用HTML+AJAX来替换JSP页面了。</li>
-<li>异步交互：可以在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页的技术，如：搜索联想、用户名是否可用校验</li>
-</ol>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
-<h1 id="Ajax-快速入门"><a href="#Ajax-快速入门" class="headerlink" title="Ajax 快速入门"></a>Ajax 快速入门</h1><ol>
-<li>新建文件 ajax_demo.html</li>
-</ol>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
-<ol>
-<li>编写AjaxServlet</li>
-</ol>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
-<ol>
-<li>访问 <a href="http://localhost/ajax_demo.html">http://localhost/ajax_demo.html</a></li>
-</ol>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
-<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>使用AJAX验证用户名是否存在，需求：在用户注册时，当用户名输入框失去焦点时，校验用户名是否在数据库已存在。当存在时，则提示用户名已存在。</p>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;#&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        用户：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br><span class="line">        密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;注册&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;err_msg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span>用户名已存在<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">&quot;username&quot;</span>).onblur = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 获取输入的用户名</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> username = <span class="built_in">this</span>.value;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 发送ajax请求</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 1.创建 XMLHttpRequest对象</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> xhttp;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// code for IE6, IE5</span></span></span><br><span class="line"><span class="javascript">                xhttp = <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Microsoft.XMLHTTP&quot;</span>);</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 2.向服务器发送请求</span></span></span><br><span class="line"><span class="javascript">            xhttp.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://localhost/selectUserServlet?username=&quot;</span> + username);</span></span><br><span class="line"><span class="javascript">            xhttp.send();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 3.服务器响应</span></span></span><br><span class="line"><span class="javascript">            xhttp.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">this</span>.readyState == <span class="number">4</span> &amp;&amp; <span class="built_in">this</span>.status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名存在，提示信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span>(<span class="built_in">this</span>.responseText == <span class="string">&quot;true&quot;</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 用户名不存在，隐藏信息</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&quot;err_msg&quot;</span>).style.display = <span class="string">&#x27;none&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/selectUserServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectUserServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 1.获取请求参数</span></span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="comment">// 2.调用service方法查询(假数据)</span></span><br><span class="line">        Boolean flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// 3.响应数据</span></span><br><span class="line">        response.getWriter().write(<span class="string">&quot;&quot;</span> + flag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
-<h1 id="Axios异步框架"><a href="#Axios异步框架" class="headerlink" title="Axios异步框架"></a>Axios异步框架</h1><ul>
-<li>Axios对原生的AJAX进行封装，简化</li>
-<li>官网：<a href="https://www.axios-http.cn/">https://www.axios-http.cn</a></li>
+    <title>Filter笔记</title>
+    <url>/2022/06/06/Filter%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Filter概念"><a href="#Filter概念" class="headerlink" title="Filter概念"></a>Filter概念</h1><ul>
+<li>Filter 表示过滤器，是JavaWeb三大组件（Servlet、Filter、Listener）之一。</li>
+<li>过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能。</li>
+<li>过滤器一般完成一些通用的操作，比如：权限控制、统一编码处理、敏感字符处理等等</li>
 </ul>
-<h2 id="Axios快速入门"><a href="#Axios快速入门" class="headerlink" title="Axios快速入门"></a>Axios快速入门</h2><ol>
-<li>引入 axios 的 js 文件</li>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/filter.png" alt="filter.png"></p>
+<h1 id="Filter-快速入门"><a href="#Filter-快速入门" class="headerlink" title="Filter 快速入门"></a>Filter 快速入门</h1><ol>
+<li>定义类，实现Filter接口，并重写其所有方法</li>
+<li>配置Filter拦截资源的路径：在类上定义@WebFilter注解</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>使用axios发送请求，并获取响应结果</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>:<span class="string">&quot;get&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>:<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">    axios(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>: <span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">url</span>: <span class="string">&quot;http://localhost/axiosServlet&quot;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:<span class="string">&quot;username=tony&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(resp.data);</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>编写AxiosServlet.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wangpeng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/axiosServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AxiosServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String username = request.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        response.getWriter().write(<span class="string">&quot;hello axios!&quot;</span>);</span><br><span class="line">        System.out.println(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Axios-请求方式别名"><a href="#Axios-请求方式别名" class="headerlink" title="Axios 请求方式别名"></a>Axios 请求方式别名</h2><p>代码更简洁</p>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="comment">// get请求</span></span></span><br><span class="line"><span class="javascript">axios.get(<span class="string">&quot;http://localhost/axiosServlet?username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"><span class="comment">// post请求</span></span></span><br><span class="line"><span class="javascript">axios.post(<span class="string">&quot;http://localhost/axiosServlet&quot;</span>, <span class="string">&quot;username=tony&quot;</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">resp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">alert(resp.data)</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="JSON概念"><a href="#JSON概念" class="headerlink" title="JSON概念"></a>JSON概念</h2><ul>
-<li>JavaScript Object Notation，JavaScript 对象表示法</li>
-<li>由于其语法简单，层次结构鲜明，现多用于作为数据载体，在网络中进行数据传输</li>
+<p><img src="/2022/06/06/Filter%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<h1 id="Filter拦截路径配置"><a href="#Filter拦截路径配置" class="headerlink" title="Filter拦截路径配置"></a>Filter拦截路径配置</h1><p>Filter 可以根据需求，配置不同的拦截资源路径</p>
+<ul>
+<li>拦截具体的资源：<code>/index.jsp</code>：只有访问index.jsp时才会被拦截。</li>
+<li>目录拦截：<code>/user/*</code>：访问/user下的所有资源，都会被拦截*</li>
+<li>后缀名拦截：<code>*.jsp</code>：访问后缀名为jsp的资源，都会被拦截</li>
+<li>拦截所有：<code>/*</code>：访问所有资源，都会被拦截</li>
 </ul>
-<p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
-<h2 id="JSON基础语法"><a href="#JSON基础语法" class="headerlink" title="JSON基础语法"></a>JSON基础语法</h2><p><img src="/2022/06/06/AJAX%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
-<h2 id="JSON-数据和Java对象转换"><a href="#JSON-数据和Java对象转换" class="headerlink" title="JSON 数据和Java对象转换"></a>JSON 数据和Java对象转换</h2><ul>
-<li>Fastjson是阿里巴巴提供的一个Java语言编写的高性能功能完善的JSON库，是目前Java语言中最快的JSON库，可以实现Java对象和JSON字符串的相互转换。</li>
-</ul>
-<ol>
-<li>导入坐标</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>java对象转JSON</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">user.setName(<span class="string">&quot;wangpeng&quot;</span>);</span><br><span class="line">user.setGender(<span class="string">&quot;male&quot;</span>);</span><br><span class="line">String s = JSON.toJSONString(user);</span><br><span class="line">System.out.println(s);</span><br><span class="line"><span class="comment">// &#123;&quot;gender&quot;:&quot;male&quot;,&quot;name&quot;:&quot;wangpeng&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>JSON转java对象</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">User user1 = JSON.parseObject(s, User.class);</span><br><span class="line">System.out.println(user1);</span><br></pre></td></tr></table></figure>
-
 ]]></content>
+      <tags>
+        <tag>Filter</tag>
+      </tags>
   </entry>
   <entry>
     <title>JDBC笔记</title>
@@ -263,120 +263,6 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSP笔记</title>
-    <url>/2022/05/22/JSP%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="JSP快速入门"><a href="#JSP快速入门" class="headerlink" title="JSP快速入门"></a>JSP快速入门</h1><ul>
-<li>概念：Java Server Pages，Java服务端页面</li>
-<li>一种动态的网页技术，其中既可以定义HTML、JS、CSS等静态内容，还可以定义Java代码的动态内容</li>
-<li>JSP = HTML + Java</li>
-</ul>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
-<ol>
-<li><p>导入 JSP 坐标</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>创建 JSP 文件</p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
-</li>
-<li><p>编写HTML标签和Java代码</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;hello jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;hello jsp~&lt;/h1&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">        System.out.println(<span class="string">&quot;hello jsp~&quot;</span>);</span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="JSP原理"><a href="#JSP原理" class="headerlink" title="JSP原理"></a>JSP原理</h1><ul>
-<li><p>JSP本质上就是一个Servlet</p>
-</li>
-<li><p>JSP 在被访问时，由JSP容器（Tomcat）将其转换为Java文件（Servlet），在由JSP容器（Tomcat）将其编译，最终对外提供服务的其实就是这个字节码文件</p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
-</li>
-</ul>
-<h1 id="JSP脚本"><a href="#JSP脚本" class="headerlink" title="JSP脚本"></a>JSP脚本</h1><ul>
-<li><p>JSP 脚本用于在 JSP 页面内定义 Java 代码 </p>
-</li>
-<li><p>JSP 脚本分类：</p>
-<ol>
-<li>&lt;%..%&gt;：内容会直接放到  jspService（）方法之中</li>
-<li>&lt;%=…%&gt;：内容会放到out.print（）中，作为out.print（）的参数</li>
-<li>&lt;%！…%&gt;：内容会放到_jspService（）方法之外，被类直接包含</li>
-</ol>
-</li>
-</ul>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
-<ul>
-<li><p>项目练习</p>
-<p>将封装后的数据展示出来</p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
-</li>
-</ul>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
-<h1 id="JSP-缺点"><a href="#JSP-缺点" class="headerlink" title="JSP 缺点"></a>JSP 缺点</h1><p>由于JSP页面内，既可以定义HTML标签，又可以定义Java代码，造成了以下问题：</p>
-<ol>
-<li>书写麻烦：特别是复杂的页面</li>
-<li>阅读麻烦</li>
-<li>复杂度高：运行需要依赖于各种环境，JRE，JSP容器，JavaEE</li>
-<li>占内存和磁盘：JSP会自动生成.java和.class文件占磁盘，运行的是.class文件占内存</li>
-<li>调试困难：出错后，需要找到自动生成的.java文件进行调试</li>
-<li>不利于团队协作：前端人员不会Java，后端人员不精HTML</li>
-</ol>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
-<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><ul>
-<li><p>简介：Expression Language 表达式语言，用于简化 JSP页面内的Java代码。主要功能：获取数据</p>
-</li>
-<li><p>语法：${expression}</p>
-</li>
-<li><p>${brands}：获取域中存储的key为brands的数据</p>
-</li>
-<li><p>JavaWeb中的四大域对象：</p>
-<ol>
-<li><p>page：当前页面有效</p>
-</li>
-<li><p>request：当前请求有效</p>
-</li>
-<li><p>session：当前会话有效</p>
-</li>
-<li><p>application：当前应用有效</p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
-</li>
-</ol>
-</li>
-<li><p>功能分析：将获取数据的 java 代码写到 Servlet 中，封装好数据后，将数据存储到request域中，接着通过转发给jsp页面。这样可以避免jsp中java代码过多的情况。</p>
-</li>
-</ul>
-<p><strong>Servlet</strong></p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
-<p><strong>JSP</strong></p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
-<h1 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h1><ul>
-<li>JSP标准标签库（Jsp Standarded Tag Library），使用标签取代JSP页面上的Java代码</li>
-</ul>
-<ol>
-<li><p>导入依赖坐标</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>taglibs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>standard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>在JSP页面上引入JSTL标签库</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;%--</span><br><span class="line">        c:<span class="keyword">if</span>：完成逻辑判断，替换java <span class="keyword">if</span> <span class="keyword">else</span></span><br><span class="line">    --%&gt;</span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="keyword">true</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;false&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="keyword">false</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>页面展示效果</p>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/11.png" alt="11.png"></p>
-</li>
-</ol>
-<ul>
-<li><p>JSTL标签（相当于 for 循环）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">request.getRequestDispatcher(<span class="string">&quot;/jstl-foreach.jsp&quot;</span>).forward(request, response);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>  <img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/12.png" alt="11.png"></p>
-<h1 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h1><ul>
-<li>MVC是一种分层开发的模式，其中：<ol>
-<li>M：Model，业务模型，处理业务</li>
-<li>V：View，视图，界面展示</li>
-<li>C：Controller，控制器，处理请求，调用模型和视图</li>
-</ol>
-</li>
-</ul>
-<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/13.png" alt="13.png"></p>
-]]></content>
-      <tags>
-        <tag>jsp</tag>
       </tags>
   </entry>
   <entry>
@@ -646,6 +532,177 @@
 ]]></content>
       <tags>
         <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSP笔记</title>
+    <url>/2022/05/22/JSP%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="JSP快速入门"><a href="#JSP快速入门" class="headerlink" title="JSP快速入门"></a>JSP快速入门</h1><ul>
+<li>概念：Java Server Pages，Java服务端页面</li>
+<li>一种动态的网页技术，其中既可以定义HTML、JS、CSS等静态内容，还可以定义Java代码的动态内容</li>
+<li>JSP = HTML + Java</li>
+</ul>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<ol>
+<li><p>导入 JSP 坐标</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>创建 JSP 文件</p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+</li>
+<li><p>编写HTML标签和Java代码</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;hello jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;hello jsp~&lt;/h1&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">        System.out.println(<span class="string">&quot;hello jsp~&quot;</span>);</span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="JSP原理"><a href="#JSP原理" class="headerlink" title="JSP原理"></a>JSP原理</h1><ul>
+<li><p>JSP本质上就是一个Servlet</p>
+</li>
+<li><p>JSP 在被访问时，由JSP容器（Tomcat）将其转换为Java文件（Servlet），在由JSP容器（Tomcat）将其编译，最终对外提供服务的其实就是这个字节码文件</p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+</li>
+</ul>
+<h1 id="JSP脚本"><a href="#JSP脚本" class="headerlink" title="JSP脚本"></a>JSP脚本</h1><ul>
+<li><p>JSP 脚本用于在 JSP 页面内定义 Java 代码 </p>
+</li>
+<li><p>JSP 脚本分类：</p>
+<ol>
+<li>&lt;%..%&gt;：内容会直接放到  jspService（）方法之中</li>
+<li>&lt;%=…%&gt;：内容会放到out.print（）中，作为out.print（）的参数</li>
+<li>&lt;%！…%&gt;：内容会放到_jspService（）方法之外，被类直接包含</li>
+</ol>
+</li>
+</ul>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+<ul>
+<li><p>项目练习</p>
+<p>将封装后的数据展示出来</p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+</li>
+</ul>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<h1 id="JSP-缺点"><a href="#JSP-缺点" class="headerlink" title="JSP 缺点"></a>JSP 缺点</h1><p>由于JSP页面内，既可以定义HTML标签，又可以定义Java代码，造成了以下问题：</p>
+<ol>
+<li>书写麻烦：特别是复杂的页面</li>
+<li>阅读麻烦</li>
+<li>复杂度高：运行需要依赖于各种环境，JRE，JSP容器，JavaEE</li>
+<li>占内存和磁盘：JSP会自动生成.java和.class文件占磁盘，运行的是.class文件占内存</li>
+<li>调试困难：出错后，需要找到自动生成的.java文件进行调试</li>
+<li>不利于团队协作：前端人员不会Java，后端人员不精HTML</li>
+</ol>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><ul>
+<li><p>简介：Expression Language 表达式语言，用于简化 JSP页面内的Java代码。主要功能：获取数据</p>
+</li>
+<li><p>语法：${expression}</p>
+</li>
+<li><p>${brands}：获取域中存储的key为brands的数据</p>
+</li>
+<li><p>JavaWeb中的四大域对象：</p>
+<ol>
+<li><p>page：当前页面有效</p>
+</li>
+<li><p>request：当前请求有效</p>
+</li>
+<li><p>session：当前会话有效</p>
+</li>
+<li><p>application：当前应用有效</p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
+</li>
+</ol>
+</li>
+<li><p>功能分析：将获取数据的 java 代码写到 Servlet 中，封装好数据后，将数据存储到request域中，接着通过转发给jsp页面。这样可以避免jsp中java代码过多的情况。</p>
+</li>
+</ul>
+<p><strong>Servlet</strong></p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<p><strong>JSP</strong></p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<h1 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h1><ul>
+<li>JSP标准标签库（Jsp Standarded Tag Library），使用标签取代JSP页面上的Java代码</li>
+</ul>
+<ol>
+<li><p>导入依赖坐标</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>taglibs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>standard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在JSP页面上引入JSTL标签库</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;%--</span><br><span class="line">        c:<span class="keyword">if</span>：完成逻辑判断，替换java <span class="keyword">if</span> <span class="keyword">else</span></span><br><span class="line">    --%&gt;</span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="keyword">true</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;false&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="keyword">false</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>页面展示效果</p>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/11.png" alt="11.png"></p>
+</li>
+</ol>
+<ul>
+<li><p>JSTL标签（相当于 for 循环）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">request.getRequestDispatcher(<span class="string">&quot;/jstl-foreach.jsp&quot;</span>).forward(request, response);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>  <img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/12.png" alt="11.png"></p>
+<h1 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h1><ul>
+<li>MVC是一种分层开发的模式，其中：<ol>
+<li>M：Model，业务模型，处理业务</li>
+<li>V：View，视图，界面展示</li>
+<li>C：Controller，控制器，处理请求，调用模型和视图</li>
+</ol>
+</li>
+</ul>
+<p><img src="/2022/05/22/JSP%E7%AC%94%E8%AE%B0/13.png" alt="13.png"></p>
+]]></content>
+      <tags>
+        <tag>jsp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven笔记</title>
+    <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
+<ul>
+<li>提供了一套标准化的项目结构</li>
+<li>提供了一套标准化的构建流程（编译，测试，打包，发布.）</li>
+<li>提供了一套依赖管理机制</li>
+</ul>
+<ol>
+<li><p>标准化的项目结构</p>
+<p>不同IDE之间，项目结构不一样，不通用。而Maven提供了一套标准化的项目结构，所有IDE使用Maven构建的项目结构完全一样，所有IDE创建的Maven项目可以通用。其中src包含源代码和测试代码目录，pom.xml是项目核心配置文件。</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven.png" alt="Maven.png"></p>
+</li>
+<li><p>仓库分类</p>
+<p>本地仓库：自己计算机上的一个目录<br>中央仓库：由Maven团队维护的全球唯一的仓库，地址：<a href="https://repo1.maven.org/maven2/">Click me</a><br>远程仓库（私服）：一般由公司团队搭建的私有仓库</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/repository.png" alt="repository.png"></p>
+</li>
+</ol>
+<h1 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h1><ol>
+<li>Maven安装地址：<a href="https://maven.apache.org/download.cgi">Click me</a></li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven_download.png" alt="Maven_download.png"></p>
+<ol start="2">
+<li>下载后，解压到D:\Software目录下。</li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/maven%E5%AD%98%E6%94%BE%E5%9C%B0%E5%9D%80.png" alt="maven存放地址.png"></p>
+<ol start="3">
+<li>配置环境变量。</li>
+</ol>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_one.png" alt="environment_one.png"></p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_two.png" alt="environment_two"></p>
+<ol start="4">
+<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/local_respository.png" alt="local_respository.png"></p>
+</li>
+<li><p>配置阿里云私服：修改<code>conf/settings.xml</code>中的<code>&lt;mirrors&gt;</code>标签。</p>
+<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/mirror_respository.png" alt="mirror_respository.png"></p>
+</li>
+</ol>
+<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/idea.png" alt="idea"></p>
+<h1 id="Maven坐标详解"><a href="#Maven坐标详解" class="headerlink" title="Maven坐标详解"></a>Maven坐标详解</h1><ol>
+<li><p>什么是坐标？</p>
+<ul>
+<li><p>Maven中的坐标是资源的唯一标识</p>
+</li>
+<li><p>使用坐标来定义项目或引入项目中需要的依赖</p>
+</li>
+</ul>
+</li>
+<li><p>Maven坐标主要组成<br><strong>groupld：</strong>定义当前Maven项目隶属组织名称（通常是域名反写）<br><strong>artifactld：</strong>定义当前Maven项目名称（通常是模块名称）<br><strong>version：</strong>定义当前项目版本号</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 导入 mysql驱动jar包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -1245,231 +1302,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Maven笔记</title>
-    <url>/2022/03/27/Maven%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h1><p>Maven是专门用于管理和构建Java项目的工具，它的主要功能有：</p>
-<ul>
-<li>提供了一套标准化的项目结构</li>
-<li>提供了一套标准化的构建流程（编译，测试，打包，发布.）</li>
-<li>提供了一套依赖管理机制</li>
-</ul>
-<ol>
-<li><p>标准化的项目结构</p>
-<p>不同IDE之间，项目结构不一样，不通用。而Maven提供了一套标准化的项目结构，所有IDE使用Maven构建的项目结构完全一样，所有IDE创建的Maven项目可以通用。其中src包含源代码和测试代码目录，pom.xml是项目核心配置文件。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven.png" alt="Maven.png"></p>
-</li>
-<li><p>仓库分类</p>
-<p>本地仓库：自己计算机上的一个目录<br>中央仓库：由Maven团队维护的全球唯一的仓库，地址：<a href="https://repo1.maven.org/maven2/">Click me</a><br>远程仓库（私服）：一般由公司团队搭建的私有仓库</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/repository.png" alt="repository.png"></p>
-</li>
-</ol>
-<h1 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h1><ol>
-<li>Maven安装地址：<a href="https://maven.apache.org/download.cgi">Click me</a></li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/Maven_download.png" alt="Maven_download.png"></p>
-<ol start="2">
-<li>下载后，解压到D:\Software目录下。</li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/maven%E5%AD%98%E6%94%BE%E5%9C%B0%E5%9D%80.png" alt="maven存放地址.png"></p>
-<ol start="3">
-<li>配置环境变量。</li>
-</ol>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_one.png" alt="environment_one.png"></p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/environment_two.png" alt="environment_two"></p>
-<ol start="4">
-<li><p>配置本地仓库：修改<code>conf/settings.xml</code>中<code>&lt;localRepository&gt;</code>标签为一个指定目录。<img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/local_respository.png" alt="local_respository.png"></p>
-</li>
-<li><p>配置阿里云私服：修改<code>conf/settings.xml</code>中的<code>&lt;mirrors&gt;</code>标签。</p>
-<p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/mirror_respository.png" alt="mirror_respository.png"></p>
-</li>
-</ol>
-<h1 id="IDEA配置Maven"><a href="#IDEA配置Maven" class="headerlink" title="IDEA配置Maven"></a>IDEA配置Maven</h1><p><img src="/2022/03/27/Maven%E7%AC%94%E8%AE%B0/idea.png" alt="idea"></p>
-<h1 id="Maven坐标详解"><a href="#Maven坐标详解" class="headerlink" title="Maven坐标详解"></a>Maven坐标详解</h1><ol>
-<li><p>什么是坐标？</p>
-<ul>
-<li><p>Maven中的坐标是资源的唯一标识</p>
-</li>
-<li><p>使用坐标来定义项目或引入项目中需要的依赖</p>
-</li>
-</ul>
-</li>
-<li><p>Maven坐标主要组成<br><strong>groupld：</strong>定义当前Maven项目隶属组织名称（通常是域名反写）<br><strong>artifactld：</strong>定义当前Maven项目名称（通常是模块名称）<br><strong>version：</strong>定义当前项目版本号</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 导入 mysql驱动jar包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.28<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python文件操作</title>
-    <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
-<p>写文件：打开文件    写文件    关闭文件</p>
-<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
-<blockquote>
-<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
-</blockquote>
-<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
-<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
-<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
-<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
-<p>It is good practice to use the <a href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
-</blockquote>
-<ul>
-<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
-<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
-<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
-<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
-<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
-<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python面向对象</title>
-    <url>/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<h1 id="类对象"><a href="#类对象" class="headerlink" title="类对象"></a>类对象</h1><p>在<code>python</code>中对象几乎是无处不在的，变量、数据、函数都是对象。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一条测试类&quot;&quot;&quot;</span></span><br><span class="line">    variable = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(Demo))</span><br><span class="line"><span class="built_in">print</span>(Demo.__doc__)</span><br><span class="line"><span class="built_in">print</span>(Demo.variable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">[<span class="string">&#x27;__annotations__&#x27;</span>, <span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__call__&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__closure__&#x27;</span>, <span class="string">&#x27;__code__&#x27;</span>, <span class="string">&#x27;__defaults__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__get__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__globals__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__kwdefaults__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__qualname__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>]</span><br><span class="line">这是一个测试函数</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="定义一个简单的类"><a href="#定义一个简单的类" class="headerlink" title="定义一个简单的类"></a>定义一个简单的类</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> 方法名(<span class="params">self, 参数列表</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<strong>类名</strong>的命名规则要符合<strong>大驼峰命名法</strong></p>
-<p>定义类时，如果当前类没有确切的父类，则可继承object</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一个猫类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫爱吃鱼&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">drink</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫在喝水&quot;</span>)</span><br><span class="line">        </span><br><span class="line">tom = Cat()</span><br><span class="line">tom.eat()</span><br><span class="line">tom.drink()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在<code>Python</code>中使用类创建对象之后，<code>tom</code>变量中记录的是<strong>对象在内存中的地址</strong></li>
-<li>也就是说<code>tom</code>变量引用了新建的猫对象</li>
-<li>使用<code>print</code>输出对象变量，默认情况下，能够输出类名以及内存地址</li>
-<li>这里的<strong>self</strong>其实是个对象，类似于Java中的this</li>
-</ul>
-<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/self.png" alt="self"></p>
-<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/cat.png" alt="cat"></p>
-<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__方法"></a><code>__init__</code>方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>爱吃鱼&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat = Animal(<span class="string">&quot;小猫&quot;</span>)</span><br><span class="line">cat.eat()</span><br><span class="line"><span class="built_in">print</span>(cat)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>当使用<code>类名</code>创建对象时，会<strong>自动</strong>执行以下操作：</p>
-<ol>
-<li><p>为对象在内存中<strong>分配空间</strong>  - - 创建对象</p>
-</li>
-<li><p>为对象的属性<strong>设置初始值</strong>  - - 初始化方法(<code>__init__</code>)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证初始化方法在创建对象时自动被调用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Initial</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是一个初始化方法！！&quot;</span>)</span><br><span class="line">       </span><br><span class="line">demo = Initial()</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-<h2 id="str-方法"><a href="#str-方法" class="headerlink" title="__str__方法"></a><code>__str__方法</code></h2><ul>
-<li><p>在<code>Python</code>中，使用<code>print</code>输出<strong>对象变量</strong>，默认情况下，会输出创建该对象的类名以及在内存中的地址</p>
-</li>
-<li><p>如果希望对该输出值做出改变，想自定义输出的内容，则可以重写<code>__str__</code>方法</p>
-<blockquote>
-<p><em>注意：该方法必须返回一个字符串</em></p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;我是自定义内容&quot;</span></span><br><span class="line">    </span><br><span class="line">tom = Demo(<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(tom)</span><br></pre></td></tr></table></figure>
-
-<h2 id="私有属性和私有方法"><a href="#私有属性和私有方法" class="headerlink" title="私有属性和私有方法"></a>私有属性和私有方法</h2><ul>
-<li>在定义属性或方法时，以双下划线开头，在外界不能够直接访问。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Woman</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.__age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__secret</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>的年龄为<span class="subst">&#123;self.__age&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承的概念：子类拥有<strong>父类</strong>的所有<strong>方法和属性</strong></p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名(<span class="params">父类名</span>):</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="继承的传递性"><a href="#继承的传递性" class="headerlink" title="继承的传递性"></a>继承的传递性</h3><ul>
-<li><strong>子类</strong>拥有<strong>父类</strong>以及<strong>其父类的父类</strong>中封装的所有属性和方法</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;吃饭了！&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;睡觉了！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>(<span class="params">Animal</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">puppy = Subclass(<span class="string">&quot;puppy&quot;</span>)</span><br><span class="line">puppy.eat()</span><br><span class="line">puppy.bark()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h3><p>重写方法有两种情况：</p>
-<ol>
-<li><strong>覆盖</strong>父类的方法<ul>
-<li>当<strong>父类</strong>的方法不能满足子类需求时，可以对方法进行<strong>重写（override）</strong></li>
-<li>在子类中定义一个和<strong>父类同名</strong>的方法并且实现</li>
-<li>重写之后，在运行时只会调用子类中重写的方法，而不会去调用父类封装的方法</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)  <span class="comment">#在子类Subclass中重定义父类Dog中的bark方法</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>对父类方法进行<strong>扩展</strong><ul>
-<li>子类的方法实现中包含父类的方法实现</li>
-<li>添加<code>super().父类方法</code>来调用父类方法</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().bark()     <span class="comment"># 调用原本在父类封装的方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h3><ul>
-<li>子类可以拥有<strong>多个父类</strong>，并且可以具有多个父类的属性和方法</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 子类名(<span class="params">父类名<span class="number">1</span>, 父类名<span class="number">2.</span>..</span>)</span></span><br><span class="line"><span class="class">      <span class="title">pass</span></span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/father.png" alt="father"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">a</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是A类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是B类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params">A, B</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">test = C()</span><br><span class="line">test.a()</span><br><span class="line">test.b()</span><br></pre></td></tr></table></figure>
-
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><blockquote>
-<p>对于同一个方法，由于调用的对象不同，最终实现不同的效果</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义鼠标类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mouse</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;鼠标启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义键盘类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyBoard</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;键盘启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">m = Mouse()</span><br><span class="line">m.start()</span><br><span class="line">k = KeyBoard()</span><br><span class="line">k.start()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h2><ul>
-<li>类变量定义在<strong>类中</strong>且在<strong>函数体之外</strong><ol>
-<li>定义一个<strong>工具类</strong></li>
-<li>需求：需要知道使用这个工具类创建了多少个工具对象？</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tool</span>:</span></span><br><span class="line">    <span class="comment"># 定义类属性 记录创建工具对象的个数</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        Tool.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">tool1 = Tool(<span class="string">&quot;榔头&quot;</span>)</span><br><span class="line">tool2 = Tool(<span class="string">&quot;铁锹&quot;</span>)</span><br><span class="line">tool3 = Tool(<span class="string">&quot;锤子&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(Tool.count)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mybatis笔记</title>
     <url>/2022/05/14/Mybatis%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="什么是Mybatis？"><a href="#什么是Mybatis？" class="headerlink" title="什么是Mybatis？"></a>什么是Mybatis？</h1><ul>
@@ -1620,6 +1452,318 @@
 ]]></content>
       <tags>
         <tag>Mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python文件操作</title>
+    <url>/2021/11/21/Python%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="Python文件操作"><a href="#Python文件操作" class="headerlink" title="Python文件操作"></a>Python文件操作</h1><p>读文件：打开文件    读文件    关闭文件</p>
+<p>写文件：打开文件    写文件    关闭文件</p>
+<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><p><code>open()</code>returns a <strong>file object</strong> and is most commonly used with two arguments: <code>open(filename, mode)</code>.</p>
+<blockquote>
+<p>The <strong>first argument</strong> is a string containing the filename. The <strong>second argument</strong> is another string containing a few characters describing the way in which the file will be used</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.read())</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">fp.write(<span class="string">&quot;This is first line\nThis is the second line&quot;</span>)</span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>size is an optional numeric argument. When <em>size</em> is <strong>omitted or negative</strong>, the entire contents of the file will be read and returned; </p>
+</blockquote>
+<p>如果<code>read(size)</code>方法里面的参数值为<strong>空</strong>或者<strong>负数</strong>，则文件中的数据将全部被读取。</p>
+<p>如果为n（n&gt;0）的话，将读取n个字节的数据。</p>
+<h2 id="readline-方法"><a href="#readline-方法" class="headerlink" title="readline()方法"></a>readline()方法</h2><p>读取一行的数据，包括换行字符\n.</p>
+<h2 id="readlines-方法"><a href="#readlines-方法" class="headerlink" title="readlines()方法"></a>readlines()方法</h2><p>读取文件中全部行的数据，并以<strong>列表</strong>的方式返回。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.readlines())</span><br><span class="line">fp.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">[<span class="string">&#x27;This is first line\n&#x27;</span>, <span class="string">&#x27;This is the second line&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><blockquote>
+<p>It is good practice to use the <a href="https://docs.python.org/3/reference/compound_stmts.html#with"><code>with</code></a> keyword when dealing with file objects. </p>
+</blockquote>
+<ul>
+<li>with语句可以自动关闭文件，而不用我们手动去关闭。</li>
+<li><code>with open(&quot;filename&quot;, &quot;open_mode&quot;) as fp:</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>, ) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(<span class="string">&quot;测试with语句&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(fp.closed)               <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="tell-方法"><a href="#tell-方法" class="headerlink" title="tell()方法"></a>tell()方法</h2><blockquote>
+<p><code>f.tell()</code> returns an integer giving the file object’s current position in the file </p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./demo01.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="built_in">print</span>(fp.readline(), end=<span class="string">&#x27;&#x27;</span>)   <span class="comment"># This as the first line</span></span><br><span class="line">    <span class="built_in">print</span>(fp.tell())               <span class="comment"># 24</span></span><br><span class="line">    <span class="built_in">print</span>(fp.read())               <span class="comment"># This is the second line</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="seek-方法"><a href="#seek-方法" class="headerlink" title="seek()方法"></a>seek()方法</h2><blockquote>
+<p>To change the file object’s position, use <code>f.seek(offset, whence)</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fileObject.seek(offset[, whence])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>seek()</strong> 方法:用于移动<strong>文件对象指针</strong>到指定位置。</li>
+<li><strong>offset ：</strong>开始的偏移量，也就是代表需要移动偏移的字节数</li>
+<li><strong>whence：</strong>可选，默认值为 0。表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./demo01.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    fp.write(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">    fp.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(fp.read())</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringMVC笔记</title>
+    <url>/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一、SpringMVC概述"><a href="#一、SpringMVC概述" class="headerlink" title="一、SpringMVC概述"></a>一、SpringMVC概述</h1><ul>
+<li>SpringMVC 技术与 Servlet 技术功能等同，均属于web层开发技术</li>
+<li>SpringMVC是一种基于Java实现MVC模型的轻量级web框架</li>
+</ul>
+<h1 id="二、SpringMVC入门案例"><a href="#二、SpringMVC入门案例" class="headerlink" title="二、SpringMVC入门案例"></a>二、SpringMVC入门案例</h1><ol>
+<li>使用SpringMVC技术需要先导入SpringMVC坐标与Servlet坐标</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
+<ol start="2">
+<li>创建SpringMVC控制器类（等同于Servlet功能）</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
+<ol start="3">
+<li>初始化SpringMVC环境（同Spring环境），设定SpringMVC加载对应的bean</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
+<ol start="4">
+<li>初始化Servlet容器，加载SpringMVC环境，并设置SpringMVC技术处理的请求</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
+<ol start="5">
+<li>启动Tomcat，观察结果。</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
+<h1 id="三、bean加载控制"><a href="#三、bean加载控制" class="headerlink" title="三、bean加载控制"></a>三、bean加载控制</h1><ul>
+<li><p>SpringMVC相关bean(表现层bean)</p>
+</li>
+<li><p>Spring控制的bean</p>
+</li>
+<li><ul>
+<li>业务bean(Service)</li>
+<li>功能bean(DataSource等)</li>
+</ul>
+</li>
+<li><p>SpringMVC相关bean加载控制</p>
+<ul>
+<li>SpringMVC加载的bean对应的包均在com.wangpeng.controller</li>
+</ul>
+</li>
+<li><p>包内Spring相关bean加载控制</p>
+<ul>
+<li>方式一：Spring加载的bean设定扫描范围为com.itheima，排除掉controller包内的bean</li>
+<li>方式二：Spring加载的bean设定扫描范围为精准范围，例如service包、dao包等</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
+<p>简化开发</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
+<h1 id="四、请求映射路径"><a href="#四、请求映射路径" class="headerlink" title="四、请求映射路径"></a>四、请求映射路径</h1><p>@RequestMapping 注解到类上表示请求路径前缀</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
+<h1 id="五、请求参数获取"><a href="#五、请求参数获取" class="headerlink" title="五、请求参数获取"></a>五、请求参数获取</h1><ul>
+<li>Get请求传参</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/11.png" alt="11.png"></p>
+<ul>
+<li>Post请求传参</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/12.png" alt="12.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/13.png" alt="13.png"></p>
+<h1 id="六、五种类型参数传递"><a href="#六、五种类型参数传递" class="headerlink" title="六、五种类型参数传递"></a>六、五种类型参数传递</h1><ul>
+<li><p>普通类型</p>
+<p>当请求参数名称和形参名称不一致时，可以通过@RequestParam指定参数</p>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/14.png" alt="14.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/15.png" alt="15.png"></p>
+<ul>
+<li><p>POJO类型</p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/17.png" alt="17.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/16.png" alt="16.png"></p>
+</li>
+<li><p>Array类型</p>
+</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/18.png" alt="18.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/19.png" alt="19.png"></p>
+<ul>
+<li>集合类型</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/20.png" alt="20.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/21.png" alt="21.png"></p>
+<ul>
+<li>Json数据类型</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/26.png" alt="26.png"></p>
+<img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/27.png" alt="27.png" style="zoom:80%;">
+
+
+
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/25.png" alt="25.png"></p>
+<ol>
+<li>json数组格式</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/22.png" alt="22.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/23.png" alt="23.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/24.png" alt="24.png"></p>
+<ol start="2">
+<li>json对象格式</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/28.png" alt="28.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/29.png" alt="29.png"></p>
+<ol start="3">
+<li>json数组中嵌入json对象</li>
+</ol>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/30.png" alt="30.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/31.png" alt="31.png"></p>
+<h1 id="七、响应"><a href="#七、响应" class="headerlink" title="七、响应"></a>七、响应</h1><ul>
+<li>跳转页面</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/32.png" alt="32.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/33.png" alt="33.png"></p>
+<ul>
+<li>响应文本</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/35.png" alt="35.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/34.png" alt="34.png"></p>
+<ul>
+<li>响应 json 数据（对象转json）</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/36.png" alt="36.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/37.png" alt="37.png"></p>
+<ul>
+<li>响应 json 数据（对象集合转 json 数组）</li>
+</ul>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/38.png" alt="38.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/39.png" alt="39.png"></p>
+<h1 id="七、REST-风格"><a href="#七、REST-风格" class="headerlink" title="七、REST 风格"></a>七、REST 风格</h1><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/40.png" alt="40.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/41.png" alt="41.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/42.png" alt="42.png"></p>
+<h2 id="7-1-RESTful-简化开发"><a href="#7-1-RESTful-简化开发" class="headerlink" title="7.1 RESTful 简化开发"></a>7.1 RESTful 简化开发</h2><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/43.png" alt="43.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/44.png" alt="44.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/45.png" alt="45.png"></p>
+<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/46.png" alt="46.png"></p>
+]]></content>
+      <tags>
+        <tag>SpringMVC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python面向对象</title>
+    <url>/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h1 id="类对象"><a href="#类对象" class="headerlink" title="类对象"></a>类对象</h1><p>在<code>python</code>中对象几乎是无处不在的，变量、数据、函数都是对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一条测试类&quot;&quot;&quot;</span></span><br><span class="line">    variable = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dir</span>(Demo))</span><br><span class="line"><span class="built_in">print</span>(Demo.__doc__)</span><br><span class="line"><span class="built_in">print</span>(Demo.variable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">[<span class="string">&#x27;__annotations__&#x27;</span>, <span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__call__&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__closure__&#x27;</span>, <span class="string">&#x27;__code__&#x27;</span>, <span class="string">&#x27;__defaults__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__get__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__globals__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__kwdefaults__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__qualname__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>]</span><br><span class="line">这是一个测试函数</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="定义一个简单的类"><a href="#定义一个简单的类" class="headerlink" title="定义一个简单的类"></a>定义一个简单的类</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> 方法名(<span class="params">self, 参数列表</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<strong>类名</strong>的命名规则要符合<strong>大驼峰命名法</strong></p>
+<p>定义类时，如果当前类没有确切的父类，则可继承object</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;这是一个猫类&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫爱吃鱼&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">drink</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;小猫在喝水&quot;</span>)</span><br><span class="line">        </span><br><span class="line">tom = Cat()</span><br><span class="line">tom.eat()</span><br><span class="line">tom.drink()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在<code>Python</code>中使用类创建对象之后，<code>tom</code>变量中记录的是<strong>对象在内存中的地址</strong></li>
+<li>也就是说<code>tom</code>变量引用了新建的猫对象</li>
+<li>使用<code>print</code>输出对象变量，默认情况下，能够输出类名以及内存地址</li>
+<li>这里的<strong>self</strong>其实是个对象，类似于Java中的this</li>
+</ul>
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/self.png" alt="self"></p>
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/cat.png" alt="cat"></p>
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__方法"></a><code>__init__</code>方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>爱吃鱼&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat = Animal(<span class="string">&quot;小猫&quot;</span>)</span><br><span class="line">cat.eat()</span><br><span class="line"><span class="built_in">print</span>(cat)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>当使用<code>类名</code>创建对象时，会<strong>自动</strong>执行以下操作：</p>
+<ol>
+<li><p>为对象在内存中<strong>分配空间</strong>  - - 创建对象</p>
+</li>
+<li><p>为对象的属性<strong>设置初始值</strong>  - - 初始化方法(<code>__init__</code>)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证初始化方法在创建对象时自动被调用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Initial</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是一个初始化方法！！&quot;</span>)</span><br><span class="line">       </span><br><span class="line">demo = Initial()</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="str-方法"><a href="#str-方法" class="headerlink" title="__str__方法"></a><code>__str__方法</code></h2><ul>
+<li><p>在<code>Python</code>中，使用<code>print</code>输出<strong>对象变量</strong>，默认情况下，会输出创建该对象的类名以及在内存中的地址</p>
+</li>
+<li><p>如果希望对该输出值做出改变，想自定义输出的内容，则可以重写<code>__str__</code>方法</p>
+<blockquote>
+<p><em>注意：该方法必须返回一个字符串</em></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;我是自定义内容&quot;</span></span><br><span class="line">    </span><br><span class="line">tom = Demo(<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(tom)</span><br></pre></td></tr></table></figure>
+
+<h2 id="私有属性和私有方法"><a href="#私有属性和私有方法" class="headerlink" title="私有属性和私有方法"></a>私有属性和私有方法</h2><ul>
+<li>在定义属性或方法时，以双下划线开头，在外界不能够直接访问。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Woman</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.__age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__secret</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>的年龄为<span class="subst">&#123;self.__age&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承的概念：子类拥有<strong>父类</strong>的所有<strong>方法和属性</strong></p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名(<span class="params">父类名</span>):</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="继承的传递性"><a href="#继承的传递性" class="headerlink" title="继承的传递性"></a>继承的传递性</h3><ul>
+<li><strong>子类</strong>拥有<strong>父类</strong>以及<strong>其父类的父类</strong>中封装的所有属性和方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;吃饭了！&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.name + <span class="string">&quot;睡觉了！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>(<span class="params">Animal</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">puppy = Subclass(<span class="string">&quot;puppy&quot;</span>)</span><br><span class="line">puppy.eat()</span><br><span class="line">puppy.bark()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h3><p>重写方法有两种情况：</p>
+<ol>
+<li><strong>覆盖</strong>父类的方法<ul>
+<li>当<strong>父类</strong>的方法不能满足子类需求时，可以对方法进行<strong>重写（override）</strong></li>
+<li>在子类中定义一个和<strong>父类同名</strong>的方法并且实现</li>
+<li>重写之后，在运行时只会调用子类中重写的方法，而不会去调用父类封装的方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)  <span class="comment">#在子类Subclass中重定义父类Dog中的bark方法</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对父类方法进行<strong>扩展</strong><ul>
+<li>子类的方法实现中包含父类的方法实现</li>
+<li>添加<code>super().父类方法</code>来调用父类方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subclass</span>(<span class="params">Dog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bark</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().bark()     <span class="comment"># 调用原本在父类封装的方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;汪汪汪汪！！！&quot;</span>)</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h3><ul>
+<li>子类可以拥有<strong>多个父类</strong>，并且可以具有多个父类的属性和方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 子类名(<span class="params">父类名<span class="number">1</span>, 父类名<span class="number">2.</span>..</span>)</span></span><br><span class="line"><span class="class">      <span class="title">pass</span></span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/01/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/father.png" alt="father"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">a</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是A类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;这是B类！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params">A, B</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">test = C()</span><br><span class="line">test.a()</span><br><span class="line">test.b()</span><br></pre></td></tr></table></figure>
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><blockquote>
+<p>对于同一个方法，由于调用的对象不同，最终实现不同的效果</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义鼠标类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mouse</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;鼠标启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义键盘类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyBoard</span>(<span class="params">Computer</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;键盘启动成功！！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">m = Mouse()</span><br><span class="line">m.start()</span><br><span class="line">k = KeyBoard()</span><br><span class="line">k.start()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h2><ul>
+<li>类变量定义在<strong>类中</strong>且在<strong>函数体之外</strong><ol>
+<li>定义一个<strong>工具类</strong></li>
+<li>需求：需要知道使用这个工具类创建了多少个工具对象？</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tool</span>:</span></span><br><span class="line">    <span class="comment"># 定义类属性 记录创建工具对象的个数</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        Tool.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">tool1 = Tool(<span class="string">&quot;榔头&quot;</span>)</span><br><span class="line">tool2 = Tool(<span class="string">&quot;铁锹&quot;</span>)</span><br><span class="line">tool3 = Tool(<span class="string">&quot;锤子&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(Tool.count)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1871,150 +2015,6 @@
 ]]></content>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringMVC笔记</title>
-    <url>/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="一、SpringMVC概述"><a href="#一、SpringMVC概述" class="headerlink" title="一、SpringMVC概述"></a>一、SpringMVC概述</h1><ul>
-<li>SpringMVC 技术与 Servlet 技术功能等同，均属于web层开发技术</li>
-<li>SpringMVC是一种基于Java实现MVC模型的轻量级web框架</li>
-</ul>
-<h1 id="二、SpringMVC入门案例"><a href="#二、SpringMVC入门案例" class="headerlink" title="二、SpringMVC入门案例"></a>二、SpringMVC入门案例</h1><ol>
-<li>使用SpringMVC技术需要先导入SpringMVC坐标与Servlet坐标</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/1.png" alt="1.png"></p>
-<ol start="2">
-<li>创建SpringMVC控制器类（等同于Servlet功能）</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/2.png" alt="2.png"></p>
-<ol start="3">
-<li>初始化SpringMVC环境（同Spring环境），设定SpringMVC加载对应的bean</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/3.png" alt="3.png"></p>
-<ol start="4">
-<li>初始化Servlet容器，加载SpringMVC环境，并设置SpringMVC技术处理的请求</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/4.png" alt="4.png"></p>
-<ol start="5">
-<li>启动Tomcat，观察结果。</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/5.png" alt="5.png"></p>
-<h1 id="三、bean加载控制"><a href="#三、bean加载控制" class="headerlink" title="三、bean加载控制"></a>三、bean加载控制</h1><ul>
-<li><p>SpringMVC相关bean(表现层bean)</p>
-</li>
-<li><p>Spring控制的bean</p>
-</li>
-<li><ul>
-<li>业务bean(Service)</li>
-<li>功能bean(DataSource等)</li>
-</ul>
-</li>
-<li><p>SpringMVC相关bean加载控制</p>
-<ul>
-<li>SpringMVC加载的bean对应的包均在com.wangpeng.controller</li>
-</ul>
-</li>
-<li><p>包内Spring相关bean加载控制</p>
-<ul>
-<li>方式一：Spring加载的bean设定扫描范围为com.itheima，排除掉controller包内的bean</li>
-<li>方式二：Spring加载的bean设定扫描范围为精准范围，例如service包、dao包等</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/6.png" alt="6.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/7.png" alt="7.png"></p>
-<p>简化开发</p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/8.png" alt="8.png"></p>
-<h1 id="四、请求映射路径"><a href="#四、请求映射路径" class="headerlink" title="四、请求映射路径"></a>四、请求映射路径</h1><p>@RequestMapping 注解到类上表示请求路径前缀</p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/9.png" alt="9.png"></p>
-<h1 id="五、请求参数获取"><a href="#五、请求参数获取" class="headerlink" title="五、请求参数获取"></a>五、请求参数获取</h1><ul>
-<li>Get请求传参</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/10.png" alt="10.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/11.png" alt="11.png"></p>
-<ul>
-<li>Post请求传参</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/12.png" alt="12.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/13.png" alt="13.png"></p>
-<h1 id="六、五种类型参数传递"><a href="#六、五种类型参数传递" class="headerlink" title="六、五种类型参数传递"></a>六、五种类型参数传递</h1><ul>
-<li><p>普通类型</p>
-<p>当请求参数名称和形参名称不一致时，可以通过@RequestParam指定参数</p>
-</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/14.png" alt="14.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/15.png" alt="15.png"></p>
-<ul>
-<li><p>POJO类型</p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/17.png" alt="17.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/16.png" alt="16.png"></p>
-</li>
-<li><p>Array类型</p>
-</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/18.png" alt="18.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/19.png" alt="19.png"></p>
-<ul>
-<li>集合类型</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/20.png" alt="20.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/21.png" alt="21.png"></p>
-<ul>
-<li>Json数据类型</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/26.png" alt="26.png"></p>
-<img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/27.png" alt="27.png" style="zoom:80%;">
-
-
-
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/25.png" alt="25.png"></p>
-<ol>
-<li>json数组格式</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/22.png" alt="22.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/23.png" alt="23.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/24.png" alt="24.png"></p>
-<ol start="2">
-<li>json对象格式</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/28.png" alt="28.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/29.png" alt="29.png"></p>
-<ol start="3">
-<li>json数组中嵌入json对象</li>
-</ol>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/30.png" alt="30.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/31.png" alt="31.png"></p>
-<h1 id="七、响应"><a href="#七、响应" class="headerlink" title="七、响应"></a>七、响应</h1><ul>
-<li>跳转页面</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/32.png" alt="32.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/33.png" alt="33.png"></p>
-<ul>
-<li>响应文本</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/35.png" alt="35.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/34.png" alt="34.png"></p>
-<ul>
-<li>响应 json 数据（对象转json）</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/36.png" alt="36.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/37.png" alt="37.png"></p>
-<ul>
-<li>响应 json 数据（对象集合转 json 数组）</li>
-</ul>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/38.png" alt="38.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/39.png" alt="39.png"></p>
-<h1 id="七、REST-风格"><a href="#七、REST-风格" class="headerlink" title="七、REST 风格"></a>七、REST 风格</h1><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/40.png" alt="40.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/41.png" alt="41.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/42.png" alt="42.png"></p>
-<h2 id="7-1-RESTful-简化开发"><a href="#7-1-RESTful-简化开发" class="headerlink" title="7.1 RESTful 简化开发"></a>7.1 RESTful 简化开发</h2><p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/43.png" alt="43.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/44.png" alt="44.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/45.png" alt="45.png"></p>
-<p><img src="/2022/08/20/SpringMVC%E7%AC%94%E8%AE%B0/46.png" alt="46.png"></p>
-]]></content>
-      <tags>
-        <tag>SpringMVC</tag>
       </tags>
   </entry>
   <entry>

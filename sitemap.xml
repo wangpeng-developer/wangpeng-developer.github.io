@@ -191,13 +191,6 @@
 
   
   <url>
-    <loc>https://wangpeng-developer.github.io/tags/Filter/</loc>
-    <lastmod>2022-08-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://wangpeng-developer.github.io/tags/cookie/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -212,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://wangpeng-developer.github.io/tags/Java/</loc>
+    <loc>https://wangpeng-developer.github.io/tags/Filter/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wangpeng-developer.github.io/tags/jsp/</loc>
+    <loc>https://wangpeng-developer.github.io/tags/Java/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -233,7 +226,7 @@
   </url>
   
   <url>
-    <loc>https://wangpeng-developer.github.io/tags/linux/</loc>
+    <loc>https://wangpeng-developer.github.io/tags/jsp/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -247,7 +240,7 @@
   </url>
   
   <url>
-    <loc>https://wangpeng-developer.github.io/tags/python/</loc>
+    <loc>https://wangpeng-developer.github.io/tags/linux/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -255,6 +248,20 @@
   
   <url>
     <loc>https://wangpeng-developer.github.io/tags/Mybatis/</loc>
+    <lastmod>2022-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wangpeng-developer.github.io/tags/python/</loc>
+    <lastmod>2022-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wangpeng-developer.github.io/tags/SpringMVC/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -269,13 +276,6 @@
   
   <url>
     <loc>https://wangpeng-developer.github.io/tags/hexo/</loc>
-    <lastmod>2022-08-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wangpeng-developer.github.io/tags/SpringMVC/</loc>
     <lastmod>2022-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
